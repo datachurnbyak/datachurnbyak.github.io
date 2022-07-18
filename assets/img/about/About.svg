@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 492.63 433.59" style="enable-background:new 0 0 492.63 433.59;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.21;fill:#009444;stroke:#000000;stroke-miterlimit:10;}
+	.st1{opacity:0.21;fill:#2B3990;stroke:#000000;stroke-miterlimit:10;}
+	.st2{opacity:0.21;fill:#ED1C24;stroke:#000000;stroke-miterlimit:10;}
+	.st3{font-family:'Arial-BoldMT';}
+	.st4{font-size:16px;}
+	.st5{font-size:12px;}
+	.st6{fill:none;}
+	.st7{font-family:'ArialMT';}
+	.st8{font-size:19px;}
+</style>
+<ellipse transform="matrix(0.8164 -0.5775 0.5775 0.8164 -22.4124 196.8142)" class="st0" cx="298.29" cy="133.65" rx="172.01" ry="108.6"/>
+<path class="st1" d="M231.41,430.11c-59.89,0-108.45-64.71-108.45-144.54s48.55-144.54,108.45-144.54s108.45,64.71,108.45,144.54
+	S291.3,430.11,231.41,430.11z"/>
+<ellipse transform="matrix(0.5775 -0.8164 0.8164 0.5775 -44.3361 182.6741)" class="st2" cx="154.33" cy="134.17" rx="108.6" ry="172.01"/>
+<text transform="matrix(1 0 0 1 292.9727 31.1868)"><tspan x="0" y="0" class="st3 st4">Mathematics and</tspan><tspan x="0" y="19.2" class="st3 st4"> Statistics </tspan></text>
+<text transform="matrix(1 0 0 1 42.4185 43.0316)"><tspan x="0" y="0" class="st3 st4">Computer </tspan><tspan x="0" y="19.2" class="st3 st4">Science  </tspan></text>
+<text transform="matrix(1 0 0 1 206.2012 110.0628)"><tspan x="0" y="0" class="st3 st5">Big Data </tspan><tspan x="-28.34" y="14.4" class="st3 st5">Machine Learning  </tspan></text>
+<text transform="matrix(1 0 0 1 161.0514 296.9779)" class="st3 st4">Biology </text>
+<rect x="304.39" y="58.48" class="st6" width="188.24" height="107.16"/>
+<text transform="matrix(1 0 0 1 304.3903 67.0747)"><tspan x="0" y="0" class="st7 st5">- Probability</tspan><tspan x="0" y="14.4" class="st7 st5">- Hypothesis testing</tspan><tspan x="0" y="28.8" class="st7 st5">- Operational Mathematics </tspan><tspan x="0" y="43.2" class="st7 st5">- Graph theory</tspan><tspan x="0" y="57.6" class="st7 st5">- Time Series Analysis</tspan><tspan x="0" y="72" class="st7 st5">- ANOVA </tspan><tspan x="0" y="86.4" class="st7 st5">- Logistic Regression</tspan></text>
+<rect x="43.74" y="72.07" class="st6" width="188.24" height="91.19"/>
+<text transform="matrix(1 0 0 1 43.7441 80.6622)"><tspan x="0" y="0" class="st7 st5">- R</tspan><tspan x="0" y="14.4" class="st7 st5">- Python</tspan><tspan x="0" y="28.8" class="st7 st5">- Bash Scripting  </tspan><tspan x="0" y="43.2" class="st7 st5">- SQL</tspan><tspan x="0" y="57.6" class="st7 st5">- Cloud computing</tspan></text>
+<rect x="160.78" y="305.86" class="st6" width="236.13" height="127.73"/>
+<text transform="matrix(1 0 0 1 160.7765 314.4524)"><tspan x="0" y="0" class="st7 st5">- Molecular Biology</tspan><tspan x="0" y="14.4" class="st7 st5">- Medical Microbiology</tspan><tspan x="0" y="28.8" class="st7 st5">- Cell physiology</tspan><tspan x="0" y="43.2" class="st7 st5">- Biochemistry</tspan><tspan x="0" y="57.6" class="st7 st5">- Phylogeny and Taxonomy</tspan><tspan x="0" y="72" class="st7 st5">   of Bacteria</tspan></text>
+<text transform="matrix(1 0 0 1 156.4023 192.8367)"><tspan x="0" y="0" class="st3 st8">Multi-omics data </tspan><tspan x="16.35" y="22.8" class="st3 st8">Analysis and </tspan><tspan x="19.52" y="45.6" class="st3 st8">Visualization</tspan></text>
+</svg>

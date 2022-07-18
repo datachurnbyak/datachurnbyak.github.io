@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Data churn by AK - All you need to know about degree of freedom in statistics</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</noscript>
+
+
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="manifest" href="/assets/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Data churn by AK's App">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="application-name" content="Data churn by AK's App">
+  <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+
+    <meta name="keywords" content="Statistics, degree of freedom, expected value, sample variance, bias">
+
+  <meta name="description" content="Most simplified and complete description of degree of freedom as used in statistics ">
+  <meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All you need to know about degree of freedom in statistics">
+<meta name="twitter:site" content="@amritkoirala1">
+<meta name="twitter:description" content="Most simplified and complete description of degree of freedom as used in statistics ">
+<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg">
+<meta property="og:site_name" content="Data churn by AK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="All you need to know about degree of freedom in...">
+<meta property="og:description" content="Most simplified and complete description of degree of freedom as used in statistics ">
+<meta property="og:url" content="http://localhost:4000/posts/2019-07-01-Degree-of-freedom">
+<meta property="og:image" content="http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg">
+  <meta property="article:author" content="Amrit Koirala">
+  <meta property="article:published_time" content="2019-06-30T18:11:06-05:00">
+  <meta property="article:modified_time" content="2019-06-30T18:11:06-05:00">
+  <meta property="article:section" content="Statistics">
+  <meta property="article:tag" content="degree of freedom">
+  <meta property="article:tag" content="expected value">
+  <meta property="article:tag" content="sample variance">
+  <meta property="article:tag" content="bias">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org"
+  ,"@graph": [
+    {
+      "@type": "Person"
+      ,"@id": "http://localhost:4000/#person"
+      ,"name": "Amrit Koirala"
+      ,"url": "http://localhost:4000/tabs/about.html"
+      ,"image": "http://localhost:4000/assets/img/about/about.jpg"
+      ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+  },{
+    "@type": "WebSite"
+    ,"@id": "http://localhost:4000/#website"
+    ,"url": "http://localhost:4000/"
+    ,"name": "Data churn by AK"
+    ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+    ,"publisher": {"@id": "http://localhost:4000/#person"}
+    ,"inLanguage": "en-US"
+    ,"sameAs": ["https://www.github.com/akoirala2000","https://www.linkedin.com/in/amrit-koirala-41037392","https://www.twitter.com/amritkoirala1"]
+    ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+    ,"copyrightYear" : "2022"
+  },{
+    "@type": "WebPage"
+    ,"@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#webpage"
+    ,"url": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom"
+    ,"name": "All you need to know about degree of freedom in statistics"
+    ,"isPartOf": {"@id": "http://localhost:4000/#website"}
+    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#breadcrumb"}
+    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg"
+    ,"datePublished": "2019-06-30T18:11:06-05:00"
+    ,"dateModified": "2019-06-30T18:11:06-05:00"
+    ,"description": "Most simplified and complete description of degree of freedom as used in statistics "
+    ,"inLanguage": "en-US"
+    ,"potentialAction": {
+      "@type": "ReadAction"
+      ,"target": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom"
+    }
+  },{
+      "@type": "BreadcrumbList",
+      "@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem"
+          ,"position": 1
+          ,"name": "Home"
+          ,"item": "http://localhost:4000/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 2
+          ,"name": "Notes"
+          ,"item": "http://localhost:4000/tabs/blog/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 3
+          ,"name": "All you need to know about degree of freedom in statistics"
+        }
+      ]
+    },{
+      "@type": "BlogPosting"
+      ,"@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#content"
+      ,"isPartOf": {"@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#webpage"}
+      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2019-07-01-Degree-of-freedom#webpage"}
+      ,"publisher": {"@id": "http://localhost:4000/#person"}
+      ,"author": {"@id": "http://localhost:4000/#person"}
+      ,"inLanguage": "en-US"
+      ,"headline": "All you need to know about degree of freedom in statistics"
+      ,"image": "http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg"
+      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg"
+      ,"datePublished": "2019-06-30T18:11:06-05:00"
+      ,"dateModified": "2019-06-30T18:11:06-05:00"
+      ,"articleSection": ["Statistics", "degree of freedom", "expected value", "sample variance", "bias"]
+      ,"description": "Most simplified and complete description of degree of freedom as used in statistics "
+      ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+      ,"copyrightYear" : "2022"
+      ,"wordCount": 2620
+      ,"articleBody": "Background Degree of freedom (df) is a very important mathematical concept which is implemented in multiple disciplines like mechanics, physics, chemistry, and also in inferential statistics. In its essence, it is the number of independent variables or parameters of a system. Or it is the number of independent quantities necessary to express the values of all the variable properties of a system. For example a point moving in a 3D space has degree of freedom equal to 3 because three coordinate values are necessary to define the state of that point at any given time. However, if we put a constrain on the system and fix one of the axis at a constant, then the point is free to move along only two axis and has only 2 degree of freedom. Df in statistics Df is extensively applied in inferential statistics where we are trying to estimate some population parameters (mean, variance, skewness, and kurtosis) using the measurement made in a random sample from that population (sample statistics). For any estimator of population parameter, degree of freedom is equal to number of independent pieces of information that go into the estimate of that parameter or alternatively it is number of variables in a statistic minus the number of estimated parameters used while computing that statistic. These definitions may look vague but lets see how two most commonly used statistics: sample mean (\\(\\bar x\\)) and sample variance(\\(s^2\\)) works and come back to these definitions. Goal of inferential statistics One of the main goal of statistics is to estimate the population parameters like population mean (\\(\\mu\\)) and population variance (\\(\\sigma^2\\)). Theoretically, it may be possible to make measurement on population but practically, the population always have infinite number of items so we are always forced to take a sample of size (n). For many other practical reasons, this sample size is usually very small which makes the situation even worse (we will see how). So we need to be able to estimate population parameters by using a small sample and that estimate needs to unbiased. Bias is a very commonly used term in statistics and in addition to its meaning in normal English language it has some statistical value. A random variable is considered to be an unbiased estimator of a population parameter only if the expected value of the random variable is equal to the population parameter. (See note on expected value here). Similarly a random variable is an biased estimate of a population parameter if the expected value of the random variable is not equal to the population parameter. It is called overestimate if the expected value is greater than the population parameter and vice-versa. Mathematically, an estimator gives an unbiased estimate of population parameter if, \\[E[estimator] = \\text {population parameter}\\] Sample mean Now lets come back to sample mean. If X represents a random variable that measure sampling distribution of sample means, (see note on distribution of sampling means) according to the Central limit theorem it is an unbiased estimate of population mean.ie: \\[E[X] = \\mu\\] proof here We can prove this with some manipulation of \\(E[]\\) Substitute X with the formula for sample mean \\[E[X] = E\\left[\\frac{1}{n}\\sum_{i=1}^nx_i\\right]\\] \\[=\\frac{1}{n}\\sum_{i=1}^n E[x_i]\\] Expectation of a single observation is equal to population mean \\(\\mu\\). \\[=\\frac{1}{n}\\sum_{i=1}^n \\mu\\] \\[= \\frac{1}{n}n\\mu\\] \\[=\\mu\\] done! Now, lets lets figure out the degree of freedom for the sample mean. This is the equation for calculating a sample mean: \\[\\bar x = \\frac{1}{n}\\sum_{i=1}^nx_i\\] For calculating the value of each sample mean, only the values coming from each observation are used. If \\(n\\) is the sample size, then all \\(n\\) values are used and no any other intermediate estimates are computed. Therefore, the degree of freedom by our definition above is \\(n-0\\), or in simple form \\(n\\). So, for the sample mean, the degree of freedom is same as sample size. This seems relatively straight forward, lets see sample variance next which will further clarify it. Sample variance The generally used formula for calculating a sample variance is given by or derived from this equation : \\[\\begin{equation} \\tag{equation 1} s^2=\\frac {\\sum (x- \\bar x)^2}{n-1} \\end{equation}\\] By definition, variance is mean of squared deviation, so if we don’t think much and just go by definition, the equation for sample variance should be: \\[\\begin{equation} \\tag{equation 2} s^2_{bi}=\\frac {\\sum (x- \\bar x)^2}{n} \\end{equation}\\] This seems very plausible, but unlike sample mean, in calculation of sample variance we need one intermediate estimate for population parameter (\\(\\mu\\)) given by sample mean \\(\\bar x\\). Although, sample mean is an unbiased estimate of population mean, the mean calculated from only one sample is subject to inherent randomness, and because of this randomness the sample variance calculated using sample mean according to equation 2 is a biased estimate of population variance. It will almost always underestimate the population variance (report less than what actually is). The amount of bias in the sample variance can be mathematically shown to be equal to \\(\\frac{n}{n-1}\\) (see below for proof). Therefore, to get an unbiased estimate of population variance we need to multiply equation 2 by this factor. proof here Proof for biased sample mean Lets us write equation 2 into computational easy form. See my note on mean and variance if you are not familiar with derivation of computational form of variance. \\[s^2_{bi}=\\frac {\\sum x^2}{n}-\\left(\\frac {\\sum x}{n}\\right)^2\\] And also write the symbol of s as random variable measuring sample variance \\(S^2_{bi}\\) and calculate expected value of that random variable. \\[E[S^2_{bi}]=E\\left[\\frac {\\sum x^2}{n}-\\left(\\frac {\\sum x}{n}\\right)^2 \\right]\\] \\[=E\\left[\\frac {\\sum x^2}{n}\\right]-E\\left[\\left(\\frac {\\sum x}{n}\\right)^2 \\right]\\] The term \\(\\frac{\\sum x}{n}\\) is the sample mean \\(\\bar x\\) \\[=E\\left[\\frac {\\sum x^2}{n}\\right]-E\\left[\\left(\\bar x\\right)^2 \\right]\\] Lets process \\(E\\) further in \\[\\begin{equation} \\tag{equation 3} =\\frac {\\sum E[x^2]}{n}-E\\left[\\bar x^2\\right] \\end{equation}\\] For any given random variable Y we know, \\[Var(y) = E[y^2]-\\left(E[y]\\right)^2\\] \\[\\text{or, } E[y^2] = Var(y) + \\left(E[y]\\right)^2\\] In equation 3 there are two terms which evaluates to expectation of square, so expanding them equation 3 becomes \\[E[S^2_{bi}] = \\frac{\\sum Var(x)+(E[x])^2}{n}- Var(\\bar x) - (E[\\bar x])^2\\] Now, lets simplify some of these terms, expectation of a variable is its mean so, \\(E[x] = \\mu\\). From, central limit theorem, variance of distribution of sample mean is \\(\\frac{\\sigma ^2}{n}\\) and sample mean being the unbiased estimate of population mean \\(E[\\bar x] = \\mu\\). Now, replace these values in the equation above, \\[E[S^2_{bi}] = \\frac{\\sum \\sigma^2+(\\mu)^2}{n}- \\frac{\\sigma ^2}{n} - (\\mu)^2\\] Solving this: \\[= \\frac{( \\sigma^2+(\\mu)^2)n}{n}- \\frac{\\sigma ^2}{n} - (\\mu)^2\\] \\[= \\sigma ^2 + \\mu ^2- \\frac{\\sigma ^2}{n}- \\mu ^2\\] \\[\\begin{equation} \\tag{equation 4} E[S^2_{bi}] = \\sigma ^2 \\left(\\frac{n-1}{n}\\right) \\end{equation}\\] Therefore, the expected value of biased sample variance is always less than the population variance by a factor of (n-1)/n. For large sample size this factor tends to be equal to 1 but on a small sample size it is profound. done! \\[\\text{Unbiased }s^2= s^2 = s^2_{bi}. \\frac{n}{n-1}\\] \\[=\\frac {\\sum (x- \\bar x)^2}{n}.\\frac{n}{n-1}\\] Removing n, it gives back the equation 1. \\[s^2 =\\frac {\\sum (x- \\bar x)^2}{n-1}\\] Therefore, the equation we have been using for sample variance is actually, equation 2 (given by the definition of variance) but adjusted for bias associated with uncertainty in estimate of one the population parameter during its calculation. And because we used this one intermediate population estimate (sample mean, \\(\\bar x\\)), we need to subtract 1 from the number of values used to calculate sample variance. Thus, sample variance has n-1 degree of freedom. This is very important for a small size sample, because as n gets close to 1, subtracting 1 will decrease denominator by large value increasing the expected value of random variable measuring sample variance. This increase will balance the variance underestimated by biased equation (equation 2). The plot below show the distribution of sample variance (adjusted) with different sample size n= {5,15,50,100}. The mean reported is the expected value of each distribution. Regardless of the sample size all four plots have expected value almost equal to the population variance (100). Figure 1: Distribution of sample variance. code for Fig: 1 par(mfrow=c(2,2)) set.seed(56) #make a dummy population with N= 1000, \\mu = 70 and \\sigma= 10 pop&lt;- rnorm(1000, mean= 70, 10) sample_size = c(5,15,50,100) for (size in 1:length(sample_size)) { sample_variance &lt;- NULL for (i in 1:1000) { sample &lt;- sample(pop, sample_size[size]) sample_variance&lt;-c (sample_variance, var(sample)) } hist(sample_variance, main=paste0('Dist of sample variance n = ', sample_size[size],' \\n mean of var = ' ,round(mean(sample_variance),1), \" variance of var = \", round(var(sample_variance),1)), xlim=c(0,400)) } done! On the other hand, the plots below are reporting the biased measure of sample variance (given by equation 2 above) for exactly same experiment reported above. The expected value is seriously lower than the population variance and the situation is worse when sample size is lowest. This under estimation occurs because with small sample size, sample mean lies within that sample, all the deviations becomes smaller than they actually need to be. With small sample size there is less chance that true mean will be within or near that sample. Figure 2: Distribution of biased variance code for Fig:2 par(mfrow=c(2,2)) set.seed(56) #make a dummy population with N= 1000, \\mu = 70 and \\sigma= 10 pop&lt;- rnorm(1000, mean= 70, 10) sample_size = c(5,15,50,100) for (size in 1:length(sample_size)) { sample_variance &lt;- NULL for (i in 1:1000) { sample &lt;- sample(pop, sample_size[size]) #biased variance sample_variance&lt;-c (sample_variance, var(sample)*(sample_size[size]-1)/sample_size[size]) } hist(sample_variance, main=paste0('Biased sample variance n = ', sample_size[size],' \\n mean of var = ' ,round(mean(sample_variance),1), \" variance of var = \", round(var(sample_variance),1)), xlim=c(0,400)) } done! Quick recap Lets summarize what we learned from sample mean and sample variance so far: degree of freedom for a random variable estimating a population parameter is equal to number of independent information that went into calculation of that estimate minus the number of intermediate estimated population parameters used in calculation of such an estimate. All the estimates of population parameters should be an unbiased estimate of that population parameter. However, if degree of freedom is less than the number variables used in calculation of that estimate, it is always biased. ie \\(\\text {df = n, --------&gt; estimate is unbiased estimate of population parameter (Eg: sample mean)}\\) \\(\\text {df &lt; n, --------&gt; estimate is biased estimate of population parameter (Eg: sample variance)}\\) This bias in the estimate of a population variance \\(\\sigma ^2\\) using a sample variance can be adjusted by dividing the sum of squares (SS) by degree of freedom rather than taking the literal mean of squared deviations. All these three statements above are universally applicable to any situation where we need to estimate mean of squared deviations. Therefore it is applicable to all the mean SS (MSB, MSW, Mean TSS, MSR, MSE) calculated during ANOVA and linear regression. One way ANOVA The source of variations in one way ANOVA are between levels of factors, within each level and total variation. The table below shows how df is calculated for each of the sources: Source variables intermediate pop estimates df Total all observations(n) mean of y (1) n-1 Between number of levels (t) mean of y (1) t-1 Within all observations (n) mean of each levels(t) n-t Total variance calculation is same as the variance estimate we saw above. But when it comes to the SSB, deviation used is the one between mean of corresponding level to the estimate of population mean of y. So, we have used one intermediate estimate. And within each level for a balanced experiment, there are n/t number of observations, and n/t number of deviations corresponding to each observation, but all the deviations within a level is essentially using only one independent piece of information (mean of that level). So, total number of independent pieces of information is equal to the number of levels. And therefore, df is t-1. For within variation, all observations contribute their share of information but since deviation is taken from the mean of the corresponding level that observation belonged to. Here level of each mean is used as the estimate of true mean of that level not as a variable, as in SSB. Therefore, df for within variance is n-t. Two way ANOVA For a two way ANOVA with two factors A and C each with a and c number of levels and n observation in each cell. Source variables intermediate pop estimates df Total all observations(acn-1) mean of y (1) acn-1 Between cells no. of cells (ac) mean of y (1) ac-1 Factor A no. of levels in A (a) mean of y (1) a-1 Factor C no. of levels in C (c) mean of y (1) c-1 A*C ac, a, c mean of y (3 times) (a-1)(c-1) Within cells all observations (acn) mean of each cell(ac) ac(n-1) All the other SS has similar idea as one way ANOVA except interaction term. Sum of square for AC is defined as: \\(SS_{AC} = SS_{Cells}-SS_A-SS_C\\) It is the variance explained only by cells. It is calculated as \\[SS_{AC} = n\\sum_1^{ac}[(mean_{cell} - \\bar y_{total}) - (mean_{A} - \\bar y_{total}) - (mean_{C} - \\bar y_{total})]^2\\] The first deviation is from mean of a particular cell to estimate of mean of y. The second deviation is from mean of particular level of A to the estimate of mean of y. Since there are only a number of levels in A, those each \\(mean_A\\) will be reused c times. The third deviation is from mean of a particular level of C to the estimate of mean of y. It is clear that there is only one intermediate estimate of population parameter \\(\\bar y\\). But this it is used three times for calculating three different types of deviations. Each type of deviation has its own df and total df is calculated by as df for cell minus df for A minus df for C. \\[df(AC) = df(cell)- df(A) - df(C)\\] \\[= ac -1 - a + 1 - c +1\\] \\[(a-1)(c-1)\\] Simple linear regression \\[y = \\beta_0 + \\beta_1x + \\epsilon\\] Source variables intermediate pop estimates df Total all observations(n) mean of y (1) n-1 Regression number of reggressor +1 mean of y (1) 1+1-1=1 Error all observations (n) number of regressor +1 n-2 This can be interpreted in very similar way to one way anova. Other application So far we saw profound use of df to get unbiased estimate of any type/partition of variance. In addition to this df is used to adjust the standard normal distribution when the population parameters are unknown and only sample statistics are used to calculate the test statistics. The test statistics \\(z=\\frac{\\bar x - \\mu}{\\frac{\\sigma}{\\sqrt n}}\\) follows standard normal distribution with mean 0 and variance 1. But in may real case situation both \\(\\mu\\) and \\(\\sigma\\) are unknown. So, standard normal distribution is not appropriate to calculate p-value. The distribution needs to be adjusted for the added uncertanity because of using sample variance. Therefore a new test statistics has been deviced called t-statistic. \\[t=\\frac{\\bar x - \\mu}{\\frac{s}{\\sqrt n}}\\] and the only parameter defining this distribution is degree of freedom \\(v\\)associated with sample variance. This distribution has mean of 0 for \\(v\\) &gt;1, otherwise undefined. and variance = \\(\\frac{v}{v-2}\\) for \\(v\\) &gt; 2. Unlike standard normal distribution, there is new curve for each value of \\(v\\). T-distribution always has fatter tails because of the uncertainty associated with sample variance used in calculation of the t-statistics. Figure 3: PDF curve for Normal and t-distribution. code for fig: 3 curve(dnorm(x), from = -4,to= 4, col= \"red\", ylab= \"density\") curve(dt(x, df=5), from = -4,to= 4, col= \"blue\", add = TRUE) curve(dt(x, df=30), from = -4,to= 4, col= \"green\", add = TRUE) legend(2,0.3, legend = c(\"Std. normal \", \"t, df= 5\", \"t, df= 30\"), col= c(\"red\", \"blue\", \"green\"), lty= c(1,1,1)) done! The \\(\\chi^2\\) and \\(F\\) distribution also has probability density function adjusted for the degree of freedom. To build the intuition I highly suggested to watch this video by Justin."
+    }
+  ]
+}</script>
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="/assets/css/main.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+<link href="/assets/css/nav-media.css" rel="stylesheet">
+
+  </head>
+
+  <body >
+    <script src="/assets/js/color-scheme-attr-init.js" data-mode="false"></script>
+    <nav class="navbar navbar-default top-nav">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed pull-left top-nav-menu-toggle" data-toggle="collapse" data-target="#id_top-nav-menu-toggle" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand top-nav-brand" href="/" translate="no">Data churn by AK</a>
+    </div>
+  <div class="color_scheme_switch_top_holder" data-toggle="tooltip" data-placement="bottom" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+
+  
+</nav>
+<nav id="side-nav-container">
+  <div class="side-nav">
+    <div class="side-nav-brand">
+      <img src="/assets/img/default/profile.jpg" alt="">
+      <div class="brand-holder">
+        <a href="/" translate="no">Data churn by AK</a>
+        </div>
+      <p>&nbsp;Data blogs</p>
+      <br>
+    </div>
+    <br>
+    <a href="javascript:void(0);" class="side-nav-close">
+        <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+      </a>
+    <hr>
+    <br>
+    <div class="side-nav-buttons">
+      <ul class="nav nav-pills nav-stacked">
+        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Projects</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
+    </div>
+    <br>
+    <br><div class="contact-container">
+  <hr>
+  <h3>Contact</h3>
+  <ul><li><a href="https://www.github.com/akoirala2000" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a></li><li>
+      <a href="javascript:void(0);" class="hover-effect-big" onclick="setAddress('datachurnbyak', 'gmail.com');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li><li><a href="https://www.linkedin.com/in/amrit-koirala-41037392" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a href="https://www.twitter.com/amritkoirala1" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter" aria-hidden="true"></i></a></li></ul>
+</div>
+
+    <hr id="toc-view-top">
+    <div class="side-nav-footer" translate="no">
+        <p>&copy; 2022 Data churn by AK.</p>
+      </div>
+  </div>
+  <div class="side-nav-bottom-buttons-container">
+    <hr>
+    <ul>
+      <li><div class="color_scheme_switch_side_holder" data-toggle="tooltip" data-placement="top" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+</li><li><div class="cookie-icon hover-effect" onclick="CookieConsent.showSettings();" data-toggle="tooltip" data-placement="top" title="Cookie settings">
+  <div class="cookie-wrapper">
+    <i class="fa fa-circle bitten-cookie" aria-hidden="true"></i>
+    <i class="fa fa-circle small-ellipse-icon" aria-hidden="true"></i>
+    <i class="fa fa-spinner inner-icon" aria-hidden="true"></i>
+    <i class="fa fa-circle-thin outer-icon" aria-hidden="true"></i>
+  </div>
+</div>
+</li></ul>
+  </div></nav>
+<div id="toc-container" class="movable">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Drag to move">
+      Contents
+      <span class="pull-right">
+        <a href="javascript:void(0);" class="close-button" onclick="document.getElementById('toc-container').style.display = 'none';">
+          <i class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Close"></i>
+        </a>
+      </span>
+    </div>
+    <div class="panel-body">
+      <nav id="table-of-contents"></nav>
+    </div>
+  </div>
+</div>
+<div id="main-wrapper">
+      <div class="main-container"><div class="multipurpose-container post-container">
+  <div class="post-title">All you need to know about degree of freedom in statistics</div><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Jun 30, 2019
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;14 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2019-07-01-Degree-of-freedom#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2019-07-01-Degree-of-freedom#disqus_thread'">Comments</a>
+  </small>
+  </div>
+<hr/>
+  <div class="markdown-style">
+    <h3 id="background">Background</h3>
+<!-- outline-start -->
+<p>Degree of freedom (df) is a very important mathematical concept which is
+implemented in multiple disciplines like mechanics, physics, chemistry,
+and also in inferential statistics. In its essence, it is the number of
+independent variables or parameters of a system.
+<!-- outline-end --> Or it is the number of
+independent quantities necessary to express the values of all the
+variable properties of a system. For example a point moving in a 3D
+space has degree of freedom equal to 3 because three coordinate values
+are necessary to define the state of that point at any given time.
+However, if we put a constrain on the system and fix one of the axis at
+a constant, then the point is free to move along only two axis and has
+only 2 degree of freedom.</p>
+
+<h3 id="df-in-statistics">Df in statistics</h3>
+
+<p>Df is extensively applied in inferential statistics where we are trying
+to estimate some population parameters (mean, variance, skewness, and
+kurtosis) using the measurement made in a random sample from that
+population (sample statistics). For any estimator of population
+parameter, degree of freedom is equal to number of independent pieces of
+information that go into the estimate of that parameter or alternatively
+it is number of variables in a statistic minus the number of estimated
+parameters used while computing that statistic.</p>
+
+<p>These definitions may look vague but lets see how two most commonly used
+statistics: sample mean (\(\bar x\)) and sample variance(\(s^2\)) works
+and come back to these definitions.</p>
+
+<h3 id="goal-of-inferential-statistics">Goal of inferential statistics</h3>
+
+<p>One of the main goal of statistics is to estimate the population
+parameters like population mean (\(\mu\)) and population variance
+(\(\sigma^2\)). Theoretically, it may be possible to make measurement on population but practically, the
+population always have infinite number of items so we are always forced
+to take a sample of size (n). For many other practical reasons, this
+sample size is usually very small which makes the situation even worse
+(we will see how). So we need to be able to estimate population
+parameters by using a small sample and that estimate needs to
+<strong>unbiased</strong>.</p>
+
+<blockquote>
+  <p><strong>Bias</strong> is a very commonly used term in statistics and in addition to
+its meaning in normal English language it has some statistical value.
+<em>A random variable is considered to be an unbiased estimator of a
+population parameter only if the expected value of the random variable
+is equal to the population parameter</em>.</p>
+</blockquote>
+
+<p>(See note on expected value <a href="">here</a>).
+Similarly a random variable is an biased estimate of a population
+parameter if the expected value of the random variable is not equal to
+the population parameter. It is called overestimate if the expected
+value is greater than the population parameter and vice-versa.
+Mathematically, an estimator gives an unbiased estimate of population
+parameter if,</p>
+
+\[E[estimator] = \text {population parameter}\]
+
+<h4 id="sample-mean">Sample mean</h4>
+<p>Now lets come back to <strong>sample mean</strong>. If X represents a random variable
+that measure sampling distribution of sample means, (see note on
+<a href="">distribution of sampling means</a>) according to <strong>the Central limit
+theorem</strong> it is an unbiased estimate of population mean.ie:</p>
+
+\[E[X] = \mu\]
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-proof2">
+           proof here 
+        </button>
+    </div>
+    <div id="toggle-proof2" class="panel-collapse collapse">
+      <div class="panel-body">
+<p>We can prove this with some manipulation of \(E[]\)</p>
+
+<p>Substitute X with the formula for sample mean</p>
+
+\[E[X] = E\left[\frac{1}{n}\sum_{i=1}^nx_i\right]\]
+
+\[=\frac{1}{n}\sum_{i=1}^n E[x_i]\]
+
+<p>Expectation of a single observation is equal to population mean \(\mu\).</p>
+
+\[=\frac{1}{n}\sum_{i=1}^n \mu\]
+
+\[= \frac{1}{n}n\mu\]
+
+\[=\mu\]
+
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p>Now, lets lets figure out the degree of freedom for the sample mean.
+This is the equation for calculating a sample mean:</p>
+
+\[\bar x = \frac{1}{n}\sum_{i=1}^nx_i\]
+
+<p>For calculating the value of each sample mean, only the values coming
+from each observation are used. If \(n\) is the sample size, then all
+\(n\) values are used and <strong>no any other intermediate estimates are
+computed</strong>. Therefore, the degree of freedom by our definition above is
+\(n-0\), or in simple form \(n\). So, for the sample mean, the degree of
+freedom is same as sample size. This seems relatively straight forward,
+lets see sample variance next which will further clarify it.</p>
+
+<h4 id="sample-variance">Sample variance</h4>
+<p>The generally used formula for calculating a <a href="">sample variance</a> is
+given by or derived from this equation :</p>
+
+\[\begin{equation}
+\tag{equation 1}
+s^2=\frac {\sum (x- \bar x)^2}{n-1}
+\end{equation}\]
+
+<p>By definition, variance is mean of squared deviation, so if we don’t
+think much and just go by definition, the equation for sample variance
+should be:</p>
+
+\[\begin{equation}
+\tag{equation 2}
+s^2_{bi}=\frac {\sum (x- \bar x)^2}{n}
+\end{equation}\]
+
+<p>This seems very plausible, but unlike sample mean, in calculation of
+sample variance we need one intermediate estimate for population
+parameter (\(\mu\)) given by sample mean \(\bar x\). Although, sample
+mean is an unbiased estimate of population mean, the mean calculated
+from only one sample is subject to inherent randomness, and because of
+this randomness the sample variance calculated using sample mean
+according to equation 2 is a biased estimate of population variance. It
+will almost always underestimate the population variance (report less
+than what actually is). The amount of bias in the sample variance can be
+mathematically shown to be equal to \(\frac{n}{n-1}\) (see below for
+proof). Therefore, to get an unbiased estimate of population variance we
+need to multiply equation 2 by this factor.</p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-proof1">
+           proof here 
+        </button>
+    </div>
+    <div id="toggle-proof1" class="panel-collapse collapse">
+      <div class="panel-body">
+<p>Proof for biased sample mean</p>
+
+<p>Lets us write equation 2 into computational easy form. See my note on
+<a href="">mean and variance</a> if you are not familiar with derivation of
+computational form of variance.</p>
+
+\[s^2_{bi}=\frac {\sum x^2}{n}-\left(\frac {\sum x}{n}\right)^2\]
+
+<p>And also write the symbol of s as random variable measuring sample
+variance \(S^2_{bi}\) and calculate expected value of that random
+variable.</p>
+
+\[E[S^2_{bi}]=E\left[\frac {\sum x^2}{n}-\left(\frac {\sum x}{n}\right)^2 \right]\]
+
+\[=E\left[\frac {\sum x^2}{n}\right]-E\left[\left(\frac {\sum x}{n}\right)^2 \right]\]
+
+<p>The term \(\frac{\sum x}{n}\) is the sample mean \(\bar x\)</p>
+
+\[=E\left[\frac {\sum x^2}{n}\right]-E\left[\left(\bar x\right)^2 \right]\]
+
+<p>Lets process \(E\) further in</p>
+
+\[\begin{equation}
+\tag{equation 3}
+=\frac {\sum E[x^2]}{n}-E\left[\bar x^2\right] 
+\end{equation}\]
+
+<p>For any given random variable Y we know,</p>
+
+\[Var(y) = E[y^2]-\left(E[y]\right)^2\]
+
+\[\text{or, } E[y^2] = Var(y) + \left(E[y]\right)^2\]
+
+<p>In equation 3 there are two terms which evaluates to expectation of
+square, so expanding them equation 3 becomes</p>
+
+\[E[S^2_{bi}] = \frac{\sum Var(x)+(E[x])^2}{n}- Var(\bar x) - (E[\bar x])^2\]
+
+<p>Now, lets simplify some of these terms, expectation of a variable is its
+mean so, \(E[x] = \mu\).</p>
+
+<p>From, central limit theorem, variance of distribution of sample mean is
+\(\frac{\sigma ^2}{n}\) and sample mean being the unbiased estimate of
+population mean \(E[\bar x] = \mu\). Now, replace these values in the
+equation above,</p>
+
+\[E[S^2_{bi}] = \frac{\sum \sigma^2+(\mu)^2}{n}- \frac{\sigma ^2}{n} - (\mu)^2\]
+
+<p>Solving this:</p>
+
+\[= \frac{( \sigma^2+(\mu)^2)n}{n}- \frac{\sigma ^2}{n} - (\mu)^2\]
+
+\[= \sigma ^2 + \mu ^2- \frac{\sigma ^2}{n}- \mu ^2\]
+
+\[\begin{equation}
+\tag{equation 4}
+E[S^2_{bi}] = \sigma ^2 \left(\frac{n-1}{n}\right)
+\end{equation}\]
+
+<p>Therefore, the expected value of biased sample variance is always less
+than the population variance by a factor of (n-1)/n. For large sample
+size this factor tends to be equal to 1 but on a small sample size it is
+profound.</p>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+\[\text{Unbiased }s^2= s^2 = s^2_{bi}. \frac{n}{n-1}\]
+
+\[=\frac {\sum (x- \bar x)^2}{n}.\frac{n}{n-1}\]
+
+<p>Removing n, it gives back the equation 1.</p>
+
+\[s^2 =\frac {\sum (x- \bar x)^2}{n-1}\]
+
+<p>Therefore, the equation we have been using for sample variance is
+actually, equation 2 (given by the definition of variance) but adjusted
+for bias associated with uncertainty in estimate of one the population
+parameter during its calculation. And because we used this one
+intermediate population estimate (sample mean, \(\bar x\)), we need to
+subtract 1 from the number of values used to calculate sample variance.
+Thus, sample variance has n-1 degree of freedom. This is very important
+for a small size sample, because as n gets close to 1, subtracting 1 will
+decrease denominator by large value increasing the expected value of
+random variable measuring sample variance. This increase will balance
+the variance underestimated by biased equation (equation 2). The plot
+below show the distribution of sample variance (adjusted) with different
+sample size n= {5,15,50,100}. The mean reported is the expected value of
+each distribution. Regardless of the sample size all four plots have
+expected value almost equal to the population variance (100).</p>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-1-1.svg" data-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-1-1.svg" alt="" /></p>
+
+<p><em>Figure 1: Distribution of sample variance.</em></p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-thats">
+           code for Fig: 1 
+        </button>
+    </div>
+    <div id="toggle-thats" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="m">56</span><span class="p">)</span><span class="w">
+</span><span class="c1">#make a dummy population with N= 1000, \mu = 70 and \sigma= 10</span><span class="w">
+</span><span class="n">pop</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span><span class="n">sample_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">100</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample_variance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span><span class="w"> </span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">])</span><span class="w">
+    </span><span class="n">sample_variance</span><span class="o">&lt;-</span><span class="n">c</span><span class="w"> </span><span class="p">(</span><span class="n">sample_variance</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s1">'Dist of sample variance n = '</span><span class="p">,</span><span class="w">
+                               </span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">],</span><span class="s1">' \n mean of var = '</span><span class="w">
+                               </span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">),</span><span class="m">1</span><span class="p">),</span><span class="w"> 
+                               </span><span class="s2">" variance of var = "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">),</span><span class="m">1</span><span class="p">)),</span><span class="w">
+                                </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">400</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p>On the other hand, the plots below are reporting the biased measure of
+sample variance (given by equation 2 above) for exactly same experiment
+reported above. The expected value is seriously lower than the
+population variance and the situation is worse when sample size is
+lowest. This under estimation occurs because with small sample size,
+sample mean lies within that sample, all the deviations becomes smaller
+than they actually need to be. With small sample size there is less
+chance that true mean will be within or near that sample.</p>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-2-1.svg" data-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-2-1.svg" alt="" /><br />
+<em>Figure 2: Distribution of biased variance</em></p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#code2">
+           code for Fig:2 
+        </button>
+    </div>
+    <div id="code2" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="m">56</span><span class="p">)</span><span class="w">
+</span><span class="c1">#make a dummy population with N= 1000, \mu = 70 and \sigma= 10</span><span class="w">
+</span><span class="n">pop</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span><span class="n">sample_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">100</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample_variance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span><span class="w"> </span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">])</span><span class="w">
+    </span><span class="c1">#biased variance</span><span class="w">
+    </span><span class="n">sample_variance</span><span class="o">&lt;-</span><span class="n">c</span><span class="w"> </span><span class="p">(</span><span class="n">sample_variance</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">]</span><span class="m">-1</span><span class="p">)</span><span class="o">/</span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">])</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s1">'Biased sample variance n = '</span><span class="p">,</span><span class="w">
+                               </span><span class="n">sample_size</span><span class="p">[</span><span class="n">size</span><span class="p">],</span><span class="s1">' \n mean of var = '</span><span class="w">
+                               </span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">),</span><span class="m">1</span><span class="p">),</span><span class="w"> 
+                               </span><span class="s2">" variance of var = "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">sample_variance</span><span class="p">),</span><span class="m">1</span><span class="p">)),</span><span class="w">
+                                </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">400</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<h3 id="quick-recap">Quick recap</h3>
+
+<p>Lets summarize what we learned from sample mean and sample variance so
+far:</p>
+
+<ol>
+  <li>degree of freedom for a random variable estimating a population
+parameter is equal to number of independent information that went
+into calculation of that estimate minus the number of intermediate
+estimated population parameters used in calculation of such an
+estimate.</li>
+  <li>All the estimates of population parameters should be an unbiased
+estimate of that population parameter. However, if degree of freedom
+is less than the number variables used in calculation of that
+estimate, it is always biased. ie</li>
+</ol>
+
+<p>\(\text {df = n, --------&gt; estimate is unbiased estimate of population parameter (Eg: sample mean)}\)
+\(\text {df &lt; n, --------&gt; estimate is biased estimate of population parameter (Eg: sample variance)}\)</p>
+
+<ol>
+  <li>This bias in the estimate of a population variance \(\sigma ^2\)
+using a sample variance can be adjusted by dividing the sum of
+squares (SS) by degree of freedom rather than taking the literal
+mean of squared deviations.</li>
+</ol>
+
+<p>All these three statements above are universally applicable to any
+situation where we need to estimate mean of squared deviations.
+Therefore it is applicable to all the mean SS (MSB, MSW, Mean TSS, MSR,
+MSE) calculated during ANOVA and linear regression.</p>
+
+<h3 id="one-way-anova">One way ANOVA</h3>
+
+<p>The source of variations in one way ANOVA are between levels of factors,
+within each level and total variation. The table below shows how df is
+calculated for each of the sources:</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>variables</th>
+      <th>intermediate pop estimates</th>
+      <th>df</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total</td>
+      <td>all observations(n)</td>
+      <td>mean of y (1)</td>
+      <td>n-1</td>
+    </tr>
+    <tr>
+      <td>Between</td>
+      <td>number of levels (t)</td>
+      <td>mean of y (1)</td>
+      <td>t-1</td>
+    </tr>
+    <tr>
+      <td>Within</td>
+      <td>all observations (n)</td>
+      <td>mean of each levels(t)</td>
+      <td>n-t</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Total variance calculation is same as the variance estimate we saw
+above. But when it comes to the SSB, deviation used is the one between
+mean of corresponding level to the estimate of population mean of y. So,
+we have used one intermediate estimate. And within each level for a
+balanced experiment, there are n/t number of observations, and n/t
+number of deviations corresponding to each observation, but all the
+deviations within a level is essentially using only one independent
+piece of information (mean of that level). So, total number of
+independent pieces of information is equal to the number of levels. And
+therefore, df is t-1. For within variation, all observations contribute
+their share of information but since deviation is taken from the mean of
+the corresponding level that observation belonged to. Here level of each
+mean is used as the estimate of true mean of that level not as a
+variable, as in SSB. Therefore, df for within variance is n-t.</p>
+
+<h3 id="two-way-anova">Two way ANOVA</h3>
+
+<p>For a two way ANOVA with two factors A and C each with a and c number of
+levels and n observation in each cell.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>variables</th>
+      <th>intermediate pop estimates</th>
+      <th>df</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total</td>
+      <td>all observations(acn-1)</td>
+      <td>mean of y (1)</td>
+      <td>acn-1</td>
+    </tr>
+    <tr>
+      <td>Between cells</td>
+      <td>no. of cells (ac)</td>
+      <td>mean of y (1)</td>
+      <td>ac-1</td>
+    </tr>
+    <tr>
+      <td>Factor A</td>
+      <td>no. of levels in A (a)</td>
+      <td>mean of y (1)</td>
+      <td>a-1</td>
+    </tr>
+    <tr>
+      <td>Factor C</td>
+      <td>no. of levels in C (c)</td>
+      <td>mean of y (1)</td>
+      <td>c-1</td>
+    </tr>
+    <tr>
+      <td>A*C</td>
+      <td>ac, a, c</td>
+      <td>mean of y (3 times)</td>
+      <td>(a-1)(c-1)</td>
+    </tr>
+    <tr>
+      <td>Within cells</td>
+      <td>all observations (acn)</td>
+      <td>mean of each cell(ac)</td>
+      <td>ac(n-1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All the other SS has similar idea as one way ANOVA except interaction
+term. Sum of square for AC is defined as:</p>
+
+<p>\(SS_{AC} = SS_{Cells}-SS_A-SS_C\) It is the variance explained only by
+cells. It is calculated as</p>
+
+\[SS_{AC} = n\sum_1^{ac}[(mean_{cell} - \bar y_{total}) - (mean_{A} - \bar y_{total}) - (mean_{C} - \bar y_{total})]^2\]
+
+<p>The first deviation is from mean of a particular cell to estimate of
+mean of y. The second deviation is from mean of particular level of A to
+the estimate of mean of y. Since there are only a number of levels in A,
+those each \(mean_A\) will be reused c times. The third deviation is
+from mean of a particular level of C to the estimate of mean of y. It is
+clear that there is only one intermediate estimate of population
+parameter \(\bar y\). But this it is used three times for calculating
+three different types of deviations. Each type of deviation has its own
+df and total df is calculated by as df for cell minus df for A minus df
+for C.</p>
+
+\[df(AC) = df(cell)- df(A) - df(C)\]
+
+\[= ac -1 - a + 1 - c +1\]
+
+\[(a-1)(c-1)\]
+
+<h3 id="simple-linear-regression">Simple linear regression</h3>
+
+\[y = \beta_0 + \beta_1x + \epsilon\]
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>variables</th>
+      <th>intermediate pop estimates</th>
+      <th>df</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total</td>
+      <td>all observations(n)</td>
+      <td>mean of y (1)</td>
+      <td>n-1</td>
+    </tr>
+    <tr>
+      <td>Regression</td>
+      <td>number of reggressor +1</td>
+      <td>mean of y (1)</td>
+      <td>1+1-1=1</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td>all observations (n)</td>
+      <td>number of regressor +1</td>
+      <td>n-2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This can be interpreted in very similar way to one way anova.</p>
+
+<h3 id="other-application">Other application</h3>
+
+<p>So far we saw profound use of df to get unbiased estimate of any
+type/partition of variance. In addition to this df is used to adjust the
+standard normal distribution when the population parameters are unknown
+and only sample statistics are used to calculate the test statistics.
+The test statistics \(z=\frac{\bar x - \mu}{\frac{\sigma}{\sqrt n}}\)
+follows standard normal distribution with mean 0 and variance 1. But in
+may real case situation both \(\mu\) and \(\sigma\) are unknown. So,
+standard normal distribution is not appropriate to calculate p-value.
+The distribution needs to be adjusted for the added uncertanity because
+of using sample variance. Therefore a new test statistics has been
+deviced called t-statistic.</p>
+
+\[t=\frac{\bar x - \mu}{\frac{s}{\sqrt n}}\]
+
+<p>and the only parameter defining this distribution is degree of freedom
+\(v\)associated with sample variance. This distribution has mean of 0
+for \(v\) &gt;1, otherwise undefined. and variance = \(\frac{v}{v-2}\) for
+\(v\) &gt; 2. Unlike standard normal distribution, there is new curve for
+each value of \(v\). T-distribution always has fatter tails because of
+the uncertainty associated with sample variance used in calculation of
+the t-statistics.</p>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-3-1.svg" data-src="/assets/img/posts/degree-of-freedom_files/figure-markdown/unnamed-chunk-3-1.svg" alt="" /><br />
+<em>Figure 3: PDF curve for Normal and t-distribution.</em></p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#code3">
+           code for fig: 3 
+        </button>
+    </div>
+    <div id="code3" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">curve</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-4</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="w"> </span><span class="s2">"density"</span><span class="p">)</span><span class="w">
+</span><span class="n">curve</span><span class="p">(</span><span class="n">dt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="o">=</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-4</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">curve</span><span class="p">(</span><span class="n">dt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="o">=</span><span class="m">30</span><span class="p">),</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-4</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Std. normal "</span><span class="p">,</span><span class="w"> </span><span class="s2">"t, df= 5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"t, df= 30"</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"green"</span><span class="p">),</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p>The \(\chi^2\) and \(F\) distribution also has probability density
+function adjusted for the degree of freedom.</p>
+
+<p>To build the intuition I highly suggested to watch this video by
+<a href="https://www.youtube.com/watch?v=N20rl2llHno&amp;t=1s">Justin</a>.</p>
+
+<hr>
+<div class="share-holder">
+  <span class="share-label">Share on: </span>
+  <ul class="share-buttons">
+    
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2019-07-01-Degree-of-freedom&amp;text=All%20you%20need%20to%20know%20about%20degree%20of%20freedom%20in%20statistics%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
+          <i class="fa fa-twitter-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2019-07-01-Degree-of-freedom" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
+          <i class="fa fa-facebook-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2019-07-01-Degree-of-freedom&amp;text=All%20you%20need%20to%20know%20about%20degree%20of%20freedom%20in%20statistics%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
+          <i class="fa fa-telegram fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2019-07-01-Degree-of-freedom" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
+          <i class="fa fa-linkedin-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="mailto:?subject=All%20you%20need%20to%20know%20about%20degree%20of%20freedom%20in%20statistics%20-%20Data%20churn%20by%20AK&amp;body=All%20you%20need%20to%20know%20about%20degree%20of%20freedom%20in%20statistics%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2019-07-01-Degree-of-freedom" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
+          <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2019-07-01-Degree-of-freedom', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
+          <i class="fa fa-link fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+</div>
+</div>
+
+  <div id="disqus_thread"><script>alert("disqus disqus_shortname is not defined. You can disable Disqus from _data/conf/posts.yml [comments.disqus.enable]");</script></div>
+
+<noscript>
+  Please enable JavaScript to view the Comments.
+</noscript>
+
+
+</div><div class="footer-wrapper">
+  <div class="footer-container">
+    <footer translate="no">
+      <div class="footer-text footer-text-centered long-copyright">
+          <p>&copy; 2022 Data churn by AK. </p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" data-tooltip-no-hide title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
+              <img src="/assets/img/default/cc/cc.svg" alt="cc" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/by.svg" alt="by" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/sa.svg" alt="sa" width="12" height="12">&nbsp;<p>Some rights reserved.</p>
+            </a></div>
+      <p class="footer-powered"><span>Pwrd by </span><a href="https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme" target="_blank" rel="noopener noreferrer">Mr. Green</a></p>
+    </footer>
+  </div>
+</div>
+<div class="scroll-to-top-container">
+        <a id="scroll-to-top" href="#main-wrapper" class="hover-effect"><i class="fa fa-angle-up"></i></a>
+      </div></div>
+
+    <div class="searchbox-container">
+  <form id="searchbox-form" >
+    <input type="search" id="search-box" placeholder="Search"
+    onkeyup="if(this.value!==''){document.getElementById('search-results').style.display = 'block';}"
+    onfocusout="this.value='';"
+    onblur="setTimeout(function(){ document.getElementById('search-results').style.display = 'none'; }, 100);">
+    <ul id="search-results" ></ul>
+  </form>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<script src="/assets/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+      $('.imgViewer[data-no-image-viewer]').css("cursor", "unset");
+      $(function () {
+        $('.imgViewer:not([data-no-image-viewer])').magnificPopup({
+          type: 'image'
+          ,image: {
+            titleSrc: 'alt'
+            /* Error message */
+            ,tError: 'The image could not be loaded.<br><br>%url%'
+            /* Set to null to disable zoom out cursor. */
+            /*,cursor: null */
+          }
+          ,closeOnContentClick: true
+          ,showCloseBtn: false
+          ,zoom: {
+            /* By default it's false, so don't forget to enable it */
+            enabled: true
+            /* duration of the effect, in milliseconds */
+            ,duration: 300
+            /* CSS transition easing function */
+            ,easing: 'ease-in-out'
+          }
+        });
+      });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js"></script>
+    <script>
+      /* lazy loads elements with default selector as '.lozad' */
+      const observer = lozad();
+      observer.observe();
+    </script>
+
+
+
+
+
+<script src="/assets/js/simple-jekyll-search-1.9.2.min.js"></script><script>
+  function loadSearch(jsonData, searchParam) {
+    if (!jsonData) jsonData = '/query/search.json';
+    var searchInput = document.getElementById('search-box');
+
+    const simpleJekyllSearch = SimpleJekyllSearch({
+      searchInput: searchInput
+      ,resultsContainer: document.getElementById('search-results')
+      ,json: jsonData
+      ,searchResultTemplate: '<li><a href="{url}">{title}<span>{date}</span></a></li>'
+      ,noResultsText: '<li>No results found.</li>'
+      ,limit: 10
+      ,fuzzy: false
+    });
+
+    if (searchParam) {
+      searchInput.value = searchParam;
+      searchInput.focus();
+      searchInput.disabled=false;
+      setTimeout(function(){
+        simpleJekyllSearch.search(searchParam);
+      }, 400);
+    }
+  }
+
+  </script>
+
+<script>
+    function isEmpty(value) {
+      if (value === "" || value === null || typeof value === "undefined") return true;
+      return false;
+    }
+
+    function getQueryParam (param, mach = true) {
+      var queryString = window.location.search.substring(1);
+      if (isEmpty(queryString)) return null;
+      var queries = queryString.split("&");
+      for (var i in queries) {
+        var pair = decodeURIComponent(queries[i]).split("=");
+        if (mach == true){
+          if (pair[0] == param) {
+            if (isEmpty(pair[1]) === false) return pair[1];
+          }
+        }else{
+          return pair;
+        }
+        break;
+      }
+      return null;
+    }
+
+    const searchParam = getQueryParam('search');
+
+    (async () => {
+      let resp = await fetch('/query/search.json');
+      if (!resp.ok) return;
+      let jsonData = await resp.json();
+      loadSearch(jsonData, searchParam);
+    })();
+  </script>
+
+
+
+<script>
+  CookieConsent.consentSettingHtml = "<h5>Cookie settings</h5> <br> <p class=\"info-text\">This website uses cookies to optimize site functionality. It will be activated with your approval. Please click each item below for cookie policy. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <table> <tr> <td onclick=\"$('.info[data-consent-info=necessary]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Strictly necessary cookies</p> </td> <td> <span class=\"active_text\">Always active</span></td> </tr> </table> <div class=\"info\" data-consent-info=\"necessary\"> <p>These cookies are essential for the website function and cannot be disable. They are usually set when site function like color scheme etc. is changed. These cookies do not store any personally identifiable information. Enables storage related to security such as authentication functionality, fraud prevention, and other user protection. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=analytics]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Performance cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" checked=\"checked\" data-consent=\"analytics\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"analytics\"> <p>Enables storage (such as cookies) related to analytics e.g. visit duration. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=preferences]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Functionality cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"preferences\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"preferences\"> <p>Enables storage that supports the functionality of the website or app e.g. language settings. Enables storage related to personalization e.g. video recommendations. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=advertising]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Targeting and advertising cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"advertising\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"advertising\"> <p>Enables storage (such as cookies) related to advertising. </p> </div> <br> <div class=\"button-holder\"> <a href=\"javascript:void(0);\" class=\"btn-base btn-left\" onclick=\"CookieConsent.consentSettingDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentSettingDone('accept');\" role=\"button\">Allow all</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentSettingDone('save');\" role=\"button\">Allow selection</a> </div>";
+  CookieConsent.consentBarHtml = "<div class=\"consent-bar\"> <a class=\"close-button\" href=\"javascript:void(0);\" onclick=\"CookieConsent.hideConsentBar();\"><i class=\"fa-fw fa fa-times\"></i></a> <p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('settings');\" role=\"button\">Customize</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentBarDone('accept');\" role=\"button\">Allow all</a> </div>";
+  CookieConsent.consent_items = JSON.parse('{"necessary":{"group":["security_storage"],"value":"granted","wait_for_update":500,"cookie_domain":"","no_check_box":true},"analytics":{"group":["analytics_storage"],"value":"denied"},"preferences":{"group":["functionality_storage","personalization_storage"],"value":"denied"},"advertising":{"group":["ad_storage"],"value":"denied"}}');
+  CookieConsent.hideConsentBarWithSaveButton = true;
+
+  const consent_settings = CookieConsent.getConsentSettings();
+  const default_configs = JSON.parse('{"anonymize_ip":true,"ads_data_redaction":true,"cookie_flags":"SameSite=None;Secure"}');
+</script>
+</body>
+</html>
+
