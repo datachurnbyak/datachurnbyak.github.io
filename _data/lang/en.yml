@@ -156,8 +156,8 @@ links:
 
 # for projects layout
 projects:
-  title: Projects
-  button_name: Projects
+  title: Notebook
+  button_name: Notebooks
   read_more_text: Read more
   read_less_text: Read less
 

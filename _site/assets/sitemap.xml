@@ -6,11 +6,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 xmlns:xhtml="http://www.w3.org/1999/xhtml"
 xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>http://localhost:4000/posts/2022-01-13-Principle-of-inference</loc>
+    <lastmod>2022-01-12T17:11:06-06:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/Principle-of-Infernce_files/figure-markdown/Alldistributions.png</image:loc>
+      <image:title>Principle of inference</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:4000/posts/2020-02-07-ChiSquare-Distribution</loc>
+    <lastmod>2020-02-06T17:11:06-06:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/chisquared-distribution_files/figure-markdown/unnamed-chunk-3-1.svg</image:loc>
+      <image:title>Chi squared distribution</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:4000/posts/2019-11-01-Expected-value</loc>
+    <lastmod>2019-10-31T18:11:06-05:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/Expected-value_files/figure-markdown/unnamed-chunk-1-1.png</image:loc>
+      <image:title>Expected value</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>http://localhost:4000/posts/2019-07-01-Degree-of-freedom</loc>
     <lastmod>2019-06-30T18:11:06-05:00</lastmod>
     <image:image>
       <image:loc>http://localhost:4000/assets/img/posts/degree-of-freedom_files/figure-markdown/postImage.svg</image:loc>
       <image:title>All you need to know about degree of freedom in statistics</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:4000/posts/2018-06-22-Permutation-n-Combination</loc>
+    <lastmod>2018-06-21T18:11:06-05:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/pairwise.png</image:loc>
+      <image:title>Brief note on Permutation and Combination</image:title>
     </image:image>
   </url>
   <url>

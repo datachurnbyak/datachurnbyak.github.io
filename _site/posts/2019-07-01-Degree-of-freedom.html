@@ -186,7 +186,7 @@
     <br>
     <div class="side-nav-buttons">
       <ul class="nav nav-pills nav-stacked">
-        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Projects</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
+        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Notebooks</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
     </div>
     <br>
     <br><div class="contact-container">
@@ -870,7 +870,14 @@ function adjusted for the degree of freedom.</p>
 </div>
 </div>
 
-  <div id="disqus_thread"><script>alert("disqus disqus_shortname is not defined. You can disable Disqus from _data/conf/posts.yml [comments.disqus.enable]");</script></div>
+    <div class="pagination_wrapper">
+  <nav aria-label="Page navigation">
+    <ul class="pagination" style="opacity:0">
+    <li><a href="javascript:void(0);">1</a></li></ul>
+  </nav>
+</div>
+
+  <div id="disqus_thread"></div>
 
 <noscript>
   Please enable JavaScript to view the Comments.
@@ -938,7 +945,16 @@ function adjusted for the degree of freedom.</p>
       observer.observe();
     </script>
 
-
+<script>
+      PagerPageNumbers.setProperties({
+        paginatorListContainerName: ".pagination_wrapper .pagination"
+        ,pageList: ["/posts/2022-01-13-Principle-of-inference", "/posts/2020-02-07-ChiSquare-Distribution", "/posts/2019-11-01-Expected-value", "/posts/2019-07-01-Degree-of-freedom", "/posts/2018-06-22-Permutation-n-Combination"]
+        ,firstButtonName: 'First'
+        ,lastButtonName: 'Last'
+        ,prevButtonName: "«"
+        ,nextButtonName: "»"
+      });
+    </script>
 
 
 
@@ -1002,7 +1018,82 @@ function adjusted for the degree of freedom.</p>
       loadSearch(jsonData, searchParam);
     })();
   </script>
+<script>
+  const disqus_consent_msg = true;
+  var disqus_config = function () {
+    this.language = "en";
+    this.page.url = 'http://localhost:4000/posts/2019-07-01-Degree-of-freedom';
+    this.page.identifier = '/posts/2019-07-01-Degree-of-freedom';
+  };
 
+  function disqusLoader() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-datachurnbyak-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+
+  /* reload when data-color-scheme changes. (dark, light) */
+  function disqusReloader() {
+    if (typeof DISQUS === "undefined") return;
+    DISQUS.reset({
+      reload: true
+      ,config: disqus_config
+    });
+  }
+  const color_scheme_observer = new MutationObserver(disqusReloader);
+  color_scheme_observer.observe(document.body, {attributeFilter: ["data-color-scheme"]});
+  /* comments load mode */
+  let discusLoadDoNotAskStorageKey = "disqusLoadDoNotAskAgain";
+
+  function add_click_to_load_button() {
+    if (localStorage.getItem(discusLoadDoNotAskStorageKey)) disqusLoader();
+
+    /* create element */
+    let newElement = document.createElement("div");
+
+    if (disqus_consent_msg == true) {
+      newElement.innerHTML = "<div class=\"multipurpose-container\" style=\"margin:20px\"> <h4 style=\"margin-top: 0;\">Comments (Disqus.com)</h4> <p> Comment feature is hosted by a third party. By showing the external content you accept the <a href=\"https://help.disqus.com/en/articles/1717102-terms-of-service\" target=\"_blank\" rel=\"noopener noreferrer\">Terms of Service</a> and <a href=\"https://help.disqus.com/en/articles/1717103-disqus-privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a> of disqus.com. <br>If you prefer to opt out of targeted advertising, open <a href=\"https://disqus.com/data-sharing-settings\" target=\"_blank\" rel=\"noopener noreferrer\">this link</a> and click \"opt-out\" button and close. Return here and load comments. </p> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority load_comments\" data-comment-always-load role=\"button\">Always show</a> &nbsp;<a href=\"javascript:void(0);\" class=\"btn-base load_comments\" role=\"button\">Show only this time</a> </div>";
+    } else {
+      newElement.innerHTML = '<a href="javascript:void(0);" class="btn-base load_comments" role="button">Load Comments</a>';
+      newElement.style.textAlign = 'center';
+      newElement.style.minHeight = '20px';
+    }
+
+    /* add button */
+    let holder = document.querySelector('#disqus_thread');
+    if (!holder) return;
+    holder.appendChild(newElement);
+    /* add button click event */
+    let buttons = document.querySelectorAll('#disqus_thread .load_comments');
+    if (!buttons) return;
+    buttons.forEach(function (button) {
+      button.addEventListener('click', buttonCallback);
+    });
+
+    function buttonCallback(e) {
+      disqusLoader();
+      /* scroll to page bottom to see comments. */
+      document.getElementById('disqus_thread').style.height = '394px';
+      window.scrollTo(0, document.body.scrollHeight);
+      if (e.target.hasAttribute('data-comment-always-load')) {
+        localStorage.setItem(discusLoadDoNotAskStorageKey, true);
+      }
+    };
+  }
+  /* load when slide to the end of page */
+  window.addEventListener("load", add_click_to_load_button);
+  </script>
+
+
+    <script id="dsq-count-scr" src="https://https-datachurnbyak-github-io.disqus.com/count.js" async></script>
+    <script>
+        if (window.location.hash == "#disqus_thread") {
+          let element = document.getElementById('disqus_thread');
+          $("html, body").animate({ scrollTop: $(element).offset().top }, 600);
+        }
+      </script>
+     
 
 
 <script>
