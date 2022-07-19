@@ -70,7 +70,7 @@ approach is a hypothetical situation where we will not use any inference
 and study the whole population while in the second approach we will do
 orthodox sampling and hypothesis testing.
 
-#### Without using inference
+### Without using inference
 
 > *Population is a data set representing all the entity of interest.*
 > For example: If we are interested in study of distribution of facebook
@@ -286,7 +286,7 @@ inference works in general.
 > used to infer the population parameter. Any measurements made on a
 > sample is called statistic (note statistics is branch of mathematics
 > which study these statistic). For example sample mean ($$\bar x$$) and
-> sample variance ($$s^2$$)
+> sample variance ($$s^2$$) are two most important sample statistic. 
 
 Sample is the main workhorse of statistics. This is all we have to make
 inference about population parameters. Usually a sample used to make
@@ -403,14 +403,14 @@ legend(2,1, legend = c( paste0("df1 = ", size1-1, ", df2 = ", size2-1  )), col= 
 
 {% include widgets/toggle-field-code.html toggle-name="toggle-code3" button-text="code here" toggle-text=text-capture  footer="done!" %}  
 
+![Relationship between distributions used in inference](:Principle-of-Infernce_files/figure-markdown/Alldistributions.png)
 
 
 We need to acknowledge that population parameters ($$\mu$$) and
 ($$\sigma^2$$) are fixed and universal quantity and we will never know
-its true value (We will use the true population parameters calculated in
-first step to compare results from the inference only). The ultimate
+its true value (We will use the population parameters from our simulated data to illustrate the concepts only). The ultimate
 goal of inference is to get best estimate of these two parameters using
-only statistic calculated from a sample of size n. The major components
+only statistic calculated from a sample of size = n. The major components
 of the statistical framework are shown in figure 3. The population with
 mean ($$\mu$$) and variance ($$\sigma^2$$) is on the top of this
 framework and it is represented by distribution of random variable we
@@ -431,14 +431,16 @@ associated with this distribution we can do a z-scale transformation for
 which we need population mean $$\mu$$ and population variance
 $$\sigma^2$$.
 
-$$ z= \frac{\bar Y- \mu}{\frac{\sigma}{\sqrt n}}$$ Hypothesis testing is
-designed in such a way that we will our question will have the
-population mean but we should be able to estimate the population
+$$ z= \frac{\bar Y- \mu}{\frac{\sigma}{\sqrt n}}$$ 
+
+Hypothesis testing is
+designed in such a way that our question will have the
+population mean (some number we are comparing sample mean to, or 0 when we are comparing two populations) but we should be able to estimate the population
 variance using the sample variance. The top left plot in figure 3 show
 the distribution of sample variance. It is found that sample variance
-follows [Chi-squared $$\chi ^2 $$ distribution](). Which shows, mean of
-the distribution of sample variance is population variance but unlike
-when the sample size is small it is heavily skewed on the left. Which
+follows [Chi-squared $$\chi ^2 $$ distribution](2020-02-07-ChiSquare-Distribution). Which shows, mean of
+the distribution of sample variance is population variance but unlike sample mean,
+when the sample size is small it is heavily skewed on the left and the shape of distribution depends on the [degree of freedom](2019-07-01-Degree-of-freedom.md). Which
 means sample variance calculated from a random sample of small size most
 probably gives the underestimate of the population variance.
 $$\chi ^2 $$ distribution accounts for this discrepancy by providing
@@ -446,8 +448,8 @@ separate distribution for samples of different size. To include this
 information in our z-score calculation a new statistic is calculated
 called t-statistic which follows [t-distribution]() and similar to
 $$\chi^2$$ distribution it has different distribution for different
-sample size. Both $$\chi^2$$ and t-distribution is same as normal
-distribution when that sample size is greater than 30. Once we have this
+sample size. Both $$\chi^2$$ and t-distribution have same shape as normal
+distribution when the sample size is greater than 30. Once we have this
 t-statistic we can use the probability given by t-distribution to find
 any probability associated with sampling distribution of sample means.
 
@@ -455,7 +457,7 @@ $$t-statistic = \frac{\bar Y- \mu}{\frac{s}{\sqrt n}}$$
 
 As you can see the all the variables in the equation can be calculated
 using a sample which enables us to compare the sample mean with the mean
-given in the question.
+given in the question, when we consider a hypothetical population with $$\mu$$ = mean given by question and the sample we are working with is a sample from that population.
 
 The above method works best only when we need to compare two means. When
 we need to compare means from more than one population ANOVA is used for
@@ -463,13 +465,11 @@ which inference framework has F-distribution which is basically ratio of
 two variance. If the variance is equal it has a value of 1 other wise it
 will be greater than 1. Details in [ANOVA]().
 
-![Relationship between distributions used in inference](:Principle-of-Infernce_files/figure-markdown/Alldistributions.png)
 
 #### Application
 
-Now that we have seen the basic components of inference (please see
-notes focused on each distribution to learn more about them) we can
-again revisit our questions.
+Now that we have seen the basic components of inference, we can revisit our questions we are working on. ( NB: Please see
+notes focused on each distribution to learn more about them)
 
 > 1.  Is the height of male (Age group 20-39 years old) in North America
 >     greater than 5.5 ?
@@ -477,17 +477,17 @@ again revisit our questions.
 We could answer this question in much detail when we had the
 distribution of heights (defined by population mean and variance) in
 hand. But now we do not know population parameters hence inference is
-not able to provide answer to this question but we can still answer
+not able to provide answer to this question. This is one of the limitations of inferential statistics, rather than each observation we will be only focusing on the mean of populations, so we can still answer
 other questions below.
 
 > 2.  Is the average height of male (Age group 20-39 years old) in North
 >     America greater than 5.5 ?
 
 Lets recall what we learned about hypothesis testing in the beginning.
-If we know the underlying distribution of a random variable we can
+*If we know the underlying distribution of a random variable we can
 check, how unusual a given value is to that distribution and if it is
 indeed very rare to observe that value in given distribution we can
-conclude, that value does not belong to the given distribution. In
+conclude, that value does not belong to the given distribution*. In
 hypothesis testing we do exactly same but in little twisted way to be
 able to use the inference framework discussed above. In this setup we
 make a null hypothesis and it is exactly opposite to what we want in our
@@ -496,14 +496,14 @@ this, lets see what is our question and what information we have about
 our population. Since we are not measuring every man living in N
 America, all we can do is measure heights in a randomly selected sample
 of size(n). Then, the mean we calculate from this sample($$\bar x$$) is
-just one value in the sampling distribution of the sample mean for this
+just one value in the sampling distribution of the sample means for this
 population. We cannot calculate t-statistic with just sample mean and
 sample variance. We need the population mean. The question is giving us
-some clue. We need to first see that there are two populations in this
-question. The height of male (Age group 20-39 years old) in N America is
-first and obvious population we have been seeing from the beginning but
+some clue. What you should visualize in your mind is that there are two populations in this
+question. The height of male (Age group 20-39 years old) in N America is the
+first and obvious population we have been seeing from the beginning, but
 the number we are tying to compare (5.5) is actually mean of a
-hypothetical population. Therefore, if we cannot find population mean
+hypothetical population. Therefore, if we cannot calculate the population mean
 for our population, we can assume that our sample is taken from that
 hypothetical population (for which mean is given by the question) and
 check how unusual is this sample mean in that hypothetical population?
@@ -524,35 +524,38 @@ $$H_o: \mu = 5.5$$
 $$H_1: \mu >5.5$$
 
 Then calculate the t-statistic
+
 $$t =\frac{\bar x - 5.5}{\frac{s}{\sqrt n}} $$
 
+
+
+{% capture text-capture %}
 ``` r
 ##Lets first make a sample of 100 from the population of NoA
 set.seed(45)
 set1 <- sample(NorA, 100)
 cat("The t-statistic for this test is = ",(mean(set1)-5.5)/sqrt(var(set1)/100), "\n")
 ```
-
-    ## The t-statistic for this test is =  18.31421
-
 ``` r
 cat( "The p-value for this test is = ",pt((mean(set1)-5.5)/sqrt(var(set1)/100), 99, lower.tail = FALSE), "\n \n")
 ```
-
-    ## The p-value for this test is =  7.324508e-34 
-    ## 
-
 ``` r
 cat("##########--USING R t.test FUNCTION --########\n")
 ```
-
-    ## ##########--USING R t.test FUNCTION --########
-
 ``` r
 t.test(set1, mu= 5.5, alternative = "greater")
 ```
 
+  {% endcapture %}
+
+{% include widgets/toggle-field-code.html toggle-name="toggle-code4" button-text="code for t-test" toggle-text=text-capture  footer="done!" %}  
+
+
+    ## The t-statistic for this test is =  18.31421
+    ## The p-value for this test is =  7.324508e-34 
     ## 
+    ## 
+    ## ##########--USING R t.test FUNCTION --########
     ##  One Sample t-test
     ## 
     ## data:  set1
@@ -563,6 +566,8 @@ t.test(set1, mu= 5.5, alternative = "greater")
     ## sample estimates:
     ## mean of x 
     ##  6.212581
+
+{% capture text-capture %}
 
 ``` r
 ##visualize 
@@ -578,12 +583,15 @@ abline(v=5.5, col="#d2d1f9" )
 abline(v=6.2, col="#f4c2c2", lwd=2 )
 abline(v= mean(set1))
 ```
+  {% endcapture %}
+
+{% include widgets/toggle-field-code.html toggle-name="toggle-code5" button-text="code for fig below" toggle-text=text-capture  footer="done!" %}  
 
 ![](:Principle-of-Infernce_files/figure-markdown/ttestQ1.svg)
 
 In the figure 4 we can clearly see, why p-value is so small. The
 distribution with green shade and the green dot at 6.21 are the only one
-distribution and data that given to us by the question. The alternative
+distribution and data that is given to us by the question. The alternative
 hypothesis and other populations are shown using the data we collected
 from first section just to show big picture.
 
@@ -603,31 +611,33 @@ mean in this sample and based off the distribution centered around this
 sample mean we will calculate the range of sample means which is
 encompass 95% of the sample means(exclude only 2.5% means on both
 extremes of distribution). Narrower this interval is better is the
-quality. The interpretation for CI at 95% significane is 95% of the
+quality. The interpretation for CI at 95% significance, is 95% of the
 times we construct such intervals, true means will be within that
 interval.
 
+{% capture text-capture %}
 ``` r
 set.seed(100)
 set2 <- sample(NorA, 50)
 mean_set2 <- mean(set2)
 mean_set2 - (qt(0.025, 49, lower.tail = FALSE)*sqrt(var(set2)/50))
 ```
-
-    ## [1] 6.169956
-
 ``` r
 mean_set2 + (qt(0.025, 49, lower.tail = FALSE)*sqrt(var(set2)/50))
 ```
-
-    ## [1] 6.405479
 
 ``` r
 #Results can be confirmed by doing a test test for this mean
 t.test(set2, mu= mean_set2, alternative = "two.sided")
 ```
 
-    ## 
+  {% endcapture %}
+
+{% include widgets/toggle-field-code.html toggle-name="toggle-code6" button-text="code for CI" toggle-text=text-capture  footer="done!" %}  
+
+    ## Lower limit is  6.169956
+    ## Higher limit is  6.405479
+    ## ####---Using the function available in R ------#####
     ##  One Sample t-test
     ## 
     ## data:  set2
@@ -638,6 +648,9 @@ t.test(set2, mu= mean_set2, alternative = "two.sided")
     ## sample estimates:
     ## mean of x 
     ##  6.287718
+
+
+{% capture text-capture %}
 
 ``` r
 ##visualize 
@@ -655,6 +668,9 @@ abline(v=mean_set2, col="#d2d1f9" )
 abline(v=6.2, col="#f4c2c2", lwd=2 )
 lines(c(6.1699, 6.4054), c(5,5))
 ```
+  {% endcapture %}
+
+{% include widgets/toggle-field-code.html toggle-name="toggle-code7" button-text="code for plot" toggle-text=text-capture  footer="done!" %}  
 
 ![](:Principle-of-Infernce_files/figure-markdown/unnamed-chunk-7-1.svg)
 The figure above show the hypothetical population around the sample mean
@@ -682,20 +698,32 @@ t-statistic for large sample size is calculated by this formula:
 
 $$t = \frac{\bar y1- \bar y_2}{\sqrt{\frac {s_1^2}{n1}+\frac{s_2^2}{n_2}}}$$
 
+{% capture text-capture %}
+
 ``` r
 set.seed(500)
 ## is there difference between N. America and Asia 
 cat("####----T-test between N America and Asia---------######\n")
 ```
-
-    ## ####----T-test between N America and Asia---------######
-
 ``` r
 Sample_NAmerica <- sample(NorA, 50)
 Sample_Asia <- sample(Asia, 50)
 t.test(Sample_Asia, Sample_NAmerica, )
 ```
+``` r
+## see for N. America and Europe
+cat("####----T-test between N America and Europe---------######\n")
+```
+``` r
+Sample_Euro <- sample(Euro, 50)
+t.test(Sample_Euro, Sample_NAmerica)
+```
+  {% endcapture %}
 
+{% include widgets/toggle-field-code.html toggle-name="toggle-code9" button-text="code for comparing means of two populations" toggle-text=text-capture  footer="done!" %}  
+
+
+    ## ####----T-test between N America and Asia---------######
     ## 
     ##  Welch Two Sample t-test
     ## 
@@ -708,18 +736,7 @@ t.test(Sample_Asia, Sample_NAmerica, )
     ## mean of x mean of y 
     ##  5.006745  6.182742
 
-``` r
-## see for N. America and Europe
-cat("####----T-test between N America and Europe---------######\n")
-```
-
     ## ####----T-test between N America and Europe---------######
-
-``` r
-Sample_Euro <- sample(Euro, 50)
-t.test(Sample_Euro, Sample_NAmerica)
-```
-
     ## 
     ##  Welch Two Sample t-test
     ## 
@@ -731,6 +748,8 @@ t.test(Sample_Euro, Sample_NAmerica)
     ## sample estimates:
     ## mean of x mean of y 
     ##  5.726203  6.182742
+
+
 
 ### Conclusions:
 

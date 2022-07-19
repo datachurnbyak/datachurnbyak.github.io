@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Data churn by AK - Brief note on Permutation and Combination</title>
+<title>Data churn by AK - Mean and Variance; covering the base</title>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
@@ -30,27 +30,27 @@
   <meta name="application-name" content="Data churn by AK's App">
   <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
 
-    <meta name="keywords" content="Statistics, Permutation, combination">
+    <meta name="keywords" content="Statistics, Mean, Variance">
 
-  <meta name="description" content="Permutation and combination for biologist ">
+  <meta name="description" content=" Starting statistics with mean and variance  ">
   <meta name="robots" content="index, follow">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Brief note on Permutation and Combination">
+<meta name="twitter:title" content="Mean and Variance; covering the base">
 <meta name="twitter:site" content="@amritkoirala1">
-<meta name="twitter:description" content="Permutation and combination for biologist ">
-<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/pairwise.png">
+<meta name="twitter:description" content=" Starting statistics with mean and variance  ">
+<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/meanVar.svg">
 <meta property="og:site_name" content="Data churn by AK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Brief note on Permutation and Combination">
-<meta property="og:description" content="Permutation and combination for biologist ">
-<meta property="og:url" content="http://localhost:4000/posts/2018-06-22-Permutation-n-Combination">
-<meta property="og:image" content="http://localhost:4000/assets/img/posts/pairwise.png">
+<meta property="og:title" content="Mean and Variance; covering the base">
+<meta property="og:description" content=" Starting statistics with mean and variance  ">
+<meta property="og:url" content="http://localhost:4000/posts/2018-12-02-Mean-N-Variance">
+<meta property="og:image" content="http://localhost:4000/assets/img/posts/meanVar.svg">
   <meta property="article:author" content="Amrit Koirala">
-  <meta property="article:published_time" content="2018-06-21T18:11:06-05:00">
-  <meta property="article:modified_time" content="2018-06-21T18:11:06-05:00">
+  <meta property="article:published_time" content="2018-12-01T17:11:06-06:00">
+  <meta property="article:modified_time" content="2018-12-01T17:11:06-06:00">
   <meta property="article:section" content="Statistics">
-  <meta property="article:tag" content="Permutation">
-  <meta property="article:tag" content="combination">
+  <meta property="article:tag" content="Mean">
+  <meta property="article:tag" content="Variance">
   <script type="application/ld+json">{
   "@context": "https://schema.org"
   ,"@graph": [
@@ -74,23 +74,23 @@
     ,"copyrightYear" : "2022"
   },{
     "@type": "WebPage"
-    ,"@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#webpage"
-    ,"url": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination"
-    ,"name": "Brief note on Permutation and Combination"
+    ,"@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#webpage"
+    ,"url": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance"
+    ,"name": "Mean and Variance; covering the base"
     ,"isPartOf": {"@id": "http://localhost:4000/#website"}
-    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#breadcrumb"}
-    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/pairwise.png"
-    ,"datePublished": "2018-06-21T18:11:06-05:00"
-    ,"dateModified": "2018-06-21T18:11:06-05:00"
-    ,"description": "Permutation and combination for biologist "
+    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#breadcrumb"}
+    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/meanVar.svg"
+    ,"datePublished": "2018-12-01T17:11:06-06:00"
+    ,"dateModified": "2018-12-01T17:11:06-06:00"
+    ,"description": " Starting statistics with mean and variance  "
     ,"inLanguage": "en-US"
     ,"potentialAction": {
       "@type": "ReadAction"
-      ,"target": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination"
+      ,"target": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance"
     }
   },{
       "@type": "BreadcrumbList",
-      "@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#breadcrumb",
+      "@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem"
@@ -107,28 +107,28 @@
         {
           "@type": "ListItem"
           ,"position": 3
-          ,"name": "Brief note on Permutation and Combination"
+          ,"name": "Mean and Variance; covering the base"
         }
       ]
     },{
       "@type": "BlogPosting"
-      ,"@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#content"
-      ,"isPartOf": {"@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#webpage"}
-      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2018-06-22-Permutation-n-Combination#webpage"}
+      ,"@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#content"
+      ,"isPartOf": {"@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#webpage"}
+      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2018-12-02-Mean-N-Variance#webpage"}
       ,"publisher": {"@id": "http://localhost:4000/#person"}
       ,"author": {"@id": "http://localhost:4000/#person"}
       ,"inLanguage": "en-US"
-      ,"headline": "Brief note on Permutation and Combination"
-      ,"image": "http://localhost:4000/assets/img/posts/pairwise.png"
-      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/pairwise.png"
-      ,"datePublished": "2018-06-21T18:11:06-05:00"
-      ,"dateModified": "2018-06-21T18:11:06-05:00"
-      ,"articleSection": ["Statistics", "Permutation", "combination"]
-      ,"description": "Permutation and combination for biologist "
+      ,"headline": "Mean and Variance; covering the base"
+      ,"image": "http://localhost:4000/assets/img/posts/meanVar.svg"
+      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/meanVar.svg"
+      ,"datePublished": "2018-12-01T17:11:06-06:00"
+      ,"dateModified": "2018-12-01T17:11:06-06:00"
+      ,"articleSection": ["Statistics", "Mean", "Variance"]
+      ,"description": " Starting statistics with mean and variance  "
       ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
       ,"copyrightYear" : "2022"
-      ,"wordCount": 688
-      ,"articleBody": "Permutation and combinations are a part of core counting problem in mathematics. In biology also we encounter multiple situations where knowledge of permutations and combinations are handy. Here is a brief introduction to these concepts with the focus on biological problems. 1. Permutation    This is sampling problem where the position of items is significant. For example: a DNA sequence of certain length like ATT CGA AAT is a set of 9 nucleotide from a set of four: A T C G. So, how many possible DNA sequences of length 9 are possible? Lets review some concepts: 1.1 Permutation where repetition is allowed: This is the most straight forward situation to understand. Lets say we need to get a subset of 3 items (k) from a nucleotide set of containing 4 items (n) . \\(Nucleotide = \\{A,T,C,G\\}\\). Then, each position has n possible options. \\[\\text{Permutation with repetition} = \\frac{n}{}.\\frac{n}{}.\\frac{n}{}....k\\] This can be written more concisely as: \\[\\text{Permutation with repetition} = n^k\\] Where: n = total number of items in a set k = number of items in the subset (this can be greater than n as well) Now, coming back to the question about DNA sequence of length 9, there are \\(9^4=6561\\) possible DNA sequences. 1.2 Permutations without repetition In many situations, like how many ways 10 athletes can be arranged in 1st, 2nd and 3rd position. Same athlete can not come in both 1st or other positions. So in this situation, 1st position has n options but second has n-1 and third has n-2 possibilities. \\(\\text{Permutation without repetition} = \\frac{n}{}.\\frac{n-1}{}.\\frac{n-2}{}....\\frac{n-k}{}\\) Mathematically, this is written using factorial \\[\\text{Permutation without repetition} = \\frac{n!}{(n-k)!}\\] It is important to note that subset here cannot be greater than the set itself. Therefore, in the example of athletes, there are \\(\\frac{10!}{(10-3)!}=720\\) 2. Combination This is a sampling problem where the position is not significant. We can sample k items from a set of n items with repetition or without repetition. 2.1 Combination without repetition This can be taken as a special case of permutation without repetition, where subset with same items irrespective of their position is same. For example {1,2,3}, {1,3,2}, {2,1,3} are all same as {1,2,3}. Therefore we need to adjust the formula for permutation as follows: \\(\\text{Combination without repetition} = \\frac{n!}{(k!)(n-k)!}\\) In R this can be calculated using choose function. #Find possible combinations of 3 items from set of 5 choose(5,3) ## [1] 10 #To see all possible combinations combn(1:5, 3) ## [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] ## [1,] 1 1 1 1 1 1 2 2 2 3 ## [2,] 2 2 2 3 3 4 3 3 4 4 ## [3,] 3 4 5 4 5 5 4 5 5 5 In R to get the number of permutation, we can multiply the result of choose function with \\(k!\\). #find possible permutation without repetition in R when 3 selected from 5 choose(5,3)*factorial(3) ## [1] 60 # when repetition is allowed 5^3 ## [1] 125 Application of combination One of the most popular application of combination is in binomial equation. \\[P(Y=k)= {n \\choose k}p^k(1-p)^{n-k}\\] In this equation \\(n \\choose k\\) represents the possible ways by which k success can occur when the trial is repeated n times. Another application is when we need to calculate the number of pairwise list of genes from a set of genes. If there are 10 genes are we need to calculate the pairwise correlation between all possible pairs then it is given by : \\(_{10}C_{2}= {10 \\choose 2}\\) which is equal to 45. Fig: Pairwise combination of 10 items. Lets look at this pairwise combination in more detail. There are \\(10^2=100\\) permutation possible with repetition, which represents all 100 squares in figure above. The combination which gives 45 represents only one half of the diagonal (either upper or lower). This number (45) is also equal to the number of possible paths in a non-directed network with 10 nodes. And if the network is directed then permutation without repetition can be used which will give 90 possible paths in that network, which is the number of all squares except diagonal."
+      ,"wordCount": 801
+      ,"articleBody": "Basic concept It is very important to understand the measure of central tendency, mean and measure of dispersion, variance in statistics.General formula for mean is: \\[\\begin{equation} \\tag{eq 1} Mean (\\mu) = \\frac{\\sum x}{N} \\end{equation}\\] When frequency table is given mean is: \\[\\begin{equation} \\tag{eq 2} Mean (\\mu) = \\frac{\\sum fx}{N} \\end{equation}\\] When relative frequency (empirical probability/proportion) is given, mean is given by: \\[\\begin{equation} \\tag{eq 3} Mean (\\mu) = \\sum ( x\\times p) \\end{equation}\\] where p is the proportion of particular random variable X. In probability, the expected value of a random variable, E[x] is similar to mean of that random variable. And is given as: \\[\\begin{equation} \\tag{eq 4} E[X] = \\sum x \\times P(X=x) \\end{equation}\\] where: E[X] = Expectation of random variable X P(X=x) = Probability that random variable has value of x. If all values of random variable are equally likely, than P(X=x) is equal to 1/N and since 1/N is constant can be moved outside summation which makes this Equation equal to the general equation for mean. More in binomial distribution. Measure of dispersion Dispersion is the extent of divergence from the center of data. Standard deviation (\\(\\sigma\\)) and variance (\\(\\sigma ^2\\)) are the two measures of dispersion. To understand why these two measures exist and what do they actually explain about dispersion, lets first see how a dispersion of a variable can be studied. To understand the extent of divergence is a three step process: First need to determine what is the center of data (we use mean \\(\\mu\\) for this) Second measure the extent of divergence of each observation from that center. Finally, summarize these divergences by taking the average of all divergence. ie \\(\\frac{\\sum divergence }{N}\\) The first and third step are relatively straight forward but we need to look at the second step further. The simplest form of divergence we can measure is deviation from mean ie (\\(x-\\mu\\)). But because of the nature of mean, when we attempt to sum all the divergence, it is always equal to 0 which is not helpful. Alternatively, to neutralize the effect of negative deviation, we can square the deviation for each value of a random variable and calculate the average of these squared deviation. For this deviation from mean is first squared and added to get the sum of square (SS). \\[\\begin{equation} \\tag{eq 5} SS=\\sum (x- \\mu)^2 \\end{equation}\\] One natural question to raise here is why we are using squared deviation? Taking absolute deviation would also solve the problem of 0 deviation in total. Squared deviations is not a random choice but very carefully thought by early statisticians because squared deviations and thus variance has some very useful mathematical properties when solving calculus and derivative problems. Once we have SS it can be divided by N to get the mean of squared deviation which is called variance. Although variance is best for mathematical prospective, one problem with variance is its unit. It has square unit compared to the random variable we are studying. For example if we are studying weight in kg, variance has unit of \\(kg^2\\), which is difficult to interpret the dispersion. Therefore standard deviation \\(\\sigma\\) is frequently reported which is equal to square root of variance. \\[\\begin{equation} \\tag{eq 6} \\sigma^2=\\frac {\\sum (x- \\mu)^2}{N} \\end{equation}\\] The sum of squares (SS) and can be solved further to get simplified form. \\[SS=\\sum (x- \\mu)^2\\] \\[= \\sum x^2 -2x\\mu + \\mu^2\\] Now summation can be processed into each term \\[= \\sum x^2 -2\\mu\\sum x + \\mu^2\\sum1\\] Now replace the value of \\(\\mu = \\frac {\\sum x}{N}\\) \\[= \\sum x^2 -2\\frac {\\sum x}{N}\\sum x + \\left(\\frac {\\sum x}{N}\\right)^2.N\\] Solving this we get \\[\\begin{equation} \\tag{eq 7} \\text{Sum of squares (SS)}=\\sum x^2 - \\frac {(\\sum x)^2}{N} \\end{equation}\\] This equation 7 is used for calculating SS most often than equation 6 because it is computationally very easy to calculate both for human and computers. For a population, variance is then obtained by dividing sum of square of deviation by N. \\[\\begin{equation} \\tag{eq 8} Variance = \\sigma^2 = \\frac {\\sum x^2}{N}-\\left(\\frac {\\sum x}{N}\\right)^2 \\end{equation}\\] This equation of variance can be further explained in terms of probability. In this equation first term is mean of \\(x^2\\) and second term is square of mean of x. It is very important to identify the difference between these two terms. As we know mean is also called as expectation of a random variable in probability. \\[Variance = E[X^2]-(E[X])^2\\] \\[\\text{or, } Variance= \\sum x^2.P(X=x^2)- \\left(\\sum x.P(X=x)\\right)^2\\] Sample variance Usually variance is calculated from a sample of observation so, while calculating the SS, deviations need to be calculated from sample mean and sum of square of deviation is divided by n-1 to get an unbiased estimate of population variance (See details in degree of freedom). \\[\\begin{equation} \\tag{eq 9} \\text{Sample variance} = s^2 = \\frac {\\sum x^2 - \\frac {\\left(\\sum x\\right)^2}{n}}{n-1} \\end{equation}\\]"
     }
   ]
 }</script>
@@ -235,197 +235,216 @@
 </div>
 <div id="main-wrapper">
       <div class="main-container"><div class="multipurpose-container post-container">
-  <div class="post-title">Brief note on Permutation and Combination</div><div class="meta">
+  <div class="post-title">Mean and Variance; covering the base</div><div class="meta">
   <small>
-    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Jun 21, 2018
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Dec 1, 2018
   </small>
   <small>
     &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;4 min read</span>
   </small>
   
   <small class="meta-link" >
-    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2018-06-22-Permutation-n-Combination#disqus_thread">-</a>
-    <a href="javascript:void(0);" onclick="window.location.href='/posts/2018-06-22-Permutation-n-Combination#disqus_thread'">Comments</a>
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2018-12-02-Mean-N-Variance#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2018-12-02-Mean-N-Variance#disqus_thread'">Comments</a>
   </small>
   </div>
 <hr/>
   <div class="markdown-style">
-    <!-- outline-start -->
+    <h2 id="basic-concept">Basic concept</h2>
 
-<p>Permutation and combinations are a part of core counting problem in
-mathematics. In biology also we encounter multiple situations where
-knowledge of permutations and combinations are handy. Here is a brief
-introduction to these concepts with the focus on biological problems.
-<!-- outline-end --></p>
-<h3 id="1-permutation">1. Permutation</h3>
+<!-- outline-start -->
 
-<p>   This is sampling problem where the position of items is significant.
-For example: a DNA sequence of certain length like ATT CGA AAT is a set
-of 9 nucleotide from a set of four: A T C G. So, how many possible DNA
-sequences of length 9 are possible? Lets review some concepts:</p>
+<p>It is very important to understand the measure of central tendency, mean
+and measure of dispersion, variance in statistics.<!-- outline-end -->General formula for
+mean is:</p>
 
-<h4 id="11-permutation-where-repetition-is-allowed">1.1 Permutation where repetition is allowed:</h4>
+\[\begin{equation}
+\tag{eq 1}
+Mean (\mu) = \frac{\sum x}{N} 
+\end{equation}\]
 
-<p>This is the most straight forward situation to understand. Lets say we
-need to get a subset of 3 items (<code class="language-plaintext highlighter-rouge">k</code>) from a nucleotide set of
-containing 4 items (<code class="language-plaintext highlighter-rouge">n</code>) . \(Nucleotide = \{A,T,C,G\}\). Then, each
-position has <code class="language-plaintext highlighter-rouge">n</code> possible options.</p>
+<p>When frequency table is given mean is:</p>
 
-\[\text{Permutation with repetition} = \frac{n}{}.\frac{n}{}.\frac{n}{}....k\]
+\[\begin{equation}
+\tag{eq 2}
+Mean (\mu) = \frac{\sum fx}{N}
+\end{equation}\]
 
-<p>This can be written more concisely as:</p>
+<p>When relative frequency (empirical probability/proportion) is given,
+mean is given by:</p>
 
-\[\text{Permutation with repetition} = n^k\]
+\[\begin{equation}
+\tag{eq 3}
+Mean (\mu) = \sum ( x\times p) 
+\end{equation}\]
 
-<p>Where:</p>
+<p>where p is the proportion of particular random variable X.</p>
 
-<ul>
-  <li>
-    <p>n = total number of items in a set</p>
-  </li>
-  <li>
-    <p>k = number of items in the subset (this can be greater than n as
-well)</p>
-  </li>
-</ul>
+<p>In probability, <a href="2019-11-01-Expected-value">the expected value</a> of a random variable, E[x] is
+similar to mean of that random variable. And is given as:</p>
 
-<p>Now, coming back to the question about DNA sequence of length 9, there
-are \(9^4=6561\) possible DNA sequences.</p>
+\[\begin{equation}
+\tag{eq 4}
+E[X] = \sum x \times P(X=x)
+\end{equation}\]
 
-<h4 id="12-permutations-without-repetition">1.2 Permutations without repetition</h4>
-
-<p>In many situations, like how many ways 10 athletes can be arranged in
-1st, 2nd and 3rd position. Same athlete can not come in both 1st or
-other positions. So in this situation, 1st position has <code class="language-plaintext highlighter-rouge">n</code> options but
-second has <code class="language-plaintext highlighter-rouge">n-1</code> and third has <code class="language-plaintext highlighter-rouge">n-2</code> possibilities.</p>
-
-<p>\(\text{Permutation without repetition} = \frac{n}{}.\frac{n-1}{}.\frac{n-2}{}....\frac{n-k}{}\)<br />
-Mathematically, this is written using factorial</p>
-
-\[\text{Permutation without repetition} = \frac{n!}{(n-k)!}\]
-
-<p>It is important to note that subset here cannot be greater than the set
-itself. Therefore, in the example of athletes, there are
-\(\frac{10!}{(10-3)!}=720\)</p>
-
-<h3 id="2-combination">2. Combination</h3>
-
-<p>This is a sampling problem where the position is not significant. We can
-sample <code class="language-plaintext highlighter-rouge">k</code> items from a set of <code class="language-plaintext highlighter-rouge">n</code> items with repetition or without
-repetition.</p>
-
-<h4 id="21-combination-without-repetition">2.1 Combination without repetition</h4>
-
-<p>This can be taken as a special case of permutation without repetition,
-where subset with same items irrespective of their position is same. For
-example {1,2,3}, {1,3,2}, {2,1,3} are all same as {1,2,3}. Therefore we
-need to adjust the formula for permutation as follows:</p>
-
-<p>\(\text{Combination without repetition} = \frac{n!}{(k!)(n-k)!}\) In R
-this can be calculated using <code class="language-plaintext highlighter-rouge">choose</code> function.</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Find possible combinations of 3 items from set of 5</span><span class="w">
-</span><span class="n">choose</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] 10
-</code></pre></div></div>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#To see all possible combinations </span><span class="w">
-</span><span class="n">combn</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-## [1,]    1    1    1    1    1    1    2    2    2     3
-## [2,]    2    2    2    3    3    4    3    3    4     4
-## [3,]    3    4    5    4    5    5    4    5    5     5
-</code></pre></div></div>
-
-<p>In R to get the number of permutation, we can multiply the result of
-<code class="language-plaintext highlighter-rouge">choose</code> function with \(k!\).</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#find possible permutation without repetition in R when 3 selected from 5</span><span class="w">
-</span><span class="n">choose</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] 60
-</code></pre></div></div>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># when repetition is allowed</span><span class="w">
-</span><span class="m">5</span><span class="o">^</span><span class="m">3</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] 125
-</code></pre></div></div>
-
-<p><strong>Application of combination</strong></p>
-
-<p>One of the most popular application of
-combination is in binomial equation.</p>
-
-\[P(Y=k)= {n \choose k}p^k(1-p)^{n-k}\]
-
-<p>In this equation \(n \choose k\) represents the possible ways by which
-<code class="language-plaintext highlighter-rouge">k</code> success can occur when the trial is repeated <code class="language-plaintext highlighter-rouge">n</code> times.</p>
+<p>where:</p>
 
 <ul>
-  <li>Another application is when we need to calculate the number of
-pairwise list of genes from a set of genes. If there are 10 genes
-are we need to calculate the pairwise correlation between all
-possible pairs then it is given by :</li>
+  <li>E[X] = Expectation of random variable X</li>
+  <li>P(X=x) = Probability that random variable has value of x.</li>
 </ul>
 
-<p>\(_{10}C_{2}=  {10 \choose 2}\) which is equal to 45.</p>
+<p>If all values of random variable are equally likely, than P(X=x) is
+equal to 1/N and since 1/N is constant can be moved outside summation
+which makes this Equation equal to the general equation for mean. More
+in binomial distribution.</p>
 
-<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/pairwise.png" data-src="/assets/img/posts/pairwise.png" alt="pairwise" /></p>
+<h3 id="measure-of-dispersion">Measure of dispersion</h3>
 
-<p>Fig: Pairwise combination of 10 items.</p>
+<p>Dispersion is the extent of divergence from the center of data. Standard
+deviation (\(\sigma\)) and variance (\(\sigma ^2\)) are the two measures
+of dispersion. To understand why these two measures exist and what do
+they actually explain about dispersion, lets first see how a dispersion
+of a variable can be studied. To understand the extent of divergence is
+a three step process:</p>
 
-<p>Lets look at this pairwise combination in more detail. There are
-\(10^2=100\) permutation possible with repetition, which represents all
-100 squares in figure above. The combination which gives 45 represents
-only one half of the diagonal (either upper or lower). This number (45)
-is also equal to the number of possible paths in a non-directed network
-with 10 nodes. And if the network is directed then permutation without
-repetition can be used which will give 90 possible paths in that
-network, which is the number of all squares except diagonal.</p>
+<ol>
+  <li>First need to determine what is the center of
+data (we use mean \(\mu\) for this)</li>
+  <li>Second measure the extent of
+divergence of each observation from that center.</li>
+  <li>Finally, summarize
+these divergences by taking the average of all divergence. ie
+\(\frac{\sum divergence }{N}\)</li>
+</ol>
+
+<p>The first and third step are relatively straight forward but we need to
+look at the second step further. The simplest form of divergence we can
+measure is deviation from mean ie (\(x-\mu\)). But because of the
+nature of mean, when we attempt to sum all the divergence, it is always
+equal to 0 which is not helpful. Alternatively, to neutralize the effect
+of negative deviation, we can square the deviation for each value of a
+random variable and calculate the average of these squared deviation.
+For this deviation from mean is first squared and added to get the sum
+of square (SS).</p>
+
+\[\begin{equation}
+\tag{eq 5}
+SS=\sum (x- \mu)^2
+\end{equation}\]
+
+<p>One natural question to raise here is why we are using squared
+deviation? Taking absolute deviation would also solve the problem of 0
+deviation in total. Squared deviations is not a random choice but very
+carefully thought by early statisticians because squared deviations and
+thus variance has some very useful mathematical properties when solving
+calculus and derivative problems.</p>
+
+<p>Once we have SS it can be divided by N
+to get the mean of squared deviation which is called <strong>variance</strong>.
+Although variance is best for mathematical prospective, one problem with
+variance is its unit. It has square unit compared to the random variable
+we are studying. For example if we are studying weight in kg, variance
+has unit of \(kg^2\), which is difficult to interpret the dispersion.
+Therefore standard deviation \(\sigma\) is frequently reported which is
+equal to square root of variance.</p>
+
+\[\begin{equation}
+\tag{eq 6}
+\sigma^2=\frac {\sum (x- \mu)^2}{N}
+\end{equation}\]
+
+<p>The sum of squares (SS) and can be solved further to get simplified
+form.</p>
+
+\[SS=\sum (x- \mu)^2\]
+
+\[= \sum x^2 -2x\mu + \mu^2\]
+
+<p>Now summation can be processed into each term</p>
+
+\[= \sum x^2 -2\mu\sum x + \mu^2\sum1\]
+
+<p>Now replace the value of \(\mu = \frac {\sum x}{N}\)</p>
+
+\[= \sum x^2 -2\frac {\sum x}{N}\sum x +  \left(\frac {\sum x}{N}\right)^2.N\]
+
+<p>Solving this we get</p>
+
+\[\begin{equation}
+\tag{eq 7}
+\text{Sum of squares (SS)}=\sum x^2 - \frac {(\sum x)^2}{N} 
+\end{equation}\]
+
+<p>This equation 7 is used for calculating SS most often than equation 6
+because it is computationally very easy to calculate both for human and
+computers. For a population, variance is then obtained by dividing sum
+of square of deviation by N.</p>
+
+\[\begin{equation}
+\tag{eq 8}
+Variance = \sigma^2 = \frac {\sum x^2}{N}-\left(\frac {\sum x}{N}\right)^2 
+\end{equation}\]
+
+<p>This equation of variance can be further explained in terms of
+probability. In this equation first term is mean of \(x^2\) and second
+term is square of mean of x. It is very important to identify the
+difference between these two terms. As we know mean is also called as
+expectation of a random variable in probability.</p>
+
+\[Variance = E[X^2]-(E[X])^2\]
+
+\[\text{or, } Variance= \sum x^2.P(X=x^2)- \left(\sum x.P(X=x)\right)^2\]
+
+<h4 id="sample-variance">Sample variance</h4>
+
+<p>Usually variance is calculated from a sample of observation so, while
+calculating the SS, deviations need to be calculated from sample mean
+and sum of square of deviation is divided by n-1 to get an unbiased
+estimate of population variance (See details in <a href="2019-07-01-Degree-of-freedom">degree of freedom</a>).</p>
+
+\[\begin{equation}
+\tag{eq 9}
+\text{Sample variance} = s^2 = \frac {\sum x^2 - \frac {\left(\sum x\right)^2}{n}}{n-1}
+\end{equation}\]
 <hr>
 <div class="share-holder">
   <span class="share-label">Share on: </span>
   <ul class="share-buttons">
     
       <li>
-        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-06-22-Permutation-n-Combination&amp;text=Brief%20note%20on%20Permutation%20and%20Combination%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-12-02-Mean-N-Variance&amp;text=Mean%20and%20Variance;%20covering%20the%20base%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
           <i class="fa fa-twitter-square fa-fw" aria-hidden="true"></i>
         </a>
       </li>
     
       <li>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-06-22-Permutation-n-Combination" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-12-02-Mean-N-Variance" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
           <i class="fa fa-facebook-square fa-fw" aria-hidden="true"></i>
         </a>
       </li>
     
       <li>
-        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-06-22-Permutation-n-Combination&amp;text=Brief%20note%20on%20Permutation%20and%20Combination%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-12-02-Mean-N-Variance&amp;text=Mean%20and%20Variance;%20covering%20the%20base%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
           <i class="fa fa-telegram fa-fw" aria-hidden="true"></i>
         </a>
       </li>
     
       <li>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-06-22-Permutation-n-Combination" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-12-02-Mean-N-Variance" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
           <i class="fa fa-linkedin-square fa-fw" aria-hidden="true"></i>
         </a>
       </li>
     
       <li>
-        <a href="mailto:?subject=Brief%20note%20on%20Permutation%20and%20Combination%20-%20Data%20churn%20by%20AK&amp;body=Brief%20note%20on%20Permutation%20and%20Combination%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-06-22-Permutation-n-Combination" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
+        <a href="mailto:?subject=Mean%20and%20Variance;%20covering%20the%20base%20-%20Data%20churn%20by%20AK&amp;body=Mean%20and%20Variance;%20covering%20the%20base%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2018-12-02-Mean-N-Variance" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
           <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
         </a>
       </li>
     
       <li>
-        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2018-06-22-Permutation-n-Combination', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
+        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2018-12-02-Mean-N-Variance', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
           <i class="fa fa-link fa-fw" aria-hidden="true"></i>
         </a>
       </li>
@@ -587,8 +606,8 @@ network, which is the number of all squares except diagonal.</p>
   const disqus_consent_msg = true;
   var disqus_config = function () {
     this.language = "en";
-    this.page.url = 'http://localhost:4000/posts/2018-06-22-Permutation-n-Combination';
-    this.page.identifier = '/posts/2018-06-22-Permutation-n-Combination';
+    this.page.url = 'http://localhost:4000/posts/2018-12-02-Mean-N-Variance';
+    this.page.identifier = '/posts/2018-12-02-Mean-N-Variance';
   };
 
   function disqusLoader() {

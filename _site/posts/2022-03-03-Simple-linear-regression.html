@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Data churn by AK - Simple Linear regression: Intuitive way</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</noscript>
+
+
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="manifest" href="/assets/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Data churn by AK's App">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="application-name" content="Data churn by AK's App">
+  <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+
+    <meta name="keywords" content="Statistics, regression">
+
+  <meta name="description" content=" Learning Linear regression with R ">
+  <meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple Linear regression: Intuitive way">
+<meta name="twitter:site" content="@amritkoirala1">
+<meta name="twitter:description" content=" Learning Linear regression with R ">
+<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg">
+<meta property="og:site_name" content="Data churn by AK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simple Linear regression: Intuitive way">
+<meta property="og:description" content=" Learning Linear regression with R ">
+<meta property="og:url" content="http://localhost:4000/posts/2022-03-03-Simple-linear-regression">
+<meta property="og:image" content="http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg">
+  <meta property="article:author" content="Amrit Koirala">
+  <meta property="article:published_time" content="2022-03-02T17:11:06-06:00">
+  <meta property="article:modified_time" content="2022-03-02T17:11:06-06:00">
+  <meta property="article:section" content="Statistics">
+  <meta property="article:tag" content="regression">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org"
+  ,"@graph": [
+    {
+      "@type": "Person"
+      ,"@id": "http://localhost:4000/#person"
+      ,"name": "Amrit Koirala"
+      ,"url": "http://localhost:4000/tabs/about.html"
+      ,"image": "http://localhost:4000/assets/img/about/about.jpg"
+      ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+  },{
+    "@type": "WebSite"
+    ,"@id": "http://localhost:4000/#website"
+    ,"url": "http://localhost:4000/"
+    ,"name": "Data churn by AK"
+    ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+    ,"publisher": {"@id": "http://localhost:4000/#person"}
+    ,"inLanguage": "en-US"
+    ,"sameAs": ["https://www.github.com/akoirala2000","https://www.linkedin.com/in/amrit-koirala-41037392","https://www.twitter.com/amritkoirala1"]
+    ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+    ,"copyrightYear" : "2022"
+  },{
+    "@type": "WebPage"
+    ,"@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#webpage"
+    ,"url": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression"
+    ,"name": "Simple Linear regression: Intuitive way"
+    ,"isPartOf": {"@id": "http://localhost:4000/#website"}
+    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#breadcrumb"}
+    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg"
+    ,"datePublished": "2022-03-02T17:11:06-06:00"
+    ,"dateModified": "2022-03-02T17:11:06-06:00"
+    ,"description": " Learning Linear regression with R "
+    ,"inLanguage": "en-US"
+    ,"potentialAction": {
+      "@type": "ReadAction"
+      ,"target": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression"
+    }
+  },{
+      "@type": "BreadcrumbList",
+      "@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem"
+          ,"position": 1
+          ,"name": "Home"
+          ,"item": "http://localhost:4000/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 2
+          ,"name": "Notes"
+          ,"item": "http://localhost:4000/tabs/blog/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 3
+          ,"name": "Simple Linear regression: Intuitive way"
+        }
+      ]
+    },{
+      "@type": "BlogPosting"
+      ,"@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#content"
+      ,"isPartOf": {"@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#webpage"}
+      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2022-03-03-Simple-linear-regression#webpage"}
+      ,"publisher": {"@id": "http://localhost:4000/#person"}
+      ,"author": {"@id": "http://localhost:4000/#person"}
+      ,"inLanguage": "en-US"
+      ,"headline": "Simple Linear regression: Intuitive way"
+      ,"image": "http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg"
+      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg"
+      ,"datePublished": "2022-03-02T17:11:06-06:00"
+      ,"dateModified": "2022-03-02T17:11:06-06:00"
+      ,"articleSection": ["Statistics", "regression"]
+      ,"description": " Learning Linear regression with R "
+      ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+      ,"copyrightYear" : "2022"
+      ,"wordCount": 2494
+      ,"articleBody": "Simple Linear Regression This is a statistical method to establish a linear relationship between two quantitative variables such that one variable can give an estimate of the other. The variable being estimated is called dependent variable and the variable used to estimate is called independent variable or regressor. The first step in linear regression is to find a line of best fit. You may ask why do we want to fit a line, and not circle or a quadratic function? Well it has to do with one of the most important assumption of linear regression which states that there is a linear relationship between dependent variable and independent variable thus a linear regression with a single predictor can be represented as a equation for a line: \\[y = \\beta_0 + \\beta_1x + \\epsilon\\] where, \\(y\\) = dependent variable \\(\\beta_0\\) = y-intercept of the predicted line and the value of dependent variable when value of predictor variable \\(x\\) is 0. \\(\\beta_1\\) = slope of the line of fit or the coefficient by which predictor variable needs to be adjusted to get the predicted value of y (\\(\\hat{y}\\)). \\(\\epsilon\\) = there is always some difference between predicted value and the actual value of y which is called error term The variance of error term is equal for all observation and denoted by \\(\\sigma^2\\). Lets make a small dummy data where we want to predict the weight of 5 students by their height. click for code height = c(5.5, 3.4, 4.4, 6) weight = c(140, 120, 145, 170) par(mfrow=c(1,2)) plot(weight~height, col = \"black\" , cex = 2, pch =20, main = \"a\") #plot(weight~height, col = \"red\" , cex = 2, pch =20, ylim = c(0,170), xlim= c(0,6)) plot(weight~height, col = \"black\" , cex = 2, pch =20, main =\"b\") abline(h=143.75, col=\"red\") abline(98, 10, col= \"blue\") abline(70.287, 15.225, col= \"purple\") abline(60, 16, col= \"green\") abline(25,25, col =\"brown\") abline(-25,35, col =\"darkcyan\") done! Fig 1: Simple linear regression As seen in the scattered plot (figure 1.a), there appears to be some form of linear relationship between height and weight and we are very tempted to draw a line right across the points. Lets draw some potential lines of different color (Figure 1.b) that could be a best line of fit. Now how do we find which is the best line of fit? There are several algorithms that targets to minimize the sum of square of deviation, absolute deviation, lack of fit, or penalty for a cost function (example ridge regression and lasso). We will focus to well known and most used approach called least squares where the goal is to minimizing the sum of square of deviation between predicted and observed value of y. Lets implement the least squares in the 6 lines that we have drawn on our plot (Figure 1.b). To calculate the sum of square of deviation (SS) for each line defined by equation \\(y=a+bx\\), we need to first predict the value of y for given x. Once we have the predicted values, we can find the differences between observed and predicted value (aka deviation or residual or error in estimate) for all the data points. Followed by calculating square of deviation and adding them up to get sum of squares. Once we have SS for each line, we can plot those SS by lines to visualize the line with least SS. See code below for detail of the steps. click for code #store each line as a vector of a and b, y=a+bx red = c(143.75, 0) blue = c(98, 10) purple = c(70.287, 15.225) green = c(60, 16) brown = c(25, 25) darkcyan = c(-25, 35) lines &lt;- list(red=red, blue=blue, purple=purple, green=green, brown=brown, darkcyan=darkcyan) #write a for loop which will take a line at time and give prediction of weight for each height #first make a empty list to store predictions predicted_weight = vector(mode= \"list\", length=6) names(predicted_weight) &lt;- names(lines) # take a lines at a time and apply that line equation to all height values for(line in names(lines)){ predicted_weight[[line]] &lt;-sapply(height, function(x){lines[[line]][1] + lines[[line]][2]*x}) } #Now that we have predicted weight value from each line lets first plot par(mfrow= c(1,2)) plot(weight~height, col = \"black\" , cex = 2, pch =20, main=\"a\") for(line in names(lines)){ abline(lines[[line]], col=line) points(height, predicted_weight[[line]], col=line, pch=20, cex=1) } #Also calculate the SS for each lines deviation &lt;- lapply(predicted_weight, function(x) x-weight) #Square and sum each item in deviation SS &lt;- lapply(deviation, function(x) sum(x[1]^2,x[2]^2,x[3]^2,x[4]^2)) ##plot SS by the line barplot(unlist(SS), col= names(lines), ylab = \"Sum of squares\" , main=\"b\") text(x= 1:6, y= unlist(SS)-100, label= round(unlist(SS),1), cex = 0.6) done! Fig 2: Manually calculating least sum of square Figure 2.a shows the predicted points by each line as the colored dots in the respective line. And in the barplot on the right we can see the purple line has least sum of squares and is the best line of fit among these six lines. Ordinary Least Square In the above example we worked with only six lines and we could easily find the best one minimizing the sum of squares, but the extent of actual problem is much complex because there could be infinite number of lines passing this data. It is essentially a minimization problem and fortunately it is a well known and worked out problem in the field of mathematics. It is solved using the ordinary least square (OLS) method. Under the hood OLS uses principles of calculus, statistics and some assumptions to give an estimate of \\(\\beta_0\\) and \\(\\beta_1\\) denoted as \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\) respectively for the line of best fit. Although we may skip the details of how this method works, we need to be clear about how to interpret them and what are their limitations. Following are the equation to calculate \\(\\hat{\\beta_0}\\) and \\(\\hat{\\beta_1}\\). \\[\\hat{\\beta_1}=\\frac{\\sum(x-\\bar{x})(y-\\bar{y})}{\\sum(x-\\bar{x})^2}= \\frac{S_{xy}}{S_{xx}}\\] \\[\\hat{\\beta_0}=\\bar{y}-\\hat{\\beta_1}\\bar{x}\\] Intuitive explaination of \\(\\hat{\\beta_1}\\) \\(\\hat{\\beta_1}\\) is the amount by which a unit change in independent variable will make the corresponding change in dependent variable. If \\(\\hat{\\beta_1}\\) is negative than a unit increase in x will decrease y by \\(\\hat{\\beta_1}\\). The above equation for \\(\\hat{\\beta_1}\\) can also be written as below: \\[\\hat{\\beta_1}= \\frac{\\text{Sample Covariance between x and y}}{\\text{Sample Variance of x}}\\] Which means higher the covariance between x and y higher is the value of \\(\\hat{\\beta_1}\\) and it is inversely proportional to the variance of independent variable. y-intercept These equations may look very technical but have some intuitive features. Usually \\(\\hat{\\beta_0}\\) is put first but, it is derived from \\(\\hat{\\beta_1}\\) and it is a constant needed to make the adjustment to the line equation so that our line of best fit passes through the point \\((\\bar{x},\\bar{y})\\). In absence of this intercept term, we force the line to pass through origin (0,0) and this may not be good fit for the data. Therefore we should always include this intercept term in regression equation. \\({\\beta_0}\\) ensures the line of best fit is passing through the center of the data \\((\\bar x, \\bar y)\\) and sum of all the residuals (difference between estimated y and observed y) is zero. Other than this, y-intercept does not have any value in explaining the relationship between x and y. Although we get p-value and standard error for the intercept because of mathematics behind OLS (and statistical software like R report it), we should not be tempted to force any interpretation to our data using the intercept. Theoretically, it is the estimate of y when all the other independent variables have value of 0 (no effect of any independent variable at all). In most cases, it is impossible to have independent variable to be zero (example its impossible to have a student with zero height). Even if your data is centered around origin (for example predicting amount of snow by temp in winter season), the value of y at the intercept is value of dependent variable when there is no independent variable, which is against our sole purpose which is to understand the effect of independent variable on dependent variable. Intercept should always be taken only as a factor used to adjust line of best fit and nothing more than that. In addition, these estimates have some very useful statistical properties: 1. Both \\(\\hat{\\beta_0}\\), and \\(\\hat{\\beta_1}\\) are an estimate of population \\({\\beta_0}\\) and \\({\\beta_1}\\) using the current sample of x and y. For example, Instead of just working with 4 students’ data as in our example, we can have data from 1000 of students, sampling 10 at a time and for each sample calculate \\(\\hat{\\beta_0}\\), and \\(\\hat{\\beta_1}\\). Doing so for multiple of times (1000 times) will give us the sampling distribution of \\({\\beta_0}\\) and \\({\\beta_1}\\). click for code library(MASS) set.seed(566) d &lt;- mvrnorm(n=1000, mu= c(5,143.75), Sigma = matrix(c(1, 0.6,0.6,1),nrow = 2)) heightPop &lt;- d[,1] weightPop &lt;- d[,2] par(mfrow=c(2,4)) sample_colour &lt;- rainbow(6) six_beta_0 &lt;- c() six_beta_1 &lt;- c() for (i in 1:6) { index &lt;- sample(1:1000, 10) s_wt &lt;- weightPop[index] s_he &lt;- heightPop[index] plot(weightPop~heightPop,col = \"grey\" , cex = 2, pch =20, main= letters[i], xlab=\"Height\", ylab=\"Weight\" ) points(s_he, s_wt, col= sample_colour[i], cex=2, pch=20 ) m &lt;- lm(s_wt~s_he) abline(m$coefficients, col= sample_colour[i]) text(mean(s_he),140.4,labels =paste0(\"y= \",round(m$coefficients[1],1), \" + \", round(m$coefficients[2],1), \"x\")) six_beta_0[i] &lt;- m$coefficients[1] six_beta_1[i] &lt;- m$coefficients[2] } beta_0 &lt;- c() beta_1 &lt;- c() for (i in 1:1000) { index &lt;- sample(1:1000, 10) s_wt &lt;- weightPop[index] s_he &lt;- heightPop[index] m &lt;-lm(s_wt~s_he) beta_0[i] &lt;-m$coefficients[1] beta_1[i] &lt;- m$coefficients[2] } hist(beta_0, breaks =100, main = \"Distribution of beta estimates\") for(i in 1:6)abline(v=six_beta_0[i], col=sample_colour[i]) hist(beta_1, breaks = 100, main = \" (both sampled 1000 times)\") for(i in 1:6)abline(v=six_beta_1[i], col=sample_colour[i]) done! Fig 3: Distribution of regression coefficient From the plots which shows distribution of 1000 \\(\\hat{\\beta}\\)s values we can see that it is normally distributed hence we can apply central limit theorem to these coefficients as well. Which gives that, the mean of such distribution of \\(\\hat{\\beta}\\)s is the unbiased estimate of \\({\\beta}\\)s and the variance of such distribution of \\(\\hat{\\beta}\\)s is given by OLS as follows: \\[Var(\\hat{\\beta_1)}= \\sigma^2\\frac{1}{S_{xx}}\\] \\[Var(\\hat{\\beta_0)}= \\sigma^2 \\left( \\frac{1}{n}+\\frac{\\bar{x}^2}{S_{xx}}\\right)\\] Where: \\(\\sigma^2\\) is the variance of residuals or error terms. These variance terms will be used for performing t-test for each coefficients (will see later). Assumptions OLS gives us estimate of coefficients and great statistical power but there are some limitations. For all the estimates to be valid, following assumptions should be fulfilled: - The population under study should strongly follows linear model and the parameters correctly specified. - The samples were taken randomly from the population (this is the single assumption necessary for distribution of sample mean). - There is variation in explanatory variable. - Homoskedasticity : The variance of residuals (\\(\\sigma^2\\)) is equal for all observation. The deviation we can calculate for each observation of y, \\(\\hat{e}\\) called residual is a random variable which follows normal distribution, and have mean \\(e\\) and variance equal to \\(\\sigma^2\\). Similar to \\(\\hat{\\beta}\\)) if we sample 1000 times and see the distribution of residual for each observation, it will have normal distribution and the variance needs to be same for all observations. - The error term is independent of the independent variable. Analysis of variance One we have the line of best fit, we can do inference about the statistical significance of the coefficients. Regression when we go back to basics is also an analysis of variance just like ANOVA and the only difference is, in ANOVA we want to find variance explained by a effect and make statistical testing .See the details in ANOVA. But, in regression we will first find a line of best fit and find variance explained by the line and do statistical testing to see if the variance explained by the line is significantly different than the unexplained variance. Lets plot our example of four sample and best line of fit we found for it. click for code plot(weight~height, col = \"black\" , cex = 2, pch =20) abline(70.287, 15.225, col=\"purple\") abline(h=143.75, col= \"red\") points(height, predicted_weight[[3]], col=\"purple\", pch=20, cex=1.5) done! In absence of any independent variable, mean of y \\(\\bar{y}\\) is the best estimate of y and total variance is calculated by taking deviation of observed values from \\(\\bar{y}\\). This is called Total Variance. We can estimate this by first calculating sum of square of deviation (TSS). Adding squares of all the red colored deviations in above figure will give TSS. Just like a normal variance of a sample this TSS has n-1 degree of freedom. \\[\\hat{Var(Total)}= MST= \\frac{SST}{n-1}\\] When we have the regression line some of the total variance is explained by the line, which can estimated by calculating the Sum of square of Regression (SSR). SSR is calculated by by adding up the square of deviation between the estimated value of y and mean of y. The sum of square of purple colored deviations in the above figure is equal to the SSR. The degree of freedom for SSR is equal to the number of coefficients in model - 1 (details in degree of freedom) . It is equal to the Sum of Square Between (SSB) calculated in ANOVA. The estimate of variance explained by regression is mean of SSR (MSR). \\[\\hat{Var(Regression)}= MSR= \\frac{SSR}{\\text{no. of } \\beta s - 1}\\] There is always a second component of variance called variance of error (\\(\\sigma^2\\)), which represents the variance not explained by regression line. It is estimated using Sum of Square of Error (SSE). Sum of square of deviation between estimated value of y and observed value of y is equal to SSE. In the figure above, sum of square of all black deviations is equal to SSE and is equal to the Sum of Square within (SSW) in ANOVA. It has degree of freedom equal to n - no. of \\(\\beta\\)s and mean of SSE (MSE) is given by following equation. \\[\\hat{Var(Error)}= \\hat{\\sigma ^2}= MSE= \\frac{SSE}{n - \\text{no. of } \\beta s }\\] Once we have MSR, and MSE we can do a F-test similar to the one in ANOVA. \\[F = \\frac{MSR}{MSE}\\] Equivalent t-test for coefficients It is also possible to statistically test if each of the coefficients used in the model is equal to zero or not. OLS provides necessary assumptions and properties to conduct a T-test on coefficients. \\[H_0 : \\beta _ 1 = 0\\] \\[H_1 : \\beta _ 1 \\neq 0\\] Although, I am showing for \\(\\beta _1\\) same principle applies to all the other coefficients in the model. z-statistic can be calculated using following equation: \\[z =\\frac{ \\hat{\\beta_1}-0}{\\sqrt{\\frac{\\sigma^2}{Sxx}}}\\] Because we only have the estimate of \\(\\sigma^2\\), which is equal to MSE, we can substitute that but our test statistic will now follow t-distribution. \\[t= \\frac{ \\hat{\\beta_1}-0}{\\sqrt{\\frac{MSE}{Sxx}}}\\] This t-statistics will have the same degree of freedom as MSE ie n - no. of \\(\\beta\\)s and the term \\(\\sqrt{\\frac{MSE}{Sxx}}\\) is called Standard Error in measure of \\(\\hat{\\beta_1}\\) Lets now compare the result of anova and manually calculated values aov(weight~height) ## Call: ## aov(formula = weight ~ height) ## ## Terms: ## height Residuals ## Sum of Squares 938.2682 330.4818 ## Deg. of Freedom 1 2 ## ## Residual standard error: 12.85461 ## Estimated effects may be unbalanced REF 1 2"
+    }
+  ]
+}</script>
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="/assets/css/main.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+<link href="/assets/css/nav-media.css" rel="stylesheet">
+
+  </head>
+
+  <body >
+    <script src="/assets/js/color-scheme-attr-init.js" data-mode="false"></script>
+    <nav class="navbar navbar-default top-nav">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed pull-left top-nav-menu-toggle" data-toggle="collapse" data-target="#id_top-nav-menu-toggle" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand top-nav-brand" href="/" translate="no">Data churn by AK</a>
+    </div>
+  <div class="color_scheme_switch_top_holder" data-toggle="tooltip" data-placement="bottom" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+
+  
+</nav>
+<nav id="side-nav-container">
+  <div class="side-nav">
+    <div class="side-nav-brand">
+      <img src="/assets/img/default/profile.jpg" alt="">
+      <div class="brand-holder">
+        <a href="/" translate="no">Data churn by AK</a>
+        </div>
+      <p>&nbsp;Data blogs</p>
+      <br>
+    </div>
+    <br>
+    <a href="javascript:void(0);" class="side-nav-close">
+        <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+      </a>
+    <hr>
+    <br>
+    <div class="side-nav-buttons">
+      <ul class="nav nav-pills nav-stacked">
+        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Notebooks</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
+    </div>
+    <br>
+    <br><div class="contact-container">
+  <hr>
+  <h3>Contact</h3>
+  <ul><li><a href="https://www.github.com/akoirala2000" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a></li><li>
+      <a href="javascript:void(0);" class="hover-effect-big" onclick="setAddress('datachurnbyak', 'gmail.com');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li><li><a href="https://www.linkedin.com/in/amrit-koirala-41037392" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a href="https://www.twitter.com/amritkoirala1" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter" aria-hidden="true"></i></a></li></ul>
+</div>
+
+    <hr id="toc-view-top">
+    <div class="side-nav-footer" translate="no">
+        <p>&copy; 2022 Data churn by AK.</p>
+      </div>
+  </div>
+  <div class="side-nav-bottom-buttons-container">
+    <hr>
+    <ul>
+      <li><div class="color_scheme_switch_side_holder" data-toggle="tooltip" data-placement="top" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+</li><li><div class="cookie-icon hover-effect" onclick="CookieConsent.showSettings();" data-toggle="tooltip" data-placement="top" title="Cookie settings">
+  <div class="cookie-wrapper">
+    <i class="fa fa-circle bitten-cookie" aria-hidden="true"></i>
+    <i class="fa fa-circle small-ellipse-icon" aria-hidden="true"></i>
+    <i class="fa fa-spinner inner-icon" aria-hidden="true"></i>
+    <i class="fa fa-circle-thin outer-icon" aria-hidden="true"></i>
+  </div>
+</div>
+</li></ul>
+  </div></nav>
+<div id="toc-container" class="movable">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Drag to move">
+      Contents
+      <span class="pull-right">
+        <a href="javascript:void(0);" class="close-button" onclick="document.getElementById('toc-container').style.display = 'none';">
+          <i class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Close"></i>
+        </a>
+      </span>
+    </div>
+    <div class="panel-body">
+      <nav id="table-of-contents"></nav>
+    </div>
+  </div>
+</div>
+<div id="main-wrapper">
+      <div class="main-container"><div class="multipurpose-container post-container">
+  <div class="post-title">Simple Linear regression: Intuitive way</div><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Mar 2, 2022
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;16 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2022-03-03-Simple-linear-regression#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2022-03-03-Simple-linear-regression#disqus_thread'">Comments</a>
+  </small>
+  </div>
+<hr/>
+  <div class="markdown-style">
+    <h3 id="simple-linear-regression">Simple Linear Regression</h3>
+<!-- outline-start -->
+<p>This is a statistical method to establish a linear relationship between
+two quantitative variables such that one variable can give an estimate
+of the other. The variable being estimated is called dependent variable
+and the variable used to estimate is called independent variable or
+regressor.<!-- outline-end --></p>
+
+<p>The first step in linear regression is to find a line of best fit. You
+may ask why do we want to fit a line, and not circle or a quadratic
+function? Well it has to do with one of the most important assumption of
+linear regression which states that there is a linear relationship
+between dependent variable and independent variable thus a linear
+regression with a single predictor can be represented as a equation for
+a line:</p>
+
+\[y = \beta_0 + \beta_1x + \epsilon\]
+
+<p>where,</p>
+
+<p>\(y\) = dependent variable</p>
+
+<p>\(\beta_0\) = y-intercept of the predicted line and the value of
+dependent variable when value of predictor variable \(x\) is 0.</p>
+
+<p>\(\beta_1\) = slope of the line of fit or the coefficient by which
+predictor variable needs to be adjusted to get the predicted value of y
+(\(\hat{y}\)).</p>
+
+<p>\(\epsilon\) = there is always some difference between
+predicted value and the actual value of y which is called error term The
+variance of error term is equal for all observation and denoted by
+\(\sigma^2\).</p>
+
+<p>Lets make a small dummy data where we want to predict the weight of 5
+students by their height.</p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-code1">
+           click for code 
+        </button>
+    </div>
+    <div id="toggle-code1" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5.5</span><span class="p">,</span><span class="w"> </span><span class="m">3.4</span><span class="p">,</span><span class="w"> </span><span class="m">4.4</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="w">
+</span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">140</span><span class="p">,</span><span class="w"> </span><span class="m">120</span><span class="p">,</span><span class="w"> </span><span class="m">145</span><span class="p">,</span><span class="w"> </span><span class="m">170</span><span class="p">)</span><span class="w">
+
+</span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">weight</span><span class="o">~</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"a"</span><span class="p">)</span><span class="w">
+</span><span class="c1">#plot(weight~height, col = "red" , cex = 2, pch =20, ylim = c(0,170), xlim= c(0,6))</span><span class="w">
+
+</span><span class="n">plot</span><span class="p">(</span><span class="n">weight</span><span class="o">~</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="s2">"b"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">143.75</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="m">70.287</span><span class="p">,</span><span class="w"> </span><span class="m">15.225</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"purple"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"green"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="s2">"brown"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="m">-25</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="s2">"darkcyan"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-1-1.svg" data-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-1-1.svg" alt="" /></p>
+
+<p>Fig 1: Simple linear regression</p>
+
+<p>As seen in the scattered plot (figure 1.a), there appears to be some
+form of linear relationship between height and weight and we are very
+tempted to draw a line right across the points. Lets draw some potential
+lines of different color (Figure 1.b) that could be a best line of fit.
+Now how do we find which is the best line of fit? There are several
+algorithms that targets to minimize the sum of square of deviation,
+absolute deviation, lack of fit, or penalty for a cost function (example
+ridge regression and lasso). We will focus to well known and most used
+approach called least squares where the goal is to minimizing the sum of
+square of deviation between predicted and observed value of y. Lets
+implement the least squares in the 6 lines that we have drawn on our
+plot (Figure 1.b). To calculate the sum of square of deviation (SS) for
+each line defined by equation \(y=a+bx\), we need to first predict the
+value of y for given x. Once we have the predicted values, we can find
+the differences between observed and predicted value (aka deviation or
+residual or error in estimate) for all the data points. Followed by
+calculating square of deviation and adding them up to get sum of
+squares. Once we have SS for each line, we can plot those SS by lines to
+visualize the line with least SS. See code below for detail of the
+steps.</p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-code2">
+           click for code 
+        </button>
+    </div>
+    <div id="toggle-code2" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#store each line as a vector of a and b, y=a+bx </span><span class="w">
+</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">143.75</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span><span class="n">purple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">70.287</span><span class="p">,</span><span class="w"> </span><span class="m">15.225</span><span class="p">)</span><span class="w">
+</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w">
+</span><span class="n">brown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="w">
+</span><span class="n">darkcyan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-25</span><span class="p">,</span><span class="w"> </span><span class="m">35</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">red</span><span class="o">=</span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="n">blue</span><span class="o">=</span><span class="n">blue</span><span class="p">,</span><span class="w"> </span><span class="n">purple</span><span class="o">=</span><span class="n">purple</span><span class="p">,</span><span class="w"> </span><span class="n">green</span><span class="o">=</span><span class="n">green</span><span class="p">,</span><span class="w"> </span><span class="n">brown</span><span class="o">=</span><span class="n">brown</span><span class="p">,</span><span class="w"> </span><span class="n">darkcyan</span><span class="o">=</span><span class="n">darkcyan</span><span class="p">)</span><span class="w">
+</span><span class="c1">#write a for loop which will take a line at time and give prediction of weight for each height</span><span class="w">
+</span><span class="c1">#first make a empty list to store predictions </span><span class="w">
+</span><span class="n">predicted_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">6</span><span class="p">)</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">predicted_weight</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="w">
+</span><span class="c1"># take a lines at a time and apply that line equation to all height values </span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">lines</span><span class="p">)){</span><span class="w">
+    </span><span class="n">predicted_weight</span><span class="p">[[</span><span class="n">line</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">sapply</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="n">lines</span><span class="p">[[</span><span class="n">line</span><span class="p">]][</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lines</span><span class="p">[[</span><span class="n">line</span><span class="p">]][</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">})</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="c1">#Now that we have predicted weight value from each line lets first plot </span><span class="w">
+</span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">weight</span><span class="o">~</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"a"</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">lines</span><span class="p">)){</span><span class="w">
+    </span><span class="n">abline</span><span class="p">(</span><span class="n">lines</span><span class="p">[[</span><span class="n">line</span><span class="p">]],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">line</span><span class="p">)</span><span class="w">
+    </span><span class="n">points</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">predicted_weight</span><span class="p">[[</span><span class="n">line</span><span class="p">]],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#Also calculate the SS for each lines </span><span class="w">
+</span><span class="n">deviation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">predicted_weight</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="o">-</span><span class="n">weight</span><span class="p">)</span><span class="w">
+</span><span class="c1">#Square and sum each item in deviation </span><span class="w">
+</span><span class="n">SS</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">deviation</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="c1">##plot SS by the line </span><span class="w">
+</span><span class="n">barplot</span><span class="p">(</span><span class="n">unlist</span><span class="p">(</span><span class="n">SS</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum of squares"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"b"</span><span class="p">)</span><span class="w">
+</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">SS</span><span class="p">)</span><span class="m">-100</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">unlist</span><span class="p">(</span><span class="n">SS</span><span class="p">),</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-2-1.svg" data-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-2-1.svg" alt="" /></p>
+
+<p>Fig 2: Manually calculating least sum of square</p>
+
+<p>Figure 2.a shows the predicted points by each line as the colored dots
+in the respective line. And in the barplot on the right we can see the
+purple line has least sum of squares and is the best line of fit among
+these six lines.</p>
+
+<h3 id="ordinary-least-square">Ordinary Least Square</h3>
+
+<p>In the above example we worked with only six lines and we could easily
+find the best one minimizing the sum of squares, but the extent of
+actual problem is much complex because there could be infinite number of
+lines passing this data. It is essentially a minimization problem and
+fortunately it is a well known and worked out problem in the field of
+mathematics. It is solved using the ordinary least square
+<a href="https://en.wikipedia.org/wiki/Ordinary_least_squares">(OLS)</a> method.
+Under the hood OLS uses principles of calculus, statistics and some
+assumptions to give an estimate of \(\beta_0\) and \(\beta_1\) denoted
+as \(\hat{\beta_0}\) and \(\hat{\beta_1}\) respectively for the line of
+best fit. Although we may skip the details of how this method works, we
+need to be clear about how to interpret them and what are their
+limitations. Following are the equation to calculate \(\hat{\beta_0}\)
+and \(\hat{\beta_1}\).</p>
+
+\[\hat{\beta_1}=\frac{\sum(x-\bar{x})(y-\bar{y})}{\sum(x-\bar{x})^2}= \frac{S_{xy}}{S_{xx}}\]
+
+\[\hat{\beta_0}=\bar{y}-\hat{\beta_1}\bar{x}\]
+
+<h4 id="intuitive-explaination-of-hatbeta_1">Intuitive explaination of \(\hat{\beta_1}\)</h4>
+
+<p>\(\hat{\beta_1}\) is the amount by which a unit change in independent
+variable will make the corresponding change in dependent variable. If
+\(\hat{\beta_1}\) is negative than a unit increase in x will decrease y
+by \(\hat{\beta_1}\). The above equation for \(\hat{\beta_1}\) can also
+be written as below:</p>
+
+\[\hat{\beta_1}= \frac{\text{Sample Covariance between x and y}}{\text{Sample Variance of x}}\]
+
+<p>Which means higher the covariance between x and y higher is the value of
+\(\hat{\beta_1}\) and it is inversely proportional to the variance of
+independent variable.</p>
+
+<h4 id="y-intercept">y-intercept</h4>
+
+<p>These equations may look very technical but have some intuitive
+features. Usually \(\hat{\beta_0}\) is put first but, it is derived from
+\(\hat{\beta_1}\) and it is a constant needed to make the adjustment to
+the line equation so that our line of best fit passes through the point
+\((\bar{x},\bar{y})\). In absence of this intercept term, we force the
+line to pass through origin (0,0) and this may not be good fit for the
+data. Therefore we should always include this intercept term in
+regression equation. \({\beta_0}\) ensures the line of best fit is
+passing through the center of the data \((\bar x, \bar y)\) and sum of
+all the residuals (difference between estimated y and observed y) is
+zero. Other than this, y-intercept does not have any value in explaining
+the relationship between x and y. Although we get p-value and standard
+error for the intercept because of mathematics behind OLS (and
+statistical software like R report it), we should not be tempted to
+force any interpretation to our data using the intercept. Theoretically,
+it is the estimate of y when all the other independent variables have
+value of 0 (no effect of any independent variable at all). In most
+cases, it is impossible to have independent variable to be zero (example
+its impossible to have a student with zero height). Even if your data is
+centered around origin (for example predicting amount of snow by temp in
+winter season), the value of y at the intercept is value of dependent
+variable when there is no independent variable, which is against our
+sole purpose which is to understand the effect of independent variable
+on dependent variable. Intercept should always be taken only as a factor
+used to adjust line of best fit and nothing more than that.</p>
+
+<p>In addition, these estimates have some very useful statistical
+properties: 1. Both \(\hat{\beta_0}\), and \(\hat{\beta_1}\) are an
+estimate of population \({\beta_0}\) and \({\beta_1}\) using the current
+sample of x and y. For example, Instead of just working with 4 students’
+data as in our example, we can have data from 1000 of students, sampling
+10 at a time and for each sample calculate \(\hat{\beta_0}\), and
+\(\hat{\beta_1}\). Doing so for multiple of times (1000 times) will give
+us the sampling distribution of \({\beta_0}\) and \({\beta_1}\).</p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-code3">
+           click for code 
+        </button>
+    </div>
+    <div id="toggle-code3" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="m">566</span><span class="p">)</span><span class="w">
+</span><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mvrnorm</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">143.75</span><span class="p">),</span><span class="w"> </span><span class="n">Sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.6</span><span class="p">,</span><span class="m">0.6</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">heightPop</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">d</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="n">weightPop</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">d</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w">
+
+</span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">))</span><span class="w">
+</span><span class="n">sample_colour</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rainbow</span><span class="p">(</span><span class="m">6</span><span class="p">)</span><span class="w">
+</span><span class="n">six_beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w">
+</span><span class="n">six_beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+    </span><span class="n">s_wt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">weightPop</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w">
+    </span><span class="n">s_he</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">heightPop</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w">
+    </span><span class="n">plot</span><span class="p">(</span><span class="n">weightPop</span><span class="o">~</span><span class="n">heightPop</span><span class="p">,</span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"grey"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s2">"Height"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Weight"</span><span class="w"> </span><span class="p">)</span><span class="w">
+    </span><span class="n">points</span><span class="p">(</span><span class="n">s_he</span><span class="p">,</span><span class="w"> </span><span class="n">s_wt</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="n">sample_colour</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="w"> </span><span class="p">)</span><span class="w">
+    </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">s_wt</span><span class="o">~</span><span class="n">s_he</span><span class="p">)</span><span class="w">
+    </span><span class="n">abline</span><span class="p">(</span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="n">sample_colour</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">
+    </span><span class="n">text</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">s_he</span><span class="p">),</span><span class="m">140.4</span><span class="p">,</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"y= "</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="s2">" + "</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="s2">"x"</span><span class="p">))</span><span class="w">
+    </span><span class="n">six_beta_0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+    </span><span class="n">six_beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="n">beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w">
+</span><span class="n">beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+    </span><span class="n">s_wt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">weightPop</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w">
+    </span><span class="n">s_he</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">heightPop</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w">
+ </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">lm</span><span class="p">(</span><span class="n">s_wt</span><span class="o">~</span><span class="n">s_he</span><span class="p">)</span><span class="w">
+</span><span class="n">beta_0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="n">beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">m</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">hist</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Distribution of beta estimates"</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">six_beta_0</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">sample_colour</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">
+</span><span class="n">hist</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">" (both sampled 1000 times)"</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">six_beta_1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">sample_colour</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg" data-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg" alt="" /></p>
+
+<p>Fig 3: Distribution of regression coefficient</p>
+
+<p>From the plots which shows distribution of 1000 \(\hat{\beta}\)s values
+we can see that it is normally distributed hence we can apply central
+limit theorem to these coefficients as well. Which gives that, the mean
+of such distribution of \(\hat{\beta}\)s is the unbiased estimate of
+\({\beta}\)s and the variance of such distribution of \(\hat{\beta}\)s
+is given by OLS as follows:</p>
+
+\[Var(\hat{\beta_1)}= \sigma^2\frac{1}{S_{xx}}\]
+
+\[Var(\hat{\beta_0)}= \sigma^2 \left( \frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}\right)\]
+
+<p>Where: \(\sigma^2\) is the variance of residuals or error terms. These
+variance terms will be used for performing t-test for each coefficients
+(will see later).</p>
+
+<h4 id="assumptions">Assumptions</h4>
+
+<p>OLS gives us estimate of coefficients and great statistical power but
+there are some limitations. For all the estimates to be valid, following
+assumptions should be fulfilled: - The population under study should
+strongly follows linear model and the parameters correctly specified. -
+The samples were taken randomly from the population (this is the single
+assumption necessary for distribution of sample mean). - There is
+variation in explanatory variable. - Homoskedasticity : The variance of
+residuals (\(\sigma^2\)) is equal for all observation. The deviation we
+can calculate for each observation of y, \(\hat{e}\) called residual is
+a random variable which follows normal distribution, and have mean \(e\)
+and variance equal to \(\sigma^2\). Similar to \(\hat{\beta}\)) if we
+sample 1000 times and see the distribution of residual for each
+observation, it will have normal distribution and the variance needs to
+be same for all observations. - The error term is independent of the
+independent variable.</p>
+
+<h3 id="analysis-of-variance">Analysis of variance</h3>
+
+<p>One we have the line of best fit, we can do inference about the
+statistical significance of the coefficients. Regression when we go back
+to basics is also an analysis of variance just like ANOVA and the only
+difference is, in ANOVA we want to find variance explained by a effect
+and make statistical testing .See the details in <a href="2021-06-14-OneWay-ANOVA">ANOVA</a>. But, in
+regression we will first find a line of best fit and find variance
+explained by the line and do statistical testing to see if the variance
+explained by the line is significantly different than the unexplained
+variance. Lets plot our example of four sample and best line of fit we
+found for it.</p>
+
+<div class="panel-group">
+  <div class="panel panel-default" style="white-space: normal; overflow-x: auto; ">
+        <button data-toggle="collapse" data-target="#toggle-code4">
+           click for code 
+        </button>
+    </div>
+    <div id="toggle-code4" class="panel-collapse collapse">
+      <div class="panel-body">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">weight</span><span class="o">~</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="m">20</span><span class="p">)</span><span class="w">
+    </span><span class="n">abline</span><span class="p">(</span><span class="m">70.287</span><span class="p">,</span><span class="w"> </span><span class="m">15.225</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">)</span><span class="w">
+    </span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">143.75</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+    </span><span class="n">points</span><span class="p">(</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">predicted_weight</span><span class="p">[[</span><span class="m">3</span><span class="p">]],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"purple"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+</div>
+      <div class="panel-footer">done!</div>
+  </div>
+</div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/Regression ANOVA.svg" data-src="/assets/img/posts/simple-linear-regression-_files/figure-markdown/Regression ANOVA.svg" alt="" /></p>
+
+<p>In absence of any independent variable, mean of y \(\bar{y}\) is the
+best estimate of y and total variance is calculated by taking deviation
+of observed values from \(\bar{y}\). This is called <strong>Total Variance</strong>.
+We can estimate this by first calculating sum of square of deviation
+(TSS). Adding squares of all the red colored deviations in above figure
+will give TSS. Just like a normal variance of a sample this TSS has n-1
+<a href="2019-07-01-Degree-of-freedom">degree of freedom</a>.</p>
+
+\[\hat{Var(Total)}= MST= \frac{SST}{n-1}\]
+
+<p>When we have the regression line some of the total variance is explained
+by the line, which can estimated by calculating the Sum of square of
+Regression (SSR). SSR is calculated by by adding up the square of
+deviation between the estimated value of y and mean of y. The sum of
+square of purple colored deviations in the above figure is equal to the
+SSR. The degree of freedom for SSR is equal to the number of
+coefficients in model - 1 (details in <a href="2019-07-01-Degree-of-freedom">degree of freedom</a>) . It is
+equal to the Sum of Square Between (SSB) calculated in ANOVA. The
+estimate of variance explained by regression is mean of SSR (MSR).</p>
+
+\[\hat{Var(Regression)}= MSR= \frac{SSR}{\text{no. of } \beta s - 1}\]
+
+<p>There is always a second component of variance called variance of error
+(\(\sigma^2\)), which represents the variance not explained by
+regression line. It is estimated using Sum of Square of Error (SSE). Sum
+of square of deviation between estimated value of y and observed value
+of y is equal to SSE. In the figure above, sum of square of all black
+deviations is equal to SSE and is equal to the Sum of Square within
+(SSW) in ANOVA. It has degree of freedom equal to n - no. of \(\beta\)s
+and mean of SSE (MSE) is given by following equation.</p>
+
+\[\hat{Var(Error)}= \hat{\sigma ^2}= MSE= \frac{SSE}{n - \text{no. of } \beta s }\]
+
+<p>Once we have MSR, and MSE we can do a F-test similar to the one in
+ANOVA.</p>
+
+\[F  = \frac{MSR}{MSE}\]
+
+<h3 id="equivalent-t-test-for-coefficients">Equivalent t-test for coefficients</h3>
+
+<p>It is also possible to statistically test if each of the coefficients
+used in the model is equal to zero or not. OLS provides necessary
+assumptions and properties to conduct a T-test on coefficients.</p>
+
+\[H_0 : \beta _ 1 = 0\]
+
+\[H_1 : \beta _ 1 \neq  0\]
+
+<p>Although, I am showing for \(\beta _1\) same principle applies to all
+the other coefficients in the model. z-statistic can be calculated using
+following equation:</p>
+
+\[z =\frac{ \hat{\beta_1}-0}{\sqrt{\frac{\sigma^2}{Sxx}}}\]
+
+<p>Because we only have the estimate of \(\sigma^2\), which is equal to
+MSE, we can substitute that but our test statistic will now follow
+t-distribution.</p>
+
+\[t= \frac{ \hat{\beta_1}-0}{\sqrt{\frac{MSE}{Sxx}}}\]
+
+<p>This t-statistics will have the same degree of freedom as MSE ie n - no.
+of \(\beta\)s and the term \(\sqrt{\frac{MSE}{Sxx}}\) is called
+<strong>Standard Error</strong> in measure of \(\hat{\beta_1}\)</p>
+
+<p>Lets now compare the result of anova and manually calculated values</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">aov</span><span class="p">(</span><span class="n">weight</span><span class="o">~</span><span class="n">height</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Call:
+##    aov(formula = weight ~ height)
+## 
+## Terms:
+##                   height Residuals
+## Sum of Squares  938.2682  330.4818
+## Deg. of Freedom        1         2
+## 
+## Residual standard error: 12.85461
+## Estimated effects may be unbalanced
+</code></pre></div></div>
+
+<p>REF
+<a href="https://statisticsbyjim.com/regression/interpret-constant-y-intercept-regression/">1</a>
+<a href="https://scholar.princeton.edu/sites/default/files/bstewart/files/lecture5handout.pdf">2</a></p>
+<hr>
+<div class="share-holder">
+  <span class="share-label">Share on: </span>
+  <ul class="share-buttons">
+    
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-03-03-Simple-linear-regression&amp;text=Simple%20Linear%20regression:%20Intuitive%20way%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
+          <i class="fa fa-twitter-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-03-03-Simple-linear-regression" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
+          <i class="fa fa-facebook-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-03-03-Simple-linear-regression&amp;text=Simple%20Linear%20regression:%20Intuitive%20way%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
+          <i class="fa fa-telegram fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-03-03-Simple-linear-regression" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
+          <i class="fa fa-linkedin-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="mailto:?subject=Simple%20Linear%20regression:%20Intuitive%20way%20-%20Data%20churn%20by%20AK&amp;body=Simple%20Linear%20regression:%20Intuitive%20way%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-03-03-Simple-linear-regression" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
+          <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2022-03-03-Simple-linear-regression', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
+          <i class="fa fa-link fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+</div>
+</div>
+
+    <div class="pagination_wrapper">
+  <nav aria-label="Page navigation">
+    <ul class="pagination" style="opacity:0">
+    <li><a href="javascript:void(0);">1</a></li></ul>
+  </nav>
+</div>
+
+  <div id="disqus_thread"></div>
+
+<noscript>
+  Please enable JavaScript to view the Comments.
+</noscript>
+
+
+</div><div class="footer-wrapper">
+  <div class="footer-container">
+    <footer translate="no">
+      <div class="footer-text footer-text-centered long-copyright">
+          <p>&copy; 2022 Data churn by AK. </p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" data-tooltip-no-hide title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
+              <img src="/assets/img/default/cc/cc.svg" alt="cc" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/by.svg" alt="by" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/sa.svg" alt="sa" width="12" height="12">&nbsp;<p>Some rights reserved.</p>
+            </a></div>
+      <p class="footer-powered"><span>Pwrd by </span><a href="https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme" target="_blank" rel="noopener noreferrer">Mr. Green</a></p>
+    </footer>
+  </div>
+</div>
+<div class="scroll-to-top-container">
+        <a id="scroll-to-top" href="#main-wrapper" class="hover-effect"><i class="fa fa-angle-up"></i></a>
+      </div></div>
+
+    <div class="searchbox-container">
+  <form id="searchbox-form" >
+    <input type="search" id="search-box" placeholder="Search"
+    onkeyup="if(this.value!==''){document.getElementById('search-results').style.display = 'block';}"
+    onfocusout="this.value='';"
+    onblur="setTimeout(function(){ document.getElementById('search-results').style.display = 'none'; }, 100);">
+    <ul id="search-results" ></ul>
+  </form>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<script src="/assets/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+      $('.imgViewer[data-no-image-viewer]').css("cursor", "unset");
+      $(function () {
+        $('.imgViewer:not([data-no-image-viewer])').magnificPopup({
+          type: 'image'
+          ,image: {
+            titleSrc: 'alt'
+            /* Error message */
+            ,tError: 'The image could not be loaded.<br><br>%url%'
+            /* Set to null to disable zoom out cursor. */
+            /*,cursor: null */
+          }
+          ,closeOnContentClick: true
+          ,showCloseBtn: false
+          ,zoom: {
+            /* By default it's false, so don't forget to enable it */
+            enabled: true
+            /* duration of the effect, in milliseconds */
+            ,duration: 300
+            /* CSS transition easing function */
+            ,easing: 'ease-in-out'
+          }
+        });
+      });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js"></script>
+    <script>
+      /* lazy loads elements with default selector as '.lozad' */
+      const observer = lozad();
+      observer.observe();
+    </script>
+
+<script>
+      PagerPageNumbers.setProperties({
+        paginatorListContainerName: ".pagination_wrapper .pagination"
+        ,pageList: ["/posts/2022-03-03-Simple-linear-regression", "/posts/2022-01-13-Principle-of-inference", "/posts/2021-06-14-OneWay-ANOVA", "/posts/2020-02-07-ChiSquare-Distribution", "/posts/2019-11-01-Expected-value", "/posts/2019-07-01-Degree-of-freedom", "/posts/2018-12-02-Mean-N-Variance", "/posts/2018-06-22-Permutation-n-Combination"]
+        ,firstButtonName: 'First'
+        ,lastButtonName: 'Last'
+        ,prevButtonName: "«"
+        ,nextButtonName: "»"
+      });
+    </script>
+
+
+
+<script src="/assets/js/simple-jekyll-search-1.9.2.min.js"></script><script>
+  function loadSearch(jsonData, searchParam) {
+    if (!jsonData) jsonData = '/query/search.json';
+    var searchInput = document.getElementById('search-box');
+
+    const simpleJekyllSearch = SimpleJekyllSearch({
+      searchInput: searchInput
+      ,resultsContainer: document.getElementById('search-results')
+      ,json: jsonData
+      ,searchResultTemplate: '<li><a href="{url}">{title}<span>{date}</span></a></li>'
+      ,noResultsText: '<li>No results found.</li>'
+      ,limit: 10
+      ,fuzzy: false
+    });
+
+    if (searchParam) {
+      searchInput.value = searchParam;
+      searchInput.focus();
+      searchInput.disabled=false;
+      setTimeout(function(){
+        simpleJekyllSearch.search(searchParam);
+      }, 400);
+    }
+  }
+
+  </script>
+
+<script>
+    function isEmpty(value) {
+      if (value === "" || value === null || typeof value === "undefined") return true;
+      return false;
+    }
+
+    function getQueryParam (param, mach = true) {
+      var queryString = window.location.search.substring(1);
+      if (isEmpty(queryString)) return null;
+      var queries = queryString.split("&");
+      for (var i in queries) {
+        var pair = decodeURIComponent(queries[i]).split("=");
+        if (mach == true){
+          if (pair[0] == param) {
+            if (isEmpty(pair[1]) === false) return pair[1];
+          }
+        }else{
+          return pair;
+        }
+        break;
+      }
+      return null;
+    }
+
+    const searchParam = getQueryParam('search');
+
+    (async () => {
+      let resp = await fetch('/query/search.json');
+      if (!resp.ok) return;
+      let jsonData = await resp.json();
+      loadSearch(jsonData, searchParam);
+    })();
+  </script>
+<script>
+  const disqus_consent_msg = true;
+  var disqus_config = function () {
+    this.language = "en";
+    this.page.url = 'http://localhost:4000/posts/2022-03-03-Simple-linear-regression';
+    this.page.identifier = '/posts/2022-03-03-Simple-linear-regression';
+  };
+
+  function disqusLoader() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-datachurnbyak-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+
+  /* reload when data-color-scheme changes. (dark, light) */
+  function disqusReloader() {
+    if (typeof DISQUS === "undefined") return;
+    DISQUS.reset({
+      reload: true
+      ,config: disqus_config
+    });
+  }
+  const color_scheme_observer = new MutationObserver(disqusReloader);
+  color_scheme_observer.observe(document.body, {attributeFilter: ["data-color-scheme"]});
+  /* comments load mode */
+  let discusLoadDoNotAskStorageKey = "disqusLoadDoNotAskAgain";
+
+  function add_click_to_load_button() {
+    if (localStorage.getItem(discusLoadDoNotAskStorageKey)) disqusLoader();
+
+    /* create element */
+    let newElement = document.createElement("div");
+
+    if (disqus_consent_msg == true) {
+      newElement.innerHTML = "<div class=\"multipurpose-container\" style=\"margin:20px\"> <h4 style=\"margin-top: 0;\">Comments (Disqus.com)</h4> <p> Comment feature is hosted by a third party. By showing the external content you accept the <a href=\"https://help.disqus.com/en/articles/1717102-terms-of-service\" target=\"_blank\" rel=\"noopener noreferrer\">Terms of Service</a> and <a href=\"https://help.disqus.com/en/articles/1717103-disqus-privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a> of disqus.com. <br>If you prefer to opt out of targeted advertising, open <a href=\"https://disqus.com/data-sharing-settings\" target=\"_blank\" rel=\"noopener noreferrer\">this link</a> and click \"opt-out\" button and close. Return here and load comments. </p> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority load_comments\" data-comment-always-load role=\"button\">Always show</a> &nbsp;<a href=\"javascript:void(0);\" class=\"btn-base load_comments\" role=\"button\">Show only this time</a> </div>";
+    } else {
+      newElement.innerHTML = '<a href="javascript:void(0);" class="btn-base load_comments" role="button">Load Comments</a>';
+      newElement.style.textAlign = 'center';
+      newElement.style.minHeight = '20px';
+    }
+
+    /* add button */
+    let holder = document.querySelector('#disqus_thread');
+    if (!holder) return;
+    holder.appendChild(newElement);
+    /* add button click event */
+    let buttons = document.querySelectorAll('#disqus_thread .load_comments');
+    if (!buttons) return;
+    buttons.forEach(function (button) {
+      button.addEventListener('click', buttonCallback);
+    });
+
+    function buttonCallback(e) {
+      disqusLoader();
+      /* scroll to page bottom to see comments. */
+      document.getElementById('disqus_thread').style.height = '394px';
+      window.scrollTo(0, document.body.scrollHeight);
+      if (e.target.hasAttribute('data-comment-always-load')) {
+        localStorage.setItem(discusLoadDoNotAskStorageKey, true);
+      }
+    };
+  }
+  /* load when slide to the end of page */
+  window.addEventListener("load", add_click_to_load_button);
+  </script>
+
+
+    <script id="dsq-count-scr" src="https://https-datachurnbyak-github-io.disqus.com/count.js" async></script>
+    <script>
+        if (window.location.hash == "#disqus_thread") {
+          let element = document.getElementById('disqus_thread');
+          $("html, body").animate({ scrollTop: $(element).offset().top }, 600);
+        }
+      </script>
+     
+
+
+<script>
+  CookieConsent.consentSettingHtml = "<h5>Cookie settings</h5> <br> <p class=\"info-text\">This website uses cookies to optimize site functionality. It will be activated with your approval. Please click each item below for cookie policy. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <table> <tr> <td onclick=\"$('.info[data-consent-info=necessary]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Strictly necessary cookies</p> </td> <td> <span class=\"active_text\">Always active</span></td> </tr> </table> <div class=\"info\" data-consent-info=\"necessary\"> <p>These cookies are essential for the website function and cannot be disable. They are usually set when site function like color scheme etc. is changed. These cookies do not store any personally identifiable information. Enables storage related to security such as authentication functionality, fraud prevention, and other user protection. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=analytics]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Performance cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" checked=\"checked\" data-consent=\"analytics\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"analytics\"> <p>Enables storage (such as cookies) related to analytics e.g. visit duration. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=preferences]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Functionality cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"preferences\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"preferences\"> <p>Enables storage that supports the functionality of the website or app e.g. language settings. Enables storage related to personalization e.g. video recommendations. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=advertising]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Targeting and advertising cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"advertising\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"advertising\"> <p>Enables storage (such as cookies) related to advertising. </p> </div> <br> <div class=\"button-holder\"> <a href=\"javascript:void(0);\" class=\"btn-base btn-left\" onclick=\"CookieConsent.consentSettingDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentSettingDone('accept');\" role=\"button\">Allow all</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentSettingDone('save');\" role=\"button\">Allow selection</a> </div>";
+  CookieConsent.consentBarHtml = "<div class=\"consent-bar\"> <a class=\"close-button\" href=\"javascript:void(0);\" onclick=\"CookieConsent.hideConsentBar();\"><i class=\"fa-fw fa fa-times\"></i></a> <p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('settings');\" role=\"button\">Customize</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentBarDone('accept');\" role=\"button\">Allow all</a> </div>";
+  CookieConsent.consent_items = JSON.parse('{"necessary":{"group":["security_storage"],"value":"granted","wait_for_update":500,"cookie_domain":"","no_check_box":true},"analytics":{"group":["analytics_storage"],"value":"denied"},"preferences":{"group":["functionality_storage","personalization_storage"],"value":"denied"},"advertising":{"group":["ad_storage"],"value":"denied"}}');
+  CookieConsent.hideConsentBarWithSaveButton = true;
+
+  const consent_settings = CookieConsent.getConsentSettings();
+  const default_configs = JSON.parse('{"anonymize_ip":true,"ads_data_redaction":true,"cookie_flags":"SameSite=None;Secure"}');
+</script>
+</body>
+</html>
+

@@ -73,8 +73,8 @@
     ,"isPartOf": {"@id": "http://localhost:4000/#website"}
     ,"breadcrumb": {"@id": "http://localhost:4000/tabs/blog/#breadcrumb"}
     ,"primaryImageOfPage": "http://localhost:4000/assets/img/about/about.jpg"
-    ,"datePublished": "2022-07-18T03:34:12-05:00"
-    ,"dateModified": "2022-07-18T03:34:12-05:00"
+    ,"datePublished": "2022-07-18T19:59:34-05:00"
+    ,"dateModified": "2022-07-18T19:59:34-05:00"
     ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
     ,"inLanguage": "en-US"
     ,"potentialAction": {
@@ -197,6 +197,9 @@
       <div id="tab2" class="tab-pane link-buttons">
         <ul class="nav nav-pills">
   <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','regression');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Regression</a>
+  </li>
+  <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','t-test');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>T-test</a>
   </li>
   <li>
@@ -213,6 +216,15 @@
   </li>
   <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','distribution');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Distribution</a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','anova');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Anova</a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','population difference');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Population difference</a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','f test');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>F test</a>
   </li>
   <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','degree of freedom');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Degree of freedom</a>
@@ -236,6 +248,12 @@
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','bias');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Bias</a>
   </li>
   <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','mean');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Mean</a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','variance');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Variance</a>
+  </li>
+  <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('tags','permutation');" class="hover-effect"><i class="fa-fw fa fa-tag" aria-hidden="true"></i>Permutation</a>
   </li>
   <li>
@@ -246,6 +264,9 @@
         <ul class="nav nav-pills">
   <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('year','2022');" class="hover-effect"><i class="fa-fw fa fa-calendar-o" aria-hidden="true"></i>2022</a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('year','2021');" class="hover-effect"><i class="fa-fw fa fa-calendar-o" aria-hidden="true"></i>2021</a>
   </li>
   <li>
     <a href="javascript:void(0);" data-query-link onclick="PostQuery.runQuery('year','2020');" class="hover-effect"><i class="fa-fw fa fa-calendar-o" aria-hidden="true"></i>2020</a>
@@ -271,6 +292,27 @@
 <div class="post-list-header"></div>
 <div class="post-list-container">
   <div class="thumbnails" >
+  <a href="/posts/2022-03-03-Simple-linear-regression"></a>
+  <div class="image-holder" style="background-image:url('/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg');"></div>
+  <div class="excerpt-holder" >
+    <div class="post-title">Simple Linear regression: Intuitive way</div>
+    <p>This is a statistical method to establish a linear relationship between two quantitative variables such that one variable can give an estimate of the other....</p><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Mar 2, 2022
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;16 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2022-03-03-Simple-linear-regression#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2022-03-03-Simple-linear-regression#disqus_thread'">Comments</a>
+  </small>
+  </div>
+</div>
+</div>
+
+  <div class="thumbnails" >
   <a href="/posts/2022-01-13-Principle-of-inference"></a>
   <div class="image-holder" style="background-image:url('/assets/img/posts/Principle-of-Infernce_files/figure-markdown/Alldistributions.png');"></div>
   <div class="excerpt-holder" >
@@ -280,12 +322,33 @@
     &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Jan 12, 2022
   </small>
   <small>
-    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;32 min read</span>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;33 min read</span>
   </small>
   
   <small class="meta-link" >
     &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2022-01-13-Principle-of-inference#disqus_thread">-</a>
     <a href="javascript:void(0);" onclick="window.location.href='/posts/2022-01-13-Principle-of-inference#disqus_thread'">Comments</a>
+  </small>
+  </div>
+</div>
+</div>
+
+  <div class="thumbnails" >
+  <a href="/posts/2021-06-14-OneWay-ANOVA"></a>
+  <div class="image-holder" style="background-image:url('/assets/img/posts/OneWayAnova_files/figure-markdown/head one way ANOVA.svg');"></div>
+  <div class="excerpt-holder" >
+    <div class="post-title">One-Way ANOVA: Learn by experimenting with data.</div>
+    <p>  T-test is a popular method of comparing means between two populations but if we want to extend it beyond two populations there is serious decrease...</p><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Jan 12, 2021
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;17 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2021-06-14-OneWay-ANOVA#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2021-06-14-OneWay-ANOVA#disqus_thread'">Comments</a>
   </small>
   </div>
 </div>
@@ -349,6 +412,27 @@
   <small class="meta-link" >
     &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2019-07-01-Degree-of-freedom#disqus_thread">-</a>
     <a href="javascript:void(0);" onclick="window.location.href='/posts/2019-07-01-Degree-of-freedom#disqus_thread'">Comments</a>
+  </small>
+  </div>
+</div>
+</div>
+
+  <div class="thumbnails" >
+  <a href="/posts/2018-12-02-Mean-N-Variance"></a>
+  <div class="image-holder" style="background-image:url('/assets/img/posts/meanVar.svg');"></div>
+  <div class="excerpt-holder" >
+    <div class="post-title">Mean and Variance; covering the base</div>
+    <p>It is very important to understand the measure of central tendency, mean and measure of dispersion, variance in statistics.</p><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Dec 1, 2018
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;4 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2018-12-02-Mean-N-Variance#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2018-12-02-Mean-N-Variance#disqus_thread'">Comments</a>
   </small>
   </div>
 </div>
@@ -444,7 +528,7 @@
       ,resultQueryDisplayMode: PostQuery.outMode.scroll_to_load
       /* scroll_to_load opt, approx. thumb height to calculate how many can be loaded on screen */
       ,thumb_height: 140
-      ,paginator_post_per_page: 5
+      ,paginator_post_per_page: 20
     });</script>
 
 <script src="/assets/js/simple-jekyll-search-1.9.2.min.js"></script><script>
