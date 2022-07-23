@@ -11,7 +11,7 @@ category: Statistics
 # multiple tag entries are possible
 tags: [t-test, hypothesis testing, inference, null hypothesis, alternative hypothesis , distribution ]
 # thumbnail image for post
-img: ":Principle-of-Infernce_files/figure-markdown/Alldistributions.png"
+img: ":Principle-of-Infernce_files/figure-markdown/unnamed-chunk-2-1 copy.svg"
 # disable comments on this page
 #comments_disable: true
 

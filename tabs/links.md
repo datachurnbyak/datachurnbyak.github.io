@@ -47,23 +47,51 @@ page_data:
     - title: "Bioinformatics"
       type: id_bioinformatics
       color: "#800020"
+    - title: "Data Visualization"
+      type: id_dataViz
+      color: "#3F6104"
+    - title: "Programming"
+      type: id_programming
+      color: "#62b462"
+    - title: "Statistics"
+      type: id_Stat
+      color: "#0080aa"
+
     - title: "JekyII / Liquid"
       type: id_jekyiiliquid
       color: "gray"
     - title: "Web Design"
       type: id_webdesign
       color: "#F4A273"
-    - title: "Programming"
-      type: id_programming
-      color: "#62b462"
+
 
   list:
-    -
+    - type: id_Stat
+      title: Random Services
+      url: https://www.randomservices.org/random/dist/index.html
+      info: "Excellent resource for in-depth understanding of statistics "
+
+    - type: id_dataViz
+      title: Dataviz Inspiration  
+      url: https://www.dataviz-inspiration.com/
+      info: "Visualize hundreds of methods by which data can be visualized."
+
+    # data viz
+    - type: id_dataViz
+      title: ggplot2  
+      url: https://ggplot2-book.org/coord.html
+      info: "ggplot2: Elegant Graphics for Data Analysis By Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen." 
+
+    - type: id_dataViz
+      title: Data visualization 
+      url: https://clauswilke.com/dataviz/index.html
+      info: "Fundamentals of Data Visualization: A primer on making informative and compelling figures - By Claus O. Wilke ."
+
     # programming
     - type: id_programming
-      title: "Stack OverFlow"
-      url: "https://stackoverflow.com/"
-      info: "Stack Overflow is a question and answer website for professional and enthusiastic programmers."
+      title: "Advanced R"
+      url: "https://adv-r.hadley.nz/"
+      info: "Advanced R: Second edition by Hadley Wickham"
 
     # jekyiiliquid
     - type: id_jekyiiliquid

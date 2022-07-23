@@ -9,7 +9,7 @@ xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
     <loc>http://localhost:4000/posts/2022-03-03-Simple-linear-regression</loc>
     <lastmod>2022-03-02T17:11:06-06:00</lastmod>
     <image:image>
-      <image:loc>http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg</image:loc>
+      <image:loc>http://localhost:4000/assets/img/posts/simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1%20copy.svg</image:loc>
       <image:title>Simple Linear regression: Intuitive way</image:title>
     </image:image>
   </url>
@@ -17,7 +17,7 @@ xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
     <loc>http://localhost:4000/posts/2022-01-13-Principle-of-inference</loc>
     <lastmod>2022-01-12T17:11:06-06:00</lastmod>
     <image:image>
-      <image:loc>http://localhost:4000/assets/img/posts/Principle-of-Infernce_files/figure-markdown/Alldistributions.png</image:loc>
+      <image:loc>http://localhost:4000/assets/img/posts/Principle-of-Infernce_files/figure-markdown/unnamed-chunk-2-1%20copy.svg</image:loc>
       <image:title>Principle of inference</image:title>
     </image:image>
   </url>
@@ -33,7 +33,7 @@ xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
     <loc>http://localhost:4000/posts/2020-02-07-ChiSquare-Distribution</loc>
     <lastmod>2020-02-06T17:11:06-06:00</lastmod>
     <image:image>
-      <image:loc>http://localhost:4000/assets/img/posts/chisquared-distribution_files/figure-markdown/unnamed-chunk-3-1.svg</image:loc>
+      <image:loc>http://localhost:4000/assets/img/posts/chisquared-distribution_files/figure-markdown/unnamed-chunk-3-1%20copy.svg</image:loc>
       <image:title>Chi squared distribution</image:title>
     </image:image>
   </url>

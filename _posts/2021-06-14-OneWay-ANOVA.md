@@ -65,6 +65,7 @@ within the groups.
 set.seed(3456)
 par(mfrow=c(1,2), mai= c(1,0,1,0))
 #population defined by mean and variance 
+#Scenario I
 poplist <- list(pop1=c(22, 4) , pop2= c(25, 4), pop3 = c(30, 6), pop4= c(34,3))
 pop_col = c("blue", "darkgreen", "red", "purple")
 shade = c(rgb(0,0,255, max=255,alpha=100),
@@ -78,7 +79,7 @@ for(i in seq_along(poplist)){
     curve(dnorm(x, mean=poplist[[i]][1], sd=sqrt(poplist[[i]][2])), col=pop_col[i], lwd=2,add=T)
 }
 
-#population defined by mean and variance 
+#Scenario II
 poplist <- list(pop1=c(22, 10) , pop2= c(25, 11), pop3 = c(30, 12), pop4= c(34,13))
 pop_col = c("blue", "darkgreen", "red", "purple")
   

@@ -11,7 +11,7 @@ category: Statistics
 # multiple tag entries are possible
 tags: [regression]
 # thumbnail image for post
-img: ":simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1.svg"
+img: ":simple-linear-regression-_files/figure-markdown/unnamed-chunk-3-1 copy.svg"
 # disable comments on this page
 #comments_disable: true
 

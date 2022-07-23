@@ -11,7 +11,7 @@ category: Statistics
 # multiple tag entries are possible
 tags: [degree of freedom, expected value, sample variance, Chi squared]
 # thumbnail image for post
-img: ":chisquared-distribution_files/figure-markdown/unnamed-chunk-3-1.svg"
+img: ":chisquared-distribution_files/figure-markdown/unnamed-chunk-3-1 copy.svg"
 # disable comments on this page
 #comments_disable: true
 

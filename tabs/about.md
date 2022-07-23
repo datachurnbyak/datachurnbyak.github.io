@@ -84,3 +84,6 @@ Tamang, Kamal, Pashupati Shrestha, Amrit Koirala, Jagat Khadka, Narayan
 Gautam, and Komal Raj Rijal. 2018. “Prevalence of Bacterial Uropathogens
 Among Diabetic Patients Attending Padma Nursing Hospital of Western
 Nepal.”
+
+<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="amrit-koirala-41037392" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/amrit-koirala-41037392?trk=profile-badge">Amrit koirala</a></div>
+              
