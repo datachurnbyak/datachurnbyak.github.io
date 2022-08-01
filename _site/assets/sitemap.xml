@@ -14,6 +14,30 @@ xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
     </image:image>
   </url>
   <url>
+    <loc>http://localhost:4000/posts/2022-02-05-Python-Data-Structures</loc>
+    <lastmod>2022-10-31T18:11:06-05:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/builtinPython.jpg</image:loc>
+      <image:title>Python data structures (compared to R)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:4000/posts/2022-02-03-Objects-in-R</loc>
+    <lastmod>2022-02-02T17:11:06-06:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg</image:loc>
+      <image:title>Objects in R</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:4000/posts/2022-02-10-Matrix</loc>
+    <lastmod>2022-01-31T17:11:06-06:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/Essence-of-Linear-Algebra-with-Python_files/figure-markdown/head.svg</image:loc>
+      <image:title>Essence of Matrix operations with Python</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>http://localhost:4000/posts/2022-01-13-Principle-of-inference</loc>
     <lastmod>2022-01-12T17:11:06-06:00</lastmod>
     <image:image>

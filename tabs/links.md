@@ -70,6 +70,10 @@ page_data:
       title: Random Services
       url: https://www.randomservices.org/random/dist/index.html
       info: "Excellent resource for in-depth understanding of statistics "
+    - type: id_Stat
+      title: ML with Andrew Ng
+      url: https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN
+      info: "Full course on ML provided by Andrew Ng from Stanford University. 112 videos covering topics on ML and AI. "
 
     - type: id_dataViz
       title: Dataviz Inspiration  

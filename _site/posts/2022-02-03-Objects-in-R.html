@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Data churn by AK - Objects in R</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</noscript>
+
+
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="manifest" href="/assets/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Data churn by AK's App">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="application-name" content="Data churn by AK's App">
+  <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+
+    <meta name="keywords" content="R, R-objects, S3 objects in R, S4 objects in R">
+
+  <meta name="description" content="Objects in R">
+  <meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objects in R">
+<meta name="twitter:site" content="@amritkoirala1">
+<meta name="twitter:description" content="Objects in R">
+<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg">
+<meta property="og:site_name" content="Data churn by AK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objects in R">
+<meta property="og:description" content="Objects in R">
+<meta property="og:url" content="http://localhost:4000/posts/2022-02-03-Objects-in-R">
+<meta property="og:image" content="http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg">
+  <meta property="article:author" content="Amrit Koirala">
+  <meta property="article:published_time" content="2022-02-02T17:11:06-06:00">
+  <meta property="article:modified_time" content="2022-02-02T17:11:06-06:00">
+  <meta property="article:section" content="R">
+  <meta property="article:tag" content="R-objects">
+  <meta property="article:tag" content="S3 objects in R">
+  <meta property="article:tag" content="S4 objects in R">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org"
+  ,"@graph": [
+    {
+      "@type": "Person"
+      ,"@id": "http://localhost:4000/#person"
+      ,"name": "Amrit Koirala"
+      ,"url": "http://localhost:4000/tabs/about.html"
+      ,"image": "http://localhost:4000/assets/img/about/about.jpg"
+      ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+  },{
+    "@type": "WebSite"
+    ,"@id": "http://localhost:4000/#website"
+    ,"url": "http://localhost:4000/"
+    ,"name": "Data churn by AK"
+    ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+    ,"publisher": {"@id": "http://localhost:4000/#person"}
+    ,"inLanguage": "en-US"
+    ,"sameAs": ["https://www.github.com/akoirala2000","https://www.linkedin.com/in/amrit-koirala-41037392","https://www.twitter.com/amritkoirala1"]
+    ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+    ,"copyrightYear" : "2022"
+  },{
+    "@type": "WebPage"
+    ,"@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#webpage"
+    ,"url": "http://localhost:4000/posts/2022-02-03-Objects-in-R"
+    ,"name": "Objects in R"
+    ,"isPartOf": {"@id": "http://localhost:4000/#website"}
+    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#breadcrumb"}
+    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg"
+    ,"datePublished": "2022-02-02T17:11:06-06:00"
+    ,"dateModified": "2022-02-02T17:11:06-06:00"
+    ,"description": "Objects in R"
+    ,"inLanguage": "en-US"
+    ,"potentialAction": {
+      "@type": "ReadAction"
+      ,"target": "http://localhost:4000/posts/2022-02-03-Objects-in-R"
+    }
+  },{
+      "@type": "BreadcrumbList",
+      "@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem"
+          ,"position": 1
+          ,"name": "Home"
+          ,"item": "http://localhost:4000/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 2
+          ,"name": "Notes"
+          ,"item": "http://localhost:4000/tabs/blog/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 3
+          ,"name": "Objects in R"
+        }
+      ]
+    },{
+      "@type": "BlogPosting"
+      ,"@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#content"
+      ,"isPartOf": {"@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#webpage"}
+      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2022-02-03-Objects-in-R#webpage"}
+      ,"publisher": {"@id": "http://localhost:4000/#person"}
+      ,"author": {"@id": "http://localhost:4000/#person"}
+      ,"inLanguage": "en-US"
+      ,"headline": "Objects in R"
+      ,"image": "http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg"
+      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/Objects_in_r_figs/Robjects.jpg"
+      ,"datePublished": "2022-02-02T17:11:06-06:00"
+      ,"dateModified": "2022-02-02T17:11:06-06:00"
+      ,"articleSection": ["R", "R-objects", "S3 objects in R", "S4 objects in R"]
+      ,"description": "Objects in R"
+      ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+      ,"copyrightYear" : "2022"
+      ,"wordCount": 1567
+      ,"articleBody": "Objects in R R by design is a functional programming language hence the original objects designed to represent variables, functions, environments and various language components are different than the objects used in true Object Oriented Programs. True OOP-like objects S3, S4 were added in different time during the evolution of R and build upon the base R objects. The function typeof() gives the base-type of any objects (including S3, S4) in R. Another function mode() gives similar output but groups integers and double as numeric. There are 25 different types of base R objects but six are worth mentioning as they are used to represent variable/data set and most commonly encountered by R users. Logical: TRUE or FALSE / 1 or 0 Double: Numbers with decimal values Integer: Numbers without decimal values Character: strings NULL : No value List: List of any combination of above five types All the other data types we make in R like matrix, array, data.frame, tibble etc. are derived almost entirely from these 6 object types. But before going to that it is important clarify some terms. 1. Atomic object : If an object cannot hold its own object type inside itself it is called atomic object. For example: a vector of logical, double, integer, character and NULL. The values in atomic objects are stored in unique memory locations. Can be represented like the figure below: Fig 1: atomic Vector figure The function is.atomic() is always true for logical, double, integer, character and NULL objects even if they have higher dimensions or name attribute. NB: For each of the atomic object type these is a special value “NA”, which represent missing values and missing values can be identified by using function is.na(). a_logic &lt;- as.logical(sample(0:1, 12, replace=T)) #create a logical of length 12 a_double &lt;- rnorm(12) #create a double of length 12 an_integer &lt;- 1:12 #create an integer a_char &lt;- letters[1:12] #create a character a_null&lt;- NULL ##See what type of object they are: typeof(a_logic) ## [1] \"logical\" # typeof(a_double) # typeof(an_integer) # typeof(a_char) # typeof(a_null) ##See if they are atomic or not is.atomic(a_logic) ## [1] TRUE # is.atomic(a_double) # is.atomic(an_integer) # is.atomic(a_char) # is.atomic(a_null) ##They will remain as atomic even after adding higher dimensions dim(an_integer) &lt;- c(3,4) is.atomic(an_integer) #Still true ## [1] TRUE 2. Recursive object: These are the objects which can hold its own object type within itself. For example list can contain another list inside itself. It is represented by following figure. Fig 2: list object figure The opposite of function is.atomic() is is.recursive(). a_list &lt;- list(1:9, 2:4, \"a\", 3:5) is.atomic(a_list) #FALSE ## [1] FALSE is.recursive(a_list) #TRUE ## [1] TRUE Fig 3: Types of objects in R Attributes Attributes are the metadata associated with each R-objects. This metadata further controls how an object is processed inside R and how we perceive an object to be. One of the simplest attribute is name which gives a name to each value in a vector. Vector Any base R objects can be a vector (including a list) as long as it has no any attributes or single attribute name. Use the function attributes() to get all the attributes associated with a object and function attr() to get a specific attribute. Once other attributes like dim or class are added it is no more called a vector and the function is.vector() will be FALSE. attributes(a_double) # the vector we created has no attributes, gives NULL ## NULL is.vector(a_list) ##A simple list is also a vector ## [1] TRUE names(a_list) &lt;- c(\"list1\", \"list2\",\"list3\", \"list4\") a_list #print named list ## $list1 ## [1] 1 2 3 4 5 6 7 8 9 ## ## $list2 ## [1] 2 3 4 ## ## $list3 ## [1] \"a\" ## ## $list4 ## [1] 3 4 5 is.vector(a_list) #it is still a vector ## [1] TRUE Matrix Adding another attribute dim makes a vector (including a list although less common in practice) into a array. Matrix is a special case of array where we have only two dimensions (rows and columns). Matrix is treated as special because it is in the form in which many data are represented (a table with rows and columns.). Therefore there are some function in R that are specific to a matrix like (rownames(), colnames(), nrow(), ncol(), rbind(), cbind(), t()) which also applies to a data.frame in R. One major difference between matrix and data.frame is base data type of matrix is atomic type (character, integer, double …) but data.frame is stored as a list. Because of the nature of atomic objects, matrix build from atomic objects should have same datatype in all columns. dim(a_double) &lt;- c(3,4) #this makes a matrix out of variable a_double with 3 rows and 4 columns and filled columns first a_double ## [,1] [,2] [,3] [,4] ## [1,] 0.9822688 -0.07954649 1.62053229 -1.46717395 ## [2,] -0.7089867 -0.10584293 -1.47000813 1.81499311 ## [3,] -0.3611035 1.41759061 -0.03876332 0.04078724 is.vector(a_double) #It is no more a vector ## [1] FALSE is.atomic(a_double) #But is still a atomic ## [1] TRUE dim(a_list) &lt;- c(2,2) # a matrix of list can also be made but it won't look like a data.frame a_list ## [,1] [,2] ## [1,] integer,9 \"a\" ## [2,] integer,3 integer,3 Array When a object has 2 or more dimension as attribute it is called a array. dim(a_double) &lt;- c(2,3,2) a_double # The third dimension is shown by breaking the table, it can be regarded as two 2X3 tables ## , , 1 ## ## [,1] [,2] [,3] ## [1,] 0.9822688 -0.36110347 -0.1058429 ## [2,] -0.7089867 -0.07954649 1.4175906 ## ## , , 2 ## ## [,1] [,2] [,3] ## [1,] 1.620532 -0.03876332 1.81499311 ## [2,] -1.470008 -1.46717395 0.04078724 Class and S3 object Attribute class is very important because it powers the whole OOP in R. Once a R base object has class attribute it is called a S3 object. Commonly used S3 objects are factors, dates, data and time, data.frame, and tibble. Because of this very lenient criteria, it is possible to assign any object to class which it should not belong to. For example we can assign a object of type double as data.frame. R will not stop us from doing this but since double will not be compatible with functions related to data.frame we will eventually run us into an error. Therefore we should always use a constructor function provided for a class to make a class instead of simply assigning a class. Any object with class attribute can be identified by function is.object(). a_double &lt;- rnorm(12) dim(a_double) &lt;- c(6,2) a_double #looks like a data.frame ## [,1] [,2] ## [1,] 0.10532213 -0.725692115 ## [2,] 0.63655714 -0.003428998 ## [3,] 1.82306620 1.132239738 ## [4,] 0.11533008 -0.055686044 ## [5,] -0.05375573 1.180911669 ## [6,] 0.22075057 -0.016582626 class(a_double) &lt;- \"data.frame\" ##assign a new class to object a_double attributes(a_double) # now we see a_double has class attribute which is data.frame ## $dim ## [1] 6 2 ## ## $class ## [1] \"data.frame\" class(a_double) #it says a_double has a class = data.frame ## [1] \"data.frame\" a_double[1,1] #hit an error trying to use a data.frame function ## NULL ## &lt;0 rows&gt; (or 0-length row.names) ##proper way a_double &lt;- rnorm(12) dim(a_double) &lt;- c(6,2) df &lt;- data.frame(a_double) #use the constructor function. df ## X1 X2 ## 1 0.4021199 0.57215428 ## 2 -0.9181690 0.71649773 ## 3 -0.2014391 1.98107538 ## 4 -1.5345385 2.00999835 ## 5 0.3284315 -0.64234315 ## 6 0.6641933 -0.01521207 class(df) ##now it is actually a data.frame ## [1] \"data.frame\" Factor Factor is one of the most used and also one of the most confused S3 object in R. It is build on top of the base R object integer and must have two attributes: class: must be “factor” levels: must be atomic vector of unique values in factor. Because it is a S3 object the generic function print will behave specific to factor and prints the factors at the position indicated by the integers in actual object. a_char &lt;- c(\"a\",\"b\",\"c\",\"a\",\"c\",\"b\",\"d\") typeof(a_char) ## [1] \"character\" print(a_char) ## [1] \"a\" \"b\" \"c\" \"a\" \"c\" \"b\" \"d\" as.numeric(a_char) ##No numeric is produced ## Warning: NAs introduced by coercion ## [1] NA NA NA NA NA NA NA a_factor &lt;- as.factor(a_char) print(a_factor) #now it is a factor so we see same character ## [1] a b c a c b d ## Levels: a b c d typeof(a_factor) #under the hood it is an integer ## [1] \"integer\" attributes(a_factor) ## $levels ## [1] \"a\" \"b\" \"c\" \"d\" ## ## $class ## [1] \"factor\" as.numeric(a_factor) #gives the underlying integer ## [1] 1 2 3 1 3 2 4 data.frame It is a S3 object which is build upon a list. Individual columns are stored like a individual items in a list. So data.frame is actually a list where all the items in list must have equal length. S4 object Because S3 objects are easy to incorporate errors another OOP type object called S4 was build which is extensively used by bioconductor community. Most of these S4 objects are build on base R object type list. library(edgeR) ## Loading required package: limma a&lt;-DGEList() ## Warning in min(lib.size): no non-missing arguments to min; returning Inf ## Warning in min(norm.factors): no non-missing arguments to min; returning Inf typeof(a) ##under the hood it is a list ## [1] \"list\" class(a) ##gives class \"DGEList\" ## [1] \"DGEList\" ## attr(,\"package\") ## [1] \"edgeR\" attributes(a) #shows all the attributes ## $class ## [1] \"DGEList\" ## attr(,\"package\") ## [1] \"edgeR\" ## ## $names ## [1] \"counts\" \"samples\""
+    }
+  ]
+}</script>
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="/assets/css/main.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+<link href="/assets/css/nav-media.css" rel="stylesheet">
+
+  </head>
+
+  <body >
+    <script src="/assets/js/color-scheme-attr-init.js" data-mode="false"></script>
+    <nav class="navbar navbar-default top-nav">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed pull-left top-nav-menu-toggle" data-toggle="collapse" data-target="#id_top-nav-menu-toggle" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand top-nav-brand" href="/" translate="no">Data churn by AK</a>
+    </div>
+  <div class="color_scheme_switch_top_holder" data-toggle="tooltip" data-placement="bottom" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+
+  
+</nav>
+<nav id="side-nav-container">
+  <div class="side-nav">
+    <div class="side-nav-brand">
+      <img src="/assets/img/default/profile.jpg" alt="">
+      <div class="brand-holder">
+        <a href="/" translate="no">Data churn by AK</a>
+        </div>
+      <p>&nbsp;Data blogs</p>
+      <br>
+    </div>
+    <br>
+    <a href="javascript:void(0);" class="side-nav-close">
+        <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+      </a>
+    <hr>
+    <br>
+    <div class="side-nav-buttons">
+      <ul class="nav nav-pills nav-stacked">
+        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Notebooks</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
+    </div>
+    <br>
+    <br><div class="contact-container">
+  <hr>
+  <h3>Contact</h3>
+  <ul><li><a href="https://www.github.com/akoirala2000" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a></li><li>
+      <a href="javascript:void(0);" class="hover-effect-big" onclick="setAddress('datachurnbyak', 'gmail.com');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li><li><a href="https://www.linkedin.com/in/amrit-koirala-41037392" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a href="https://www.twitter.com/amritkoirala1" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter" aria-hidden="true"></i></a></li></ul>
+</div>
+
+    <hr id="toc-view-top">
+    <div class="side-nav-footer" translate="no">
+        <p>&copy; 2022 Data churn by AK.</p>
+      </div>
+  </div>
+  <div class="side-nav-bottom-buttons-container">
+    <hr>
+    <ul>
+      <li><div class="color_scheme_switch_side_holder" data-toggle="tooltip" data-placement="top" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+</li><li><div class="cookie-icon hover-effect" onclick="CookieConsent.showSettings();" data-toggle="tooltip" data-placement="top" title="Cookie settings">
+  <div class="cookie-wrapper">
+    <i class="fa fa-circle bitten-cookie" aria-hidden="true"></i>
+    <i class="fa fa-circle small-ellipse-icon" aria-hidden="true"></i>
+    <i class="fa fa-spinner inner-icon" aria-hidden="true"></i>
+    <i class="fa fa-circle-thin outer-icon" aria-hidden="true"></i>
+  </div>
+</div>
+</li></ul>
+  </div></nav>
+<div id="toc-container" class="movable">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Drag to move">
+      Contents
+      <span class="pull-right">
+        <a href="javascript:void(0);" class="close-button" onclick="document.getElementById('toc-container').style.display = 'none';">
+          <i class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Close"></i>
+        </a>
+      </span>
+    </div>
+    <div class="panel-body">
+      <nav id="table-of-contents"></nav>
+    </div>
+  </div>
+</div>
+<div id="main-wrapper">
+      <div class="main-container"><div class="multipurpose-container post-container">
+  <div class="post-title">Objects in R</div><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Feb 2, 2022
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;10 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2022-02-03-Objects-in-R#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2022-02-03-Objects-in-R#disqus_thread'">Comments</a>
+  </small>
+  </div>
+<hr/>
+  <div class="markdown-style">
+    <h3 id="objects-in-r">Objects in R</h3>
+<!-- outline-start -->
+
+<p>R by design is a functional programming language hence the original
+objects designed to represent variables, functions, environments and
+various language components are different than the objects used in true
+Object Oriented Programs.<!-- outline-end --> True OOP-like objects S3, S4 were added in
+different time during the evolution of R and build upon the base R
+objects. The function <code class="language-plaintext highlighter-rouge">typeof()</code> gives the base-type of any
+objects (including S3, S4) in R. Another function <code class="language-plaintext highlighter-rouge">mode()</code> gives similar
+output but groups <code class="language-plaintext highlighter-rouge">integers</code> and <code class="language-plaintext highlighter-rouge">double</code> as <code class="language-plaintext highlighter-rouge">numeric</code>. There are 25
+different types of base R objects but six are worth mentioning as they
+are used to represent variable/data set and most commonly encountered by
+R users.</p>
+
+<ol>
+  <li>Logical: TRUE or FALSE / 1 or 0</li>
+  <li>Double: Numbers with decimal values</li>
+  <li>Integer: Numbers without decimal values</li>
+  <li>Character: strings</li>
+  <li>NULL : No value</li>
+  <li>List: List of any combination of above five types</li>
+</ol>
+
+<p>All the other data types we make in R like matrix, array, data.frame,
+tibble etc. are derived almost entirely from these 6 object types. But
+before going to that it is important clarify some terms.</p>
+
+<p><strong>1. Atomic object :</strong> If an object cannot hold its own object type
+inside itself it is called atomic object. For example: a vector of
+logical, double, integer, character and NULL. The values in atomic
+objects are stored in unique memory locations. Can be represented like
+the figure below:</p>
+
+<figure>
+<img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/Objects_in_r_figs/atomic.png" data-src="/assets/img/posts/Objects_in_r_figs/atomic.png" title="Fig 1: Representation of atomic object" width="326" alt="Fig 1: atomic Vector figure" />
+<figcaption aria-hidden="true">Fig 1: atomic Vector figure</figcaption>
+</figure>
+
+<p>The function <code class="language-plaintext highlighter-rouge">is.atomic()</code> is always true for logical, double, integer,
+character and NULL objects even if they have higher dimensions or name
+attribute.</p>
+
+<p><strong>NB:</strong>  For each of the atomic object type these is a special value “NA”, which represent missing values and missing values can be identified by using function <code class="language-plaintext highlighter-rouge">is.na()</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_logic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.logical</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="nb">T</span><span class="p">))</span><span class="w"> </span><span class="c1">#create a logical of length 12</span><span class="w">
+</span><span class="n">a_double</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="w"> </span><span class="c1">#create a double of length 12</span><span class="w">
+</span><span class="n">an_integer</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="w"> </span><span class="c1">#create an integer </span><span class="w">
+</span><span class="n">a_char</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="c1">#create a character </span><span class="w">
+</span><span class="n">a_null</span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+</span><span class="c1">##See what type of object they are:</span><span class="w">
+</span><span class="n">typeof</span><span class="p">(</span><span class="n">a_logic</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "logical"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># typeof(a_double)</span><span class="w">
+</span><span class="c1"># typeof(an_integer)</span><span class="w">
+</span><span class="c1"># typeof(a_char)</span><span class="w">
+</span><span class="c1"># typeof(a_null)</span><span class="w">
+</span><span class="c1">##See if they are atomic or not</span><span class="w">
+</span><span class="nf">is.atomic</span><span class="p">(</span><span class="n">a_logic</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># is.atomic(a_double)</span><span class="w">
+</span><span class="c1"># is.atomic(an_integer)</span><span class="w">
+</span><span class="c1"># is.atomic(a_char)</span><span class="w">
+</span><span class="c1"># is.atomic(a_null)</span><span class="w">
+</span><span class="c1">##They will remain as atomic even after adding higher dimensions </span><span class="w">
+</span><span class="nf">dim</span><span class="p">(</span><span class="n">an_integer</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="nf">is.atomic</span><span class="p">(</span><span class="n">an_integer</span><span class="p">)</span><span class="w"> </span><span class="c1">#Still true</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<p><strong>2. Recursive object:</strong> These are the objects which can hold its own
+object type within itself. For example list can contain another list
+inside itself. It is represented by following figure.</p>
+
+<figure>
+<img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/Objects_in_r_figs/recursive.png" data-src="/assets/img/posts/Objects_in_r_figs/recursive.png" width="326" alt="Fig 2: list object figure" />
+<figcaption aria-hidden="true">Fig 2: list object figure</figcaption>
+</figure>
+
+<p>The opposite of function <code class="language-plaintext highlighter-rouge">is.atomic()</code> is <code class="language-plaintext highlighter-rouge">is.recursive()</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="nf">is.atomic</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w"> </span><span class="c1">#FALSE</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] FALSE
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">is.recursive</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w"> </span><span class="c1">#TRUE</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<figure>
+<img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/Objects_in_r_figs/Robjects.jpg" data-src="/assets/img/posts/Objects_in_r_figs/Robjects.jpg" width="800" alt="Fig 3: Types of objects in R" />
+<figcaption aria-hidden="true">Fig 3: Types of objects in R</figcaption>
+</figure>
+
+<h2 id="attributes">Attributes</h2>
+
+<p>Attributes are the metadata associated with each R-objects. This
+metadata further controls how an object is processed inside R and how we
+perceive an object to be. One of the simplest attribute is <code class="language-plaintext highlighter-rouge">name</code> which
+gives a name to each value in a vector.</p>
+
+<h3 id="vector">Vector</h3>
+
+<p>Any base R objects can be a vector (including a list) as long as it has
+no any attributes or single attribute name. Use the function
+<code class="language-plaintext highlighter-rouge">attributes()</code> to get all the attributes associated with a object and
+function <code class="language-plaintext highlighter-rouge">attr()</code> to get a specific attribute. Once other attributes
+like <code class="language-plaintext highlighter-rouge">dim</code> or <code class="language-plaintext highlighter-rouge">class</code> are added it is no more called a vector and the
+function <code class="language-plaintext highlighter-rouge">is.vector()</code> will be FALSE.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">attributes</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1"># the vector we created has no attributes, gives NULL </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## NULL
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is.vector</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w">  </span><span class="c1">##A simple list is also a vector</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">names</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"list1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"list2"</span><span class="p">,</span><span class="s2">"list3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"list4"</span><span class="p">)</span><span class="w">
+</span><span class="n">a_list</span><span class="w"> </span><span class="c1">#print named list</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## $list1
+## [1] 1 2 3 4 5 6 7 8 9
+## 
+## $list2
+## [1] 2 3 4
+## 
+## $list3
+## [1] "a"
+## 
+## $list4
+## [1] 3 4 5
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is.vector</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w"> </span><span class="c1">#it is still a vector </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<h3 id="matrix">Matrix</h3>
+
+<p>Adding another attribute <code class="language-plaintext highlighter-rouge">dim</code> makes a vector (including a list although less common in practice) into a array. Matrix is a special
+case of array where we have only two dimensions (rows and columns).
+Matrix is treated as special because it is in the form in which many
+data are represented (a table with rows and columns.). Therefore there
+are some function in R that are specific to a matrix like
+(<code class="language-plaintext highlighter-rouge">rownames(), colnames(), nrow(), ncol(), rbind(), cbind(), t()</code>) which
+also applies to a data.frame in R. One major difference between matrix
+and data.frame is base data type of matrix is atomic type (character,
+integer, double …) but data.frame is stored as a list. Because of the
+nature of atomic objects, matrix build from atomic objects should have
+same datatype in all columns.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">dim</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="c1">#this makes a matrix out of variable a_double with 3 rows and 4 columns and filled columns first</span><span class="w">
+</span><span class="n">a_double</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##            [,1]        [,2]        [,3]        [,4]
+## [1,]  0.9822688 -0.07954649  1.62053229 -1.46717395
+## [2,] -0.7089867 -0.10584293 -1.47000813  1.81499311
+## [3,] -0.3611035  1.41759061 -0.03876332  0.04078724
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is.vector</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1">#It is no more a vector </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] FALSE
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">is.atomic</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1">#But is still a atomic </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] TRUE
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">dim</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># a matrix of list can also be made but it won't look like a data.frame</span><span class="w">
+</span><span class="n">a_list</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##      [,1]      [,2]     
+## [1,] integer,9 "a"      
+## [2,] integer,3 integer,3
+</code></pre></div></div>
+
+<h3 id="array">Array</h3>
+
+<p>When a object has 2 or more dimension as attribute it is called a array.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">dim</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> 
+</span><span class="n">a_double</span><span class="w"> </span><span class="c1"># The third dimension is shown by breaking the table, it can be regarded as two 2X3 tables</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## , , 1
+## 
+##            [,1]        [,2]       [,3]
+## [1,]  0.9822688 -0.36110347 -0.1058429
+## [2,] -0.7089867 -0.07954649  1.4175906
+## 
+## , , 2
+## 
+##           [,1]        [,2]       [,3]
+## [1,]  1.620532 -0.03876332 1.81499311
+## [2,] -1.470008 -1.46717395 0.04078724
+</code></pre></div></div>
+
+<h3 id="class-and-s3-object">Class and S3 object</h3>
+
+<p>Attribute <code class="language-plaintext highlighter-rouge">class</code> is very important because it powers the whole OOP in
+R. Once a R base object has <code class="language-plaintext highlighter-rouge">class</code> attribute it is called a S3 object.
+Commonly used S3 objects are <strong>factors, dates, data and time,
+data.frame, and tibble</strong>. Because of this very lenient criteria, it is
+possible to assign any object to class which it should not belong to.
+For example we can assign a object of type double as data.frame. R will
+not stop us from doing this but since double will not be compatible with
+functions related to data.frame we will eventually run us into an error.
+Therefore we should always use a constructor function provided for a
+class to make a class instead of simply assigning a class. Any object
+with <code class="language-plaintext highlighter-rouge">class</code> attribute can be identified by function <code class="language-plaintext highlighter-rouge">is.object()</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_double</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="w">
+</span><span class="nf">dim</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">a_double</span><span class="w"> </span><span class="c1">#looks like a data.frame</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##             [,1]         [,2]
+## [1,]  0.10532213 -0.725692115
+## [2,]  0.63655714 -0.003428998
+## [3,]  1.82306620  1.132239738
+## [4,]  0.11533008 -0.055686044
+## [5,] -0.05375573  1.180911669
+## [6,]  0.22075057 -0.016582626
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">class</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"data.frame"</span><span class="w"> </span><span class="c1">##assign a new class to object a_double</span><span class="w">
+</span><span class="nf">attributes</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1"># now we see a_double has class attribute which is data.frame</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## $dim
+## [1] 6 2
+## 
+## $class
+## [1] "data.frame"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">class</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1">#it says a_double has a class = data.frame</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "data.frame"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_double</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="c1">#hit an error trying to use a  data.frame function </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## NULL
+## &lt;0 rows&gt; (or 0-length row.names)
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##proper way</span><span class="w">
+</span><span class="n">a_double</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="w">
+</span><span class="nf">dim</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">a_double</span><span class="p">)</span><span class="w"> </span><span class="c1">#use the constructor function.</span><span class="w">
+</span><span class="n">df</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##           X1          X2
+## 1  0.4021199  0.57215428
+## 2 -0.9181690  0.71649773
+## 3 -0.2014391  1.98107538
+## 4 -1.5345385  2.00999835
+## 5  0.3284315 -0.64234315
+## 6  0.6641933 -0.01521207
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">class</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="c1">##now it is actually a data.frame</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "data.frame"
+</code></pre></div></div>
+
+<h4 id="factor">Factor</h4>
+
+<p>Factor is one of the most used and also one of the most confused S3
+object in R. It is build on top of the base R object <code class="language-plaintext highlighter-rouge">integer</code> and must
+have two attributes:</p>
+<ul>
+  <li>class: must be “factor”</li>
+  <li>levels: must be atomic vector of unique values in factor.</li>
+</ul>
+
+<p>Because it is a S3 object the generic function <code class="language-plaintext highlighter-rouge">print</code> will behave
+specific to factor and prints the factors at the position indicated by
+the integers in actual object.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_char</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"d"</span><span class="p">)</span><span class="w">
+</span><span class="n">typeof</span><span class="p">(</span><span class="n">a_char</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "character"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">print</span><span class="p">(</span><span class="n">a_char</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "a" "b" "c" "a" "c" "b" "d"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">as.numeric</span><span class="p">(</span><span class="n">a_char</span><span class="p">)</span><span class="w"> </span><span class="c1">##No numeric is produced </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Warning: NAs introduced by coercion
+
+## [1] NA NA NA NA NA NA NA
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_factor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">a_char</span><span class="p">)</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">a_factor</span><span class="p">)</span><span class="w"> </span><span class="c1">#now it is a factor so we see same character</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] a b c a c b d
+## Levels: a b c d
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">a_factor</span><span class="p">)</span><span class="w"> </span><span class="c1">#under the hood it is an integer</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "integer"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">attributes</span><span class="p">(</span><span class="n">a_factor</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## $levels
+## [1] "a" "b" "c" "d"
+## 
+## $class
+## [1] "factor"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">as.numeric</span><span class="p">(</span><span class="n">a_factor</span><span class="p">)</span><span class="w"> </span><span class="c1">#gives the underlying integer</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] 1 2 3 1 3 2 4
+</code></pre></div></div>
+
+<h4 id="dataframe">data.frame</h4>
+
+<p>It is a S3 object which is build upon a list. Individual columns are
+stored like a individual items in a list. So data.frame is actually a
+list where all the items in list must have equal length.</p>
+
+<h4 id="s4-object">S4 object</h4>
+
+<p>Because S3 objects are easy to incorporate errors another OOP type
+object called S4 was build which is extensively used by bioconductor
+community. Most of these S4 objects are build on base R object type
+list.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">edgeR</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Loading required package: limma
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">&lt;-</span><span class="n">DGEList</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Warning in min(lib.size): no non-missing arguments to min; returning Inf
+
+## Warning in min(norm.factors): no non-missing arguments to min; returning Inf
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">typeof</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="c1">##under the hood it is a list</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "list"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">class</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="c1">##gives class "DGEList" </span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "DGEList"
+## attr(,"package")
+## [1] "edgeR"
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">attributes</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="c1">#shows all the attributes</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## $class
+## [1] "DGEList"
+## attr(,"package")
+## [1] "edgeR"
+## 
+## $names
+## [1] "counts"  "samples"
+</code></pre></div></div>
+<hr>
+<div class="share-holder">
+  <span class="share-label">Share on: </span>
+  <ul class="share-buttons">
+    
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-03-Objects-in-R&amp;text=Objects%20in%20R%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
+          <i class="fa fa-twitter-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-03-Objects-in-R" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
+          <i class="fa fa-facebook-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-03-Objects-in-R&amp;text=Objects%20in%20R%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
+          <i class="fa fa-telegram fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-03-Objects-in-R" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
+          <i class="fa fa-linkedin-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="mailto:?subject=Objects%20in%20R%20-%20Data%20churn%20by%20AK&amp;body=Objects%20in%20R%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-03-Objects-in-R" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
+          <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2022-02-03-Objects-in-R', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
+          <i class="fa fa-link fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+</div>
+</div>
+
+    <div class="pagination_wrapper">
+  <nav aria-label="Page navigation">
+    <ul class="pagination" style="opacity:0">
+    <li><a href="javascript:void(0);">1</a></li></ul>
+  </nav>
+</div>
+
+  <div id="disqus_thread"></div>
+
+<noscript>
+  Please enable JavaScript to view the Comments.
+</noscript>
+
+
+</div><div class="footer-wrapper">
+  <div class="footer-container">
+    <footer translate="no">
+      <div class="footer-text footer-text-centered long-copyright">
+          <p>&copy; 2022 Data churn by AK. </p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" data-tooltip-no-hide title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
+              <img src="/assets/img/default/cc/cc.svg" alt="cc" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/by.svg" alt="by" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/sa.svg" alt="sa" width="12" height="12">&nbsp;<p>Some rights reserved.</p>
+            </a></div>
+      <p class="footer-powered"><span>Pwrd by </span><a href="https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme" target="_blank" rel="noopener noreferrer">Mr. Green</a></p>
+    </footer>
+  </div>
+</div>
+<div class="scroll-to-top-container">
+        <a id="scroll-to-top" href="#main-wrapper" class="hover-effect"><i class="fa fa-angle-up"></i></a>
+      </div></div>
+
+    <div class="searchbox-container">
+  <form id="searchbox-form" >
+    <input type="search" id="search-box" placeholder="Search"
+    onkeyup="if(this.value!==''){document.getElementById('search-results').style.display = 'block';}"
+    onfocusout="this.value='';"
+    onblur="setTimeout(function(){ document.getElementById('search-results').style.display = 'none'; }, 100);">
+    <ul id="search-results" ></ul>
+  </form>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<script src="/assets/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+      $('.imgViewer[data-no-image-viewer]').css("cursor", "unset");
+      $(function () {
+        $('.imgViewer:not([data-no-image-viewer])').magnificPopup({
+          type: 'image'
+          ,image: {
+            titleSrc: 'alt'
+            /* Error message */
+            ,tError: 'The image could not be loaded.<br><br>%url%'
+            /* Set to null to disable zoom out cursor. */
+            /*,cursor: null */
+          }
+          ,closeOnContentClick: true
+          ,showCloseBtn: false
+          ,zoom: {
+            /* By default it's false, so don't forget to enable it */
+            enabled: true
+            /* duration of the effect, in milliseconds */
+            ,duration: 300
+            /* CSS transition easing function */
+            ,easing: 'ease-in-out'
+          }
+        });
+      });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js"></script>
+    <script>
+      /* lazy loads elements with default selector as '.lozad' */
+      const observer = lozad();
+      observer.observe();
+    </script>
+
+<script>
+      PagerPageNumbers.setProperties({
+        paginatorListContainerName: ".pagination_wrapper .pagination"
+        ,pageList: ["/posts/2022-03-03-Simple-linear-regression", "/posts/2022-02-05-Python-Data-Structures", "/posts/2022-02-03-Objects-in-R", "/posts/2022-02-10-Matrix", "/posts/2022-01-13-Principle-of-inference", "/posts/2021-06-14-OneWay-ANOVA", "/posts/2020-02-07-ChiSquare-Distribution", "/posts/2019-11-01-Expected-value", "/posts/2019-07-01-Degree-of-freedom", "/posts/2018-12-02-Mean-N-Variance", "/posts/2018-06-22-Permutation-n-Combination"]
+        ,firstButtonName: 'First'
+        ,lastButtonName: 'Last'
+        ,prevButtonName: "«"
+        ,nextButtonName: "»"
+      });
+    </script>
+
+
+
+<script src="/assets/js/simple-jekyll-search-1.9.2.min.js"></script><script>
+  function loadSearch(jsonData, searchParam) {
+    if (!jsonData) jsonData = '/query/search.json';
+    var searchInput = document.getElementById('search-box');
+
+    const simpleJekyllSearch = SimpleJekyllSearch({
+      searchInput: searchInput
+      ,resultsContainer: document.getElementById('search-results')
+      ,json: jsonData
+      ,searchResultTemplate: '<li><a href="{url}">{title}<span>{date}</span></a></li>'
+      ,noResultsText: '<li>No results found.</li>'
+      ,limit: 10
+      ,fuzzy: false
+    });
+
+    if (searchParam) {
+      searchInput.value = searchParam;
+      searchInput.focus();
+      searchInput.disabled=false;
+      setTimeout(function(){
+        simpleJekyllSearch.search(searchParam);
+      }, 400);
+    }
+  }
+
+  </script>
+
+<script>
+    function isEmpty(value) {
+      if (value === "" || value === null || typeof value === "undefined") return true;
+      return false;
+    }
+
+    function getQueryParam (param, mach = true) {
+      var queryString = window.location.search.substring(1);
+      if (isEmpty(queryString)) return null;
+      var queries = queryString.split("&");
+      for (var i in queries) {
+        var pair = decodeURIComponent(queries[i]).split("=");
+        if (mach == true){
+          if (pair[0] == param) {
+            if (isEmpty(pair[1]) === false) return pair[1];
+          }
+        }else{
+          return pair;
+        }
+        break;
+      }
+      return null;
+    }
+
+    const searchParam = getQueryParam('search');
+
+    (async () => {
+      let resp = await fetch('/query/search.json');
+      if (!resp.ok) return;
+      let jsonData = await resp.json();
+      loadSearch(jsonData, searchParam);
+    })();
+  </script>
+<script>
+  const disqus_consent_msg = true;
+  var disqus_config = function () {
+    this.language = "en";
+    this.page.url = 'http://localhost:4000/posts/2022-02-03-Objects-in-R';
+    this.page.identifier = '/posts/2022-02-03-Objects-in-R';
+  };
+
+  function disqusLoader() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-datachurnbyak-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+
+  /* reload when data-color-scheme changes. (dark, light) */
+  function disqusReloader() {
+    if (typeof DISQUS === "undefined") return;
+    DISQUS.reset({
+      reload: true
+      ,config: disqus_config
+    });
+  }
+  const color_scheme_observer = new MutationObserver(disqusReloader);
+  color_scheme_observer.observe(document.body, {attributeFilter: ["data-color-scheme"]});
+  /* comments load mode */
+  let discusLoadDoNotAskStorageKey = "disqusLoadDoNotAskAgain";
+
+  function add_click_to_load_button() {
+    if (localStorage.getItem(discusLoadDoNotAskStorageKey)) disqusLoader();
+
+    /* create element */
+    let newElement = document.createElement("div");
+
+    if (disqus_consent_msg == true) {
+      newElement.innerHTML = "<div class=\"multipurpose-container\" style=\"margin:20px\"> <h4 style=\"margin-top: 0;\">Comments (Disqus.com)</h4> <p> Comment feature is hosted by a third party. By showing the external content you accept the <a href=\"https://help.disqus.com/en/articles/1717102-terms-of-service\" target=\"_blank\" rel=\"noopener noreferrer\">Terms of Service</a> and <a href=\"https://help.disqus.com/en/articles/1717103-disqus-privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a> of disqus.com. <br>If you prefer to opt out of targeted advertising, open <a href=\"https://disqus.com/data-sharing-settings\" target=\"_blank\" rel=\"noopener noreferrer\">this link</a> and click \"opt-out\" button and close. Return here and load comments. </p> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority load_comments\" data-comment-always-load role=\"button\">Always show</a> &nbsp;<a href=\"javascript:void(0);\" class=\"btn-base load_comments\" role=\"button\">Show only this time</a> </div>";
+    } else {
+      newElement.innerHTML = '<a href="javascript:void(0);" class="btn-base load_comments" role="button">Load Comments</a>';
+      newElement.style.textAlign = 'center';
+      newElement.style.minHeight = '20px';
+    }
+
+    /* add button */
+    let holder = document.querySelector('#disqus_thread');
+    if (!holder) return;
+    holder.appendChild(newElement);
+    /* add button click event */
+    let buttons = document.querySelectorAll('#disqus_thread .load_comments');
+    if (!buttons) return;
+    buttons.forEach(function (button) {
+      button.addEventListener('click', buttonCallback);
+    });
+
+    function buttonCallback(e) {
+      disqusLoader();
+      /* scroll to page bottom to see comments. */
+      document.getElementById('disqus_thread').style.height = '394px';
+      window.scrollTo(0, document.body.scrollHeight);
+      if (e.target.hasAttribute('data-comment-always-load')) {
+        localStorage.setItem(discusLoadDoNotAskStorageKey, true);
+      }
+    };
+  }
+  /* load when slide to the end of page */
+  window.addEventListener("load", add_click_to_load_button);
+  </script>
+
+
+    <script id="dsq-count-scr" src="https://https-datachurnbyak-github-io.disqus.com/count.js" async></script>
+    <script>
+        if (window.location.hash == "#disqus_thread") {
+          let element = document.getElementById('disqus_thread');
+          $("html, body").animate({ scrollTop: $(element).offset().top }, 600);
+        }
+      </script>
+     
+
+
+<script>
+  CookieConsent.consentSettingHtml = "<h5>Cookie settings</h5> <br> <p class=\"info-text\">This website uses cookies to optimize site functionality. It will be activated with your approval. Please click each item below for cookie policy. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <table> <tr> <td onclick=\"$('.info[data-consent-info=necessary]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Strictly necessary cookies</p> </td> <td> <span class=\"active_text\">Always active</span></td> </tr> </table> <div class=\"info\" data-consent-info=\"necessary\"> <p>These cookies are essential for the website function and cannot be disable. They are usually set when site function like color scheme etc. is changed. These cookies do not store any personally identifiable information. Enables storage related to security such as authentication functionality, fraud prevention, and other user protection. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=analytics]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Performance cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" checked=\"checked\" data-consent=\"analytics\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"analytics\"> <p>Enables storage (such as cookies) related to analytics e.g. visit duration. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=preferences]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Functionality cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"preferences\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"preferences\"> <p>Enables storage that supports the functionality of the website or app e.g. language settings. Enables storage related to personalization e.g. video recommendations. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=advertising]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Targeting and advertising cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"advertising\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"advertising\"> <p>Enables storage (such as cookies) related to advertising. </p> </div> <br> <div class=\"button-holder\"> <a href=\"javascript:void(0);\" class=\"btn-base btn-left\" onclick=\"CookieConsent.consentSettingDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentSettingDone('accept');\" role=\"button\">Allow all</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentSettingDone('save');\" role=\"button\">Allow selection</a> </div>";
+  CookieConsent.consentBarHtml = "<div class=\"consent-bar\"> <a class=\"close-button\" href=\"javascript:void(0);\" onclick=\"CookieConsent.hideConsentBar();\"><i class=\"fa-fw fa fa-times\"></i></a> <p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('settings');\" role=\"button\">Customize</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentBarDone('accept');\" role=\"button\">Allow all</a> </div>";
+  CookieConsent.consent_items = JSON.parse('{"necessary":{"group":["security_storage"],"value":"granted","wait_for_update":500,"cookie_domain":"","no_check_box":true},"analytics":{"group":["analytics_storage"],"value":"denied"},"preferences":{"group":["functionality_storage","personalization_storage"],"value":"denied"},"advertising":{"group":["ad_storage"],"value":"denied"}}');
+  CookieConsent.hideConsentBarWithSaveButton = true;
+
+  const consent_settings = CookieConsent.getConsentSettings();
+  const default_configs = JSON.parse('{"anonymize_ip":true,"ads_data_redaction":true,"cookie_flags":"SameSite=None;Secure"}');
+</script>
+</body>
+</html>
+
