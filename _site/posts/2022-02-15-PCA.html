@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Data churn by AK - Principal component analysis</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</noscript>
+
+
+
+<link rel="shortcut icon" href="/assets/img/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="manifest" href="/assets/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Data churn by AK's App">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="application-name" content="Data churn by AK's App">
+  <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+
+    <meta name="keywords" content="Matrix, R, PCA in R, dimension reduction, svd, principal coordinate analysis, PCoA">
+
+  <meta name="description" content="PCA, svd, eigen decomposition and PCoA in R">
+  <meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Principal component analysis">
+<meta name="twitter:site" content="@amritkoirala1">
+<meta name="twitter:description" content="PCA, svd, eigen decomposition and PCoA in R">
+<meta name="twitter:image" content="http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg">
+<meta property="og:site_name" content="Data churn by AK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Principal component analysis">
+<meta property="og:description" content="PCA, svd, eigen decomposition and PCoA in R">
+<meta property="og:url" content="http://localhost:4000/posts/2022-02-15-PCA">
+<meta property="og:image" content="http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg">
+  <meta property="article:author" content="Amrit Koirala">
+  <meta property="article:published_time" content="2022-02-14T17:11:06-06:00">
+  <meta property="article:modified_time" content="2022-02-14T17:11:06-06:00">
+  <meta property="article:section" content="Matrix, R">
+  <meta property="article:tag" content="PCA in R">
+  <meta property="article:tag" content="dimension reduction">
+  <meta property="article:tag" content="svd">
+  <meta property="article:tag" content="principal coordinate analysis">
+  <meta property="article:tag" content="PCoA">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org"
+  ,"@graph": [
+    {
+      "@type": "Person"
+      ,"@id": "http://localhost:4000/#person"
+      ,"name": "Amrit Koirala"
+      ,"url": "http://localhost:4000/tabs/about.html"
+      ,"image": "http://localhost:4000/assets/img/about/about.jpg"
+      ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+  },{
+    "@type": "WebSite"
+    ,"@id": "http://localhost:4000/#website"
+    ,"url": "http://localhost:4000/"
+    ,"name": "Data churn by AK"
+    ,"description": "Data churn by AK is Amrit Koirala's journey in bioinformatics and data science."
+    ,"publisher": {"@id": "http://localhost:4000/#person"}
+    ,"inLanguage": "en-US"
+    ,"sameAs": ["https://www.github.com/akoirala2000","https://www.linkedin.com/in/amrit-koirala-41037392","https://www.twitter.com/amritkoirala1"]
+    ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+    ,"copyrightYear" : "2022"
+  },{
+    "@type": "WebPage"
+    ,"@id": "http://localhost:4000/posts/2022-02-15-PCA#webpage"
+    ,"url": "http://localhost:4000/posts/2022-02-15-PCA"
+    ,"name": "Principal component analysis"
+    ,"isPartOf": {"@id": "http://localhost:4000/#website"}
+    ,"breadcrumb": {"@id": "http://localhost:4000/posts/2022-02-15-PCA#breadcrumb"}
+    ,"primaryImageOfPage": "http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg"
+    ,"datePublished": "2022-02-14T17:11:06-06:00"
+    ,"dateModified": "2022-02-14T17:11:06-06:00"
+    ,"description": "PCA, svd, eigen decomposition and PCoA in R"
+    ,"inLanguage": "en-US"
+    ,"potentialAction": {
+      "@type": "ReadAction"
+      ,"target": "http://localhost:4000/posts/2022-02-15-PCA"
+    }
+  },{
+      "@type": "BreadcrumbList",
+      "@id": "http://localhost:4000/posts/2022-02-15-PCA#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem"
+          ,"position": 1
+          ,"name": "Home"
+          ,"item": "http://localhost:4000/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 2
+          ,"name": "Notes"
+          ,"item": "http://localhost:4000/tabs/blog/"
+        },
+        {
+          "@type": "ListItem"
+          ,"position": 3
+          ,"name": "Principal component analysis"
+        }
+      ]
+    },{
+      "@type": "BlogPosting"
+      ,"@id": "http://localhost:4000/posts/2022-02-15-PCA#content"
+      ,"isPartOf": {"@id": "http://localhost:4000/posts/2022-02-15-PCA#webpage"}
+      ,"mainEntityOfPage": {"@id": "http://localhost:4000/posts/2022-02-15-PCA#webpage"}
+      ,"publisher": {"@id": "http://localhost:4000/#person"}
+      ,"author": {"@id": "http://localhost:4000/#person"}
+      ,"inLanguage": "en-US"
+      ,"headline": "Principal component analysis"
+      ,"image": "http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg"
+      ,"thumbnailUrl": "http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg"
+      ,"datePublished": "2022-02-14T17:11:06-06:00"
+      ,"dateModified": "2022-02-14T17:11:06-06:00"
+      ,"articleSection": ["Matrix, R", "PCA in R", "dimension reduction", "svd", "principal coordinate analysis", "PCoA"]
+      ,"description": "PCA, svd, eigen decomposition and PCoA in R"
+      ,"copyrightHolder" : {"@id": "http://localhost:4000/#person"}
+      ,"copyrightYear" : "2022"
+      ,"wordCount": 2469
+      ,"articleBody": "Principal component analysis (PCA) PCA is one of the most often used dimension reduction techniques in data science. It is extensively used for projection of high dimensional data onto low dimensions which can be used for data visualization (usually in 2D) and to obtain non-correlated (orthogonal) features ordered according to the amount of variance explained by each of them. This article uses PCA to visualize 150 images of digits represented as 28X28 pixel image, onto 2D coordinate system. During this I am explaining the theory of PCA and different algorithms that can be used to carry-out this analysis in R. The goal of this article is to see PCA from different angles and doing so will give us clear picture of this analysis in R. Theory PCA uses various theories from linear algebra and fundamental knowledge of linear algebra, and its implementation in manipulation of data matrix is a most to understand PCA. You might want to read my previous post on linear algebra if you need a quick recap of these concepts. Goal: When a data consists of \\(p\\) number of features and \\(n\\) number of observations, it can be represented as a matrix of dimensions \\(n \\times p\\). Each observations is a vector of \\(p\\) dimensions and can be plotted on p-dimensional space. \\(p\\) is usually very large compared to \\(n\\) and it is desirable to represent data in a lower dimensions, but we will loose some information whenever this data is represented in any dimensions less than \\(p\\). If we can find new dimensions such that the first dimension will explain the most of the variance in the data and second dimension the second most and so on, we can ignore the dimensions towards the end as they contribute very little information to the data. So, the whole data can be represented with only \\(k\\) dimensions which is much smaller than \\(p\\), with very little loss of the information. It is much easier to understand this concept when we see the reduction of a 2-dimensional space to 1-dimensional space. The matrix below (\\(A\\)) has five observations represented by 2 features (for example student by weight and length) and we want reduce this to lower dimension (1D) by first finding two dimensions where first will explain the most variance (1st principal component) and second will explain the remaining variance. If we represent our whole data with just first principal component (which is a straight line), there will be minimum loss of information. This is very similar to a linear regression but goal here is dimension reduction not finding a equation for dependent variable in terms of independent variables. A = matrix(c(100,90, 120,115, 122, 140, 130,150, 140,155), byrow = T, ncol=2) A ## [,1] [,2] ## [1,] 100 90 ## [2,] 120 115 ## [3,] 122 140 ## [4,] 130 150 ## [5,] 140 155 The columns in the above matrix represents features and rows are observations. Lets see the distribution of these five observations by the features. plot(A, pch=20, cex=2, xlab= \"length\", ylab=\"height\") mod &lt;- lm(A[,2]~A[,1]) abline(mod, lty=2, col=\"red\",lwd=3) In the plot above we can see length and height are highly correlated and we can find a best line of fit (indicated by red dotted line) which captures most of the variance in this data. If we want to find a direction in this coordinate system, along which there is maximum variance that would be this regression line. Therefore, the line of fit gives the direction of the first principal component and a vector orthogonal to the first principal component is the second principal component along which occurs the remaining variance. Steps: 1. Centering The first step in PCA is to center the data to the origin. This is obtained by subtracting the column means from each column. In addition to centering of data, if there are variables with large difference in unit of measurement, like weight in grams and length in kilometers, scaling by standard deviation is done so that each variable contribute proper share to the principal components. In this example, we will perform only scaling of data. The figure below shows the centered plot using the sweep() function in R. Two blue arrows shows the direction of the principal components. #Centering data A_center &lt;- sweep(A,2,colMeans(A)) plot(A_center, pch=20, cex=2, xlab= \"length\", ylab=\"height\") mod &lt;- lm(A_center[,2]~A_center[,1]) abline(mod, lty=2, col=\"red\",lwd=3) arrows(x0=0,y0=0,x1=A_center[4,1],y1= predict(mod)[4],col=\"blue\", lwd=2) #neg of slope gives slope of orthogonal line arrows(x0=0, y0=0, x1=-10,y1=-1*1/mod$coefficients[2]*-10,col=\"blue\", lwd=2) abline(h=0) abline(v=0) 2. Eigen decomposition The second step is to find the vectors giving the principal coordinates. This is obtained by eigen decomposition of covariance matrix of the centered matrix. In case of covariance matrix eigen vectors gives the direction of maximum variance of data in the order of eigen values. Eigen decompostion of a covariance matrix (\\(p\\times p\\)) can be represented by the equation below. \\[A=Q\\Lambda Q^T\\] The matrix \\(Q\\) also has (\\(p \\times p\\)) dimensions and its columns are eigen vectors of the covariance matrix which are also the loadings for principal components. The matrix \\(Q^T\\) also has dimension of \\(p \\times p\\) and is equal to the inverse of matrix \\(Q\\). Our original matrix when transformed by this inverse matrix gives the coordinates of our original matrix in eigen basis. par(mfrow=c(1,2)) ##now need the unit vectors in each direction given by eigen vector of covariance matrix #covariance matrix can be calculated using matrix function #t(A_center)%*%A_center/(5-1) #or R function rotation= eigen(cov(A_center)) plot(A_center, pch=20, cex=2, xlab= \"length\", ylab=\"height\") mod &lt;- lm(A_center[,2]~A_center[,1]) abline(mod, lty=2, col=\"red\",lwd=3) arrows(x0=0,y0=0,x1=A_center[4,1],y1= predict(mod)[4],col=\"blue\", lwd=2) #neg of slope gives slope of orthogonal line arrows(x0=0, y0=0, x1=-10,y1=-1*1/mod$coefficients[2]*-10,col=\"blue\", lwd=2) abline(h=0) abline(v=0) arrows(x0=0, y0=0, x1=rotation$vectors[1,1]*3, y1=rotation$vectors[2,1]*3,col=\"green\", lwd=2, angle = 20,length=0.1 ) arrows(x0=0, y0=0, x1=rotation$vectors[1,2]*3, y1=rotation$vectors[2,2]*3,col=\"green\", lwd=2, angle = 20,length=0.1 ) ##Now rotate the data so that new coordinates are x and y axis invRot &lt;- t(rotation$vectors) newCord &lt;- invRot %*% t(A_center) newCord &lt;- t(newCord) VarExplained &lt;- rotation$values plot(newCord, pch=20, cex=2, xlab= paste0(\"PC1 (\", round(VarExplained[1]/sum(VarExplained)*100,2),\"%)\"), ylab=paste0(\"PC2 (\", round(VarExplained[2]/sum(VarExplained)*100,2),\"%)\"), ylim=c(-30,30), xlim=c(-60,40)) arrows(x0=0,y0=0,x1=10,y1=0, col=\"green\", lwd=2, length=0.1) arrows(x0=0,y0=0,x1=0,y1=10, col=\"green\", lwd=2, length=0.1) abline(h=0) abline(v=0) 3. Projection Now that we have represented our data in new coordinate and data varies most in the direction of first component. 98.11% of the variance is explained by the first principal component and only 1.89 % variance is explained by the second component. We can represent this data using only the PC1 and we will be loosing only 1.89% of the variance. Figure below show the data projected onto PC1 (one dimension only). ##Now we can reduce dimension to one by taking PC1 only plot(x=newCord[,1],y=rep(0,5), pch=20, cex=2, xlab= paste0(\"PC1 (\", round(VarExplained[1]/sum(VarExplained)*100,2),\"%)\"), ylab=\"\", yaxt=\"n\") arrows(x0=0,y0=0,x1=5,y1=0, col=\"green\", lwd=2, length=0.1) abline(h=0) abline(v=0) This concept from 2D can be easily scaled to any n-dimensional matrix where there are \\(p\\) features and \\(n\\) observations. Lets see how can we use PCA to reduce dimension and visualize on 2D coordinates the image data. #Read image data Image &lt;- read.csv(\"DigitMatrix.csv\") #See the frequency of each digits label &lt;- Image$y table(label) ## label ## 0 5 7 ## 50 50 50 #Make image matrix Image &lt;- Image[,-1] ##define a function to view these images show_digit = function(arr784, col = gray(12:1/12), ...) { image(matrix(as.matrix(arr784), nrow = 28)[, 28:1], col = col, ...) } #see image of a random observation show_digit(Image[109,]) #View average of the three digit types par(mfrow=c(1,3)) show_digit(apply(Image[1:50,],2,mean)) show_digit(apply(Image[51:100,],2,mean)) show_digit(apply(Image[101:150,],2,mean)) Figures above shows a sample of image represented by \\(28 \\times 28\\) pixels. We had three types of digits (0, 5, and 7) in this data set shown by the average of all 50 images in each category. Now lets apply PCA on this data by three methods which will give us same results. prcomp() function in R Eigen decomposition SVD prcomp() The code below is the most commonly used method to perform PCA in R. For this function data matrix should be arranged so that the rows are the observation (n rows) and columns are the each features (p columns). This function provides options for centering and scaling so we don’t need to perform those operations before hand. ##PCA by R function #Remove 0 variance columns Image_filt &lt;- Image[, apply(Image, 2, var)!=0] PCA_prcomp &lt;- prcomp(Image_filt, center=TRUE, scale=TRUE) eigenValues &lt;- PCA_prcomp$sdev^2 library(ggplot2, quietly = T) ggplot(data.frame(PCA_prcomp$x), aes(x=PCA_prcomp$x[,1], y=PCA_prcomp$x[,2], color=as.factor(label)))+geom_point() + stat_ellipse()+ labs(x=paste0(\"PC1 (\",round(eigenValues[1]/sum(eigenValues)*100,2), \"%)\" ), y=paste0(\"PC2 (\",round(eigenValues[2]/sum(eigenValues)*100,2) ,\"%)\"), title= \"PCA by prcomp() function in R\", color= \"Digits\") Results The function prcomp() in R gives five outputs: sdev: These are square root of eigen values. When squared gives the value of diagonal of \\(\\Lambda\\) matrix in eigne decomposition or the \\(\\Sigma\\) matrix in svd. Barplot of the variance explained by each principal components is called screeplot. par(mfrow=c(1,2)) screeplot(PCA_prcomp, main = \"Screeplot by R function\") #or manually barplot((PCA_prcomp$sdev^2)[1:10], main= \"Screeplot by barplot function\") rotation: This is a matrix where each column is an eigen vector of the input matrix. It has \\(p \\times p\\) dimensions and values are the loadings for each feature in that particular column of eigen vector. This forms basis of biplot which in addition to the new coordinates of observations shows the contribution of each feature to the principal components. The default biplot function doesn’t work great when we have large number of features. Lets try to extract top 10 variables for PC1 and PC2 and manually plot those 20 variables using ggplot2. library(gridExtra) library(tidyverse) p&lt;-PCA_prcomp$rotation %&gt;% as_tibble(rownames = \"features\")%&gt;% select(1,2,3) %&gt;% filter(order(abs(PC1),decreasing = T)%in%1:10|order(abs(PC2), decreasing = T)%in%1:10) p2&lt;-ggplot(data.frame(PCA_prcomp$x), aes(x=PCA_prcomp$x[,1], y=PCA_prcomp$x[,2], color=as.factor(label)))+ geom_point() + stat_ellipse()+ geom_segment(data=p,aes(x=0,y=0, xend=PC1*200, yend=PC2*200), arrow=arrow(length=unit(0.2,\"cm\")), color=\"cadetblue4\")+ geom_text(data=p,aes(x=PC1*200, y=PC2*200,label=features), inherit.aes=FALSE, size=3, vjust=1, hjust=1)+ scale_y_continuous(name=paste0(\"PC2 (\",round(eigenValues[2]/sum(eigenValues)*100,1),\"%)\"), sec.axis=sec_axis(~./200, name= \"Variable loadings in PC2\"))+ scale_x_continuous(name=paste0(\"PC1 (\",round(eigenValues[1]/sum(eigenValues)*100,1),\"%)\"), sec.axis=sec_axis(~./200,name=\"Variable loadings in PC1\"))+ labs(color=\"Digits\")+ theme(axis.title.y.right= element_text(color=\"cadetblue4\"), axis.text.y.right=element_text(color=\"cadetblue4\"), axis.text.x.top =element_text(color=\"cadetblue4\"), axis.title.x.top= element_text(color=\"cadetblue4\")) p2 The plot above is a biplot with only top 10 contributors in PC1 and PC2 (20 in total). The axis label on right and top which are same colored as the arrows shows the loadings of each feature in the direction of PC1 and PC2. For example: Pixel X497 contributes most for PC1 and almost orthogonal to pixel X517 which contribute mostly to the PC2. This plot is also useful to identify the original features which might be of significant role distinguishing these three types of digits. If we see the position of these top 20 pixels in 28X28 pixel frame(figure below), we can see all of these pixels are on the bottom half of the image. Compare this to the average of each digit and we can see on average the upper half of these 3 digits looks very similar and the lower half has the difference which is beautifully captured by PCA. top&lt;- 1:784 top &lt;- ifelse(top%in%as.numeric(substr(p$features,2,nchar(p$features))), top, \"\") Vectors &lt;- data.frame(x= rep(1:28, 28), y=rep(28:1,each=28), z= top) p3 &lt;- ggplot(Vectors, aes(x,y))+geom_text(aes(label=top), size=3) p3 x: These are the new coordinates obtained by the rotation of the original matrix. Each observations is a row vector represented by \\(p\\) dimensions (\\(p\\) PCs). Since all PCs are orthogonal to each other, covariance matrix of x gives the diagonal matrix \\(\\Lambda\\), where covaraince between the PCs is zero and covaraince with itself is the variance of each PC. Matrix below shows the sub-matrix with only 10 PCs. round(cov(PCA_prcomp$x),3)[1:10,1:10] ##This gives diagonal matrix with eigen values in diagonal. ## PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10 ## PC1 64.347 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 ## PC2 0.000 39.789 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 ## PC3 0.000 0.000 29.925 0.000 0.000 0.000 0.000 0.000 0.000 0.000 ## PC4 0.000 0.000 0.000 23.753 0.000 0.000 0.000 0.000 0.000 0.000 ## PC5 0.000 0.000 0.000 0.000 19.753 0.000 0.000 0.000 0.000 0.000 ## PC6 0.000 0.000 0.000 0.000 0.000 19.101 0.000 0.000 0.000 0.000 ## PC7 0.000 0.000 0.000 0.000 0.000 0.000 16.671 0.000 0.000 0.000 ## PC8 0.000 0.000 0.000 0.000 0.000 0.000 0.000 14.001 0.000 0.000 ## PC9 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 12.752 0.000 ## PC10 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 11.763 Eigen Decomposition: PCA can also be calculated manually using eigen decomposition. First step is to center the data by mean of each feature and scaling by standard deviation. It is followed by calculation of covariance matrix for all the features (513X513). This covariance matrix qualifies for eigen decomposition and gives the variance of each new principal components as eigen values and inverse of eigen vector matrix can be used to rotate original data to the eigen basis. ImageScaled &lt;- scale(Image_filt, center = TRUE, scale=TRUE) #get covariance matrix manually # covar &lt;- matrix(nrow=513, ncol=513) # for (i in 1:513) { # for (j in 1:513) { # covar[i,j] &lt;- cov(ImageScaled[,i], ImageScaled[,j]) # } # } #covar by R function covar &lt;- cov(ImageScaled) ##eigen decomposition of covariance matrix rotate &lt;- eigen(covar) #invRot &lt;- solve(rotate$vectors) #alternative method to get inverse of a matrix invRot &lt;- t(rotate$vectors) newCord &lt;- invRot %*% t(ImageScaled) newCord &lt;- t(newCord) ggplot(data.frame(newCord), aes(x=newCord[,1], y=newCord[,2], color=as.factor(label)))+geom_point() + stat_ellipse()+ labs(x=paste0(\"PC1 (\",round(rotate$values[1]/sum(rotate$values)*100,2), \"%)\" ), y=paste0(\"PC2 (\",round(rotate$values[2]/sum(rotate$values)*100,2) ,\"%)\"), title= \"PCA by manual eigen decomposition\", color= \"Digits\") ##Scree plot is barplot of eigne values barplot(rotate$values[1:10], main = \"Screeplot for manual eigen decomposition\") These plots above show that we get same result by both using prcomp() function or manually by eigen decomposition. The function prcomp() under the hood uses another method of matrix decomposition: Singular vector decomposition (SVD) which is computationally more efficient than eigen decomposition and has more wide application as it can be applied to non-square matrix as well. R has a function princomp() which does actual eigen decomposition but can be applied only when the number of observations are larger than the number of features. Manual SVD: SingularVal &lt;- svd(ImageScaled) ##eigen values are given by d: d^2/n-1 eigen_SVD = (SingularVal$d)^2/149 ##The principle components are given by U*d newCord2 = SingularVal$u %*% diag(SingularVal$d, nrow=150, ncol=150) ggplot(data.frame(newCord2), aes(x=newCord2[,1], y=newCord2[,2], color=as.factor(label)))+geom_point() + stat_ellipse() Principal coordinate analysis It is essentially PCA but instead of calculating the direction where there is maximum variance in the features (pixels in this example), PCoA tries to find the direction of maximum distance between the samples. When the distance measured is euclidean, direction of maximum variance of features and maximum distance between samples is same. #Distance matrix giving dist between samples EucDist &lt;-as.matrix(dist(ImageScaled, method=\"euclidean\")) PCoA&lt;- cmdscale(EucDist, eig=TRUE) ggplot(data.frame(PCoA$points), aes(x=PCoA$points[,1], y=PCoA$points[,2], color=as.factor(label)))+geom_point() + stat_ellipse() ##Manually perform PCoA by eigen decomposition x &lt;- EucDist^2 #Double center this matrix R = x*0 + rowMeans(x) C= t(x*0 + colMeans(x)) x_DC &lt;- x-R-C+mean(x[]) e &lt;- eigen(-x_DC/2, symmetric = T) newCord3 &lt;- e$vectors*rep(sqrt(e$values), each=150) ## Warning in sqrt(e$values): NaNs produced ggplot(data.frame(newCord3), aes(x=newCord3[,1], y=-newCord3[,2], color=as.factor(label)))+geom_point() + stat_ellipse() ##For details see the reference #chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.cs.utah.edu/~jeffp/teaching/cs5140-S15/cs5140/L15-SVD.pdf #https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional/132731#132731 #https://stackoverflow.com/questions/43639063/double-centering-in-r Conclusion: This shows that matrix decomposition is central to the dimension reduction and based on what matrix (covariance matrix or distance matrix) used some matrix calculation is necessary to find the PCs corresponding to the direction where data is spread most. References: Explanation of SVD by eigen decomposition https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca comparer PCA Vs PCoA https://towardsdatascience.com/principal-coordinates-analysis-cc9a572ce6c PCoA https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional/132731#132731 PCA http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf"
+    }
+  ]
+}</script>
+
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="/assets/css/main.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+<link href="/assets/css/nav-media.css" rel="stylesheet">
+
+  </head>
+
+  <body >
+    <script src="/assets/js/color-scheme-attr-init.js" data-mode="false"></script>
+    <nav class="navbar navbar-default top-nav">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed pull-left top-nav-menu-toggle" data-toggle="collapse" data-target="#id_top-nav-menu-toggle" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand top-nav-brand" href="/" translate="no">Data churn by AK</a>
+    </div>
+  <div class="color_scheme_switch_top_holder" data-toggle="tooltip" data-placement="bottom" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+
+  
+</nav>
+<nav id="side-nav-container">
+  <div class="side-nav">
+    <div class="side-nav-brand">
+      <img src="/assets/img/default/profile.jpg" alt="">
+      <div class="brand-holder">
+        <a href="/" translate="no">Data churn by AK</a>
+        </div>
+      <p>&nbsp;Data blogs</p>
+      <br>
+    </div>
+    <br>
+    <a href="javascript:void(0);" class="side-nav-close">
+        <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+      </a>
+    <hr>
+    <br>
+    <div class="side-nav-buttons">
+      <ul class="nav nav-pills nav-stacked">
+        <li ><a href="/" class=" hover-effect"><i class="fa-fw fa fa-home" aria-hidden="true"></i>Home</a></li><li ><a href="/tabs/blog/" class="active-page hover-effect"><i class="fa-fw fa fa-pencil-square-o" aria-hidden="true"></i>Notes</a></li><li ><a href="/tabs/archive.html" class=" hover-effect"><i class="fa-fw fa fa-archive" aria-hidden="true"></i>Archive</a></li><li ><a href="/tabs/projects.html" class=" hover-effect"><i class="fa-fw fa fa-book" aria-hidden="true"></i>Notebooks</a></li><li ><a href="/tabs/links.html" class=" hover-effect"><i class="fa-fw fa fa-link" aria-hidden="true"></i>Links</a></li><li ><a href="/tabs/about.html" class=" hover-effect"><i class="fa-fw fa fa-user-o" aria-hidden="true"></i>About</a></li></ul>
+    </div>
+    <br>
+    <br><div class="contact-container">
+  <hr>
+  <h3>Contact</h3>
+  <ul><li><a href="https://www.github.com/akoirala2000" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i></a></li><li>
+      <a href="javascript:void(0);" class="hover-effect-big" onclick="setAddress('datachurnbyak', 'gmail.com');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li><li><a href="https://www.linkedin.com/in/amrit-koirala-41037392" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a href="https://www.twitter.com/amritkoirala1" class="hover-effect-big" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter" aria-hidden="true"></i></a></li></ul>
+</div>
+
+    <hr id="toc-view-top">
+    <div class="side-nav-footer" translate="no">
+        <p>&copy; 2022 Data churn by AK.</p>
+      </div>
+  </div>
+  <div class="side-nav-bottom-buttons-container">
+    <hr>
+    <ul>
+      <li><div class="color_scheme_switch_side_holder" data-toggle="tooltip" data-placement="top" title="Color scheme">
+  <label class="color-scheme-switch hover-effect">
+    <input type="checkbox" class="checkbox_color_switch" />
+    <span></span>
+  </label>
+</div>
+</li><li><div class="cookie-icon hover-effect" onclick="CookieConsent.showSettings();" data-toggle="tooltip" data-placement="top" title="Cookie settings">
+  <div class="cookie-wrapper">
+    <i class="fa fa-circle bitten-cookie" aria-hidden="true"></i>
+    <i class="fa fa-circle small-ellipse-icon" aria-hidden="true"></i>
+    <i class="fa fa-spinner inner-icon" aria-hidden="true"></i>
+    <i class="fa fa-circle-thin outer-icon" aria-hidden="true"></i>
+  </div>
+</div>
+</li></ul>
+  </div></nav>
+<div id="toc-container" class="movable">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="Drag to move">
+      Contents
+      <span class="pull-right">
+        <a href="javascript:void(0);" class="close-button" onclick="document.getElementById('toc-container').style.display = 'none';">
+          <i class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Close"></i>
+        </a>
+      </span>
+    </div>
+    <div class="panel-body">
+      <nav id="table-of-contents"></nav>
+    </div>
+  </div>
+</div>
+<div id="main-wrapper">
+      <div class="main-container"><div class="multipurpose-container post-container">
+  <div class="post-title">Principal component analysis</div><div class="meta">
+  <small>
+    &nbsp;<i class="fa fa-calendar"></i>&nbsp;&nbsp;Feb 14, 2022
+  </small>
+  <small>
+    &nbsp;&nbsp;&nbsp;<span><i class="fa fa-clock-o"></i>&nbsp;21 min read</span>
+  </small>
+  
+  <small class="meta-link" >
+    &nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o"></i>&nbsp;<a href="/posts/2022-02-15-PCA#disqus_thread">-</a>
+    <a href="javascript:void(0);" onclick="window.location.href='/posts/2022-02-15-PCA#disqus_thread'">Comments</a>
+  </small>
+  </div>
+<hr/>
+  <div class="markdown-style">
+    <h3 id="principal-component-analysis-pca">Principal component analysis (PCA)</h3>
+
+<!-- outline-start -->
+<p>PCA is one of the most often used dimension reduction techniques in data
+science. It is extensively used for projection of high dimensional data
+onto low dimensions which can be used for data visualization (usually in
+2D) and to obtain non-correlated (orthogonal) features ordered according
+to the amount of variance explained by each of them.<!-- outline-end --> This article uses
+PCA to visualize 150 images of digits represented as 28X28 pixel image,
+onto 2D coordinate system. During this I am explaining the theory of PCA
+and different algorithms that can be used to carry-out this analysis in
+R. The goal of this article is to see PCA from different angles and
+doing so will give us clear picture of this analysis in R.</p>
+
+<h3 id="theory">Theory</h3>
+
+<p>PCA uses various theories from linear algebra and fundamental knowledge
+of linear algebra, and its implementation in manipulation of data matrix
+is a most to understand PCA. You might want to read my previous post on
+<a href="/posts/2022-02-10-Matrix">linear algebra</a> if you need a quick recap of these concepts.</p>
+
+<h4 id="goal">Goal:</h4>
+
+<p>When a data consists of \(p\) number of features and \(n\) number of
+observations, it can be represented as a matrix of dimensions
+\(n \times p\). Each observations is a vector of \(p\) dimensions and
+can be plotted on p-dimensional space. \(p\) is usually very large
+compared to \(n\) and it is desirable to represent data in a lower
+dimensions, but we will loose some information whenever this data is
+represented in any dimensions less than \(p\). If we can find new
+dimensions such that the first dimension will explain the most of the
+variance in the data and second dimension the second most and so on, we
+can ignore the dimensions towards the end as they contribute very little
+information to the data. So, the whole data can be represented with only
+\(k\) dimensions which is much smaller than \(p\), with very little loss
+of the information. It is much easier to understand this concept when we
+see the reduction of a 2-dimensional space to 1-dimensional space.</p>
+
+<p>The matrix below (\(A\)) has five observations represented by 2 features
+(for example student by weight and length) and we want reduce this to
+lower dimension (1D) by first finding two dimensions where first will
+explain the most variance (1st principal component) and second will
+explain the remaining variance. If we represent our whole data with just
+first principal component (which is a straight line), there will be
+minimum loss of information. This is very similar to a linear regression
+but goal here is dimension reduction not finding a equation for
+dependent variable in terms of independent variables.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">90</span><span class="p">,</span><span class="w">
+             </span><span class="m">120</span><span class="p">,</span><span class="m">115</span><span class="p">,</span><span class="w">
+             </span><span class="m">122</span><span class="p">,</span><span class="w"> </span><span class="m">140</span><span class="p">,</span><span class="w">
+             </span><span class="m">130</span><span class="p">,</span><span class="m">150</span><span class="p">,</span><span class="w">
+             </span><span class="m">140</span><span class="p">,</span><span class="m">155</span><span class="p">),</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">A</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##      [,1] [,2]
+## [1,]  100   90
+## [2,]  120  115
+## [3,]  122  140
+## [4,]  130  150
+## [5,]  140  155
+</code></pre></div></div>
+
+<p>The columns in the above matrix represents features and rows are
+observations. Lets see the distribution of these five observations by
+the features.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="w"> </span><span class="s2">"length"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"height"</span><span class="p">)</span><span class="w">
+</span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">A</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">~</span><span class="n">A</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-2-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-2-1.svg" alt="" /> In the
+plot above we can see length and height are highly correlated and we can
+find a best line of fit (indicated by red dotted line) which captures
+most of the variance in this data. If we want to find a direction in
+this coordinate system, along which there is maximum variance that would
+be this regression line. Therefore, the line of fit gives the direction
+of the first principal component and a vector orthogonal to the first
+principal component is the second principal component along which occurs
+the remaining variance.</p>
+
+<h4 id="steps">Steps:</h4>
+
+<h5 id="1-centering">1. Centering</h5>
+
+<p>The first step in PCA is to center the data to the origin. This is
+obtained by subtracting the column means from each column. In addition
+to centering of data, if there are variables with large difference in
+unit of measurement, like weight in grams and length in kilometers,
+scaling by standard deviation is done so that each variable contribute
+proper share to the principal components. In this example, we will
+perform only scaling of data. The figure below shows the centered plot
+using the <code class="language-plaintext highlighter-rouge">sweep()</code> function in R. Two blue arrows shows the direction
+of the principal components.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Centering data</span><span class="w">
+</span><span class="n">A_center</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sweep</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">colMeans</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="w">
+
+</span><span class="n">plot</span><span class="p">(</span><span class="n">A_center</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="w"> </span><span class="s2">"length"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"height"</span><span class="p">)</span><span class="w">
+</span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">A_center</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">~</span><span class="n">A_center</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">x1</span><span class="o">=</span><span class="n">A_center</span><span class="p">[</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">],</span><span class="n">y1</span><span class="o">=</span><span class="w"> </span><span class="n">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="m">4</span><span class="p">],</span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="c1">#neg of slope gives slope of orthogonal line</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="o">=</span><span class="m">-10</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="m">-1</span><span class="o">*</span><span class="m">1</span><span class="o">/</span><span class="n">mod</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="m">-10</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-3-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-3-1.svg" alt="" /></p>
+
+<h5 id="2-eigen-decomposition">2. Eigen decomposition</h5>
+
+<p>The second step is to find the vectors giving the principal coordinates.
+This is obtained by eigen decomposition of covariance matrix of the
+centered matrix. In case of covariance matrix eigen vectors gives the
+direction of maximum variance of data in the order of eigen values.
+Eigen decompostion of a covariance matrix (\(p\times p\)) can be
+represented by the equation below.</p>
+
+\[A=Q\Lambda Q^T\]
+
+<p>The matrix \(Q\)
+also has (\(p \times p\)) dimensions and its columns are eigen vectors
+of the covariance matrix which are also the loadings for principal
+components. The matrix \(Q^T\) also has dimension of \(p \times p\) and
+is equal to the inverse of matrix \(Q\). Our original matrix when
+transformed by this inverse matrix gives the coordinates of our original
+matrix in eigen basis.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="c1">##now need the unit vectors in each direction given by eigen vector of covariance matrix</span><span class="w">
+</span><span class="c1">#covariance matrix can be calculated using matrix function </span><span class="w">
+</span><span class="c1">#t(A_center)%*%A_center/(5-1) </span><span class="w">
+</span><span class="c1">#or R function</span><span class="w">
+</span><span class="n">rotation</span><span class="o">=</span><span class="w"> </span><span class="n">eigen</span><span class="p">(</span><span class="n">cov</span><span class="p">(</span><span class="n">A_center</span><span class="p">))</span><span class="w">
+
+</span><span class="n">plot</span><span class="p">(</span><span class="n">A_center</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="w"> </span><span class="s2">"length"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"height"</span><span class="p">)</span><span class="w">
+</span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">A_center</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">~</span><span class="n">A_center</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">x1</span><span class="o">=</span><span class="n">A_center</span><span class="p">[</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">],</span><span class="n">y1</span><span class="o">=</span><span class="w"> </span><span class="n">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">)[</span><span class="m">4</span><span class="p">],</span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="c1">#neg of slope gives slope of orthogonal line</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="o">=</span><span class="m">-10</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="m">-1</span><span class="o">*</span><span class="m">1</span><span class="o">/</span><span class="n">mod</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="m">-10</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="o">=</span><span class="n">rotation</span><span class="o">$</span><span class="n">vectors</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w">
+       </span><span class="n">y1</span><span class="o">=</span><span class="n">rotation</span><span class="o">$</span><span class="n">vectors</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="m">0.1</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="o">=</span><span class="n">rotation</span><span class="o">$</span><span class="n">vectors</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w">
+       </span><span class="n">y1</span><span class="o">=</span><span class="n">rotation</span><span class="o">$</span><span class="n">vectors</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="m">0.1</span><span class="w"> </span><span class="p">)</span><span class="w">
+
+
+</span><span class="c1">##Now rotate the data so that new coordinates are x and y axis</span><span class="w">
+</span><span class="n">invRot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">rotation</span><span class="o">$</span><span class="n">vectors</span><span class="p">)</span><span class="w">
+</span><span class="n">newCord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">invRot</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">A_center</span><span class="p">)</span><span class="w">
+</span><span class="n">newCord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">newCord</span><span class="p">)</span><span class="w">
+
+</span><span class="n">VarExplained</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rotation</span><span class="o">$</span><span class="n">values</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">newCord</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w">
+     </span><span class="n">xlab</span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC1 ("</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="s2">"%)"</span><span class="p">),</span><span class="w">
+     </span><span class="n">ylab</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC2 ("</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="s2">"%)"</span><span class="p">),</span><span class="w">
+     </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-30</span><span class="p">,</span><span class="m">30</span><span class="p">),</span><span class="w">
+     </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-60</span><span class="p">,</span><span class="m">40</span><span class="p">))</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">x1</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">x1</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-4-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-4-1.svg" alt="" /></p>
+
+<h5 id="3-projection">3. Projection</h5>
+
+<p>Now that we have represented our data in new coordinate and data varies
+most in the direction of first component. 98.11% of the variance is
+explained by the first principal component and only 1.89 % variance is
+explained by the second component. We can represent this data using only
+the PC1 and we will be loosing only 1.89% of the variance. Figure below
+show the data projected onto PC1 (one dimension only).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##Now we can reduce dimension to one by taking PC1 only</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">newCord</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w">
+     </span><span class="n">xlab</span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC1 ("</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">VarExplained</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="s2">"%)"</span><span class="p">),</span><span class="w">
+     </span><span class="n">ylab</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">yaxt</span><span class="o">=</span><span class="s2">"n"</span><span class="p">)</span><span class="w">
+</span><span class="n">arrows</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">x1</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-5-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-5-1.svg" alt="" /></p>
+
+<p>This concept from 2D can be easily scaled to any n-dimensional matrix
+where there are \(p\) features and \(n\) observations. Lets see how can
+we use PCA to reduce dimension and visualize on 2D coordinates the image
+data.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Read image data</span><span class="w">
+</span><span class="n">Image</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"DigitMatrix.csv"</span><span class="p">)</span><span class="w">
+</span><span class="c1">#See the frequency of each digits </span><span class="w">
+</span><span class="n">label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Image</span><span class="o">$</span><span class="n">y</span><span class="w">
+</span><span class="n">table</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## label
+##  0  5  7 
+## 50 50 50
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Make image matrix</span><span class="w">
+</span><span class="n">Image</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Image</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span><span class="w">
+</span><span class="c1">##define a function to view these images</span><span class="w">
+</span><span class="n">show_digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">arr784</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="m">12</span><span class="o">:</span><span class="m">1</span><span class="o">/</span><span class="m">12</span><span class="p">),</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">image</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">as.matrix</span><span class="p">(</span><span class="n">arr784</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">28</span><span class="p">)[,</span><span class="w"> </span><span class="m">28</span><span class="o">:</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="c1">#see image of a random observation</span><span class="w">
+</span><span class="n">show_digit</span><span class="p">(</span><span class="n">Image</span><span class="p">[</span><span class="m">109</span><span class="p">,])</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-6-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-6-1.svg" alt="" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#View average of the three digit types </span><span class="w">
+</span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span><span class="w">
+</span><span class="n">show_digit</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">Image</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,],</span><span class="m">2</span><span class="p">,</span><span class="n">mean</span><span class="p">))</span><span class="w">
+</span><span class="n">show_digit</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">Image</span><span class="p">[</span><span class="m">51</span><span class="o">:</span><span class="m">100</span><span class="p">,],</span><span class="m">2</span><span class="p">,</span><span class="n">mean</span><span class="p">))</span><span class="w">
+</span><span class="n">show_digit</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">Image</span><span class="p">[</span><span class="m">101</span><span class="o">:</span><span class="m">150</span><span class="p">,],</span><span class="m">2</span><span class="p">,</span><span class="n">mean</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-6-2.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-6-2.svg" alt="" /> Figures
+above shows a sample of image represented by \(28 \times 28\) pixels. We
+had three types of digits (0, 5, and 7) in this data set shown by the
+average of all 50 images in each category. Now lets apply PCA on this
+data by three methods which will give us same results.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">prcomp()</code> function in R</li>
+  <li>Eigen decomposition</li>
+  <li>SVD</li>
+</ul>
+
+<h3 id="prcomp"><code class="language-plaintext highlighter-rouge">prcomp()</code></h3>
+
+<p>The code below is the most commonly used method to perform PCA in R. For
+this function data matrix should be arranged so that the rows are the
+observation (n rows) and columns are the each features (p columns). This
+function provides options for centering and scaling so we don’t need to
+perform those operations before hand.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##PCA by R function </span><span class="w">
+</span><span class="c1">#Remove 0 variance columns </span><span class="w">
+</span><span class="n">Image_filt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Image</span><span class="p">[,</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="o">!=</span><span class="m">0</span><span class="p">]</span><span class="w">
+</span><span class="n">PCA_prcomp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">prcomp</span><span class="p">(</span><span class="n">Image_filt</span><span class="p">,</span><span class="w"> </span><span class="n">center</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+
+</span><span class="n">eigenValues</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">sdev</span><span class="o">^</span><span class="m">2</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC1 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%)"</span><span class="w"> </span><span class="p">),</span><span class="w">
+       </span><span class="n">y</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC2 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="s2">"%)"</span><span class="p">),</span><span class="w">
+       </span><span class="n">title</span><span class="o">=</span><span class="w"> </span><span class="s2">"PCA by prcomp() function in R"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="w"> </span><span class="s2">"Digits"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-7-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-7-1.svg" alt="" /></p>
+
+<h4 id="results">Results</h4>
+
+<p>The function prcomp() in R gives five outputs:</p>
+
+<ul>
+  <li>sdev: These are square root of eigen values. When squared gives the
+value of diagonal of \(\Lambda\) matrix in eigne decomposition or
+the \(\Sigma\) matrix in svd. Barplot of the variance explained by
+each principal components is called screeplot.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">screeplot</span><span class="p">(</span><span class="n">PCA_prcomp</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Screeplot by R function"</span><span class="p">)</span><span class="w">
+</span><span class="c1">#or manually </span><span class="w">
+</span><span class="n">barplot</span><span class="p">((</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">sdev</span><span class="o">^</span><span class="m">2</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="w"> </span><span class="s2">"Screeplot by barplot function"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-8-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-8-1.svg" alt="" /></p>
+
+<ul>
+  <li>rotation: This is a matrix where each column is an eigen vector of the
+input matrix. It has \(p \times p\) dimensions and values are the
+loadings for each feature in that particular column of eigen vector.
+This forms basis of biplot which in addition to the new coordinates of
+observations shows the contribution of each feature to the principal
+components. The default biplot function doesn’t work great when we have
+large number of features. Lets try to extract top 10 variables for PC1
+and PC2 and manually plot those 20 variables using ggplot2.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="o">&lt;-</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">rotation</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">as_tibble</span><span class="p">(</span><span class="n">rownames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"features"</span><span class="p">)</span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">select</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">filter</span><span class="p">(</span><span class="n">order</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">PC1</span><span class="p">),</span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="o">%in%</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="o">|</span><span class="n">order</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">PC2</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="o">%in%</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w">
+
+</span><span class="n">p2</span><span class="o">&lt;-</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_segment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">xend</span><span class="o">=</span><span class="n">PC1</span><span class="o">*</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">PC2</span><span class="o">*</span><span class="m">200</span><span class="p">),</span><span class="w"> </span><span class="n">arrow</span><span class="o">=</span><span class="n">arrow</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="n">unit</span><span class="p">(</span><span class="m">0.2</span><span class="p">,</span><span class="s2">"cm"</span><span class="p">)),</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s2">"cadetblue4"</span><span class="p">)</span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PC1</span><span class="o">*</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">PC2</span><span class="o">*</span><span class="m">200</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">features</span><span class="p">),</span><span class="w"> </span><span class="n">inherit.aes</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC2 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="s2">"%)"</span><span class="p">),</span><span class="w"> </span><span class="n">sec.axis</span><span class="o">=</span><span class="n">sec_axis</span><span class="p">(</span><span class="o">~</span><span class="n">.</span><span class="o">/</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="w"> </span><span class="s2">"Variable loadings in PC2"</span><span class="p">))</span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC1 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">eigenValues</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="s2">"%)"</span><span class="p">),</span><span class="w"> </span><span class="n">sec.axis</span><span class="o">=</span><span class="n">sec_axis</span><span class="p">(</span><span class="o">~</span><span class="n">.</span><span class="o">/</span><span class="m">200</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"Variable loadings in PC1"</span><span class="p">))</span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"Digits"</span><span class="p">)</span><span class="o">+</span><span class="w">
+    </span><span class="n">theme</span><span class="p">(</span><span class="n">axis.title.y.right</span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"cadetblue4"</span><span class="p">),</span><span class="w">
+          </span><span class="n">axis.text.y.right</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"cadetblue4"</span><span class="p">),</span><span class="w">
+          </span><span class="n">axis.text.x.top</span><span class="w"> </span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"cadetblue4"</span><span class="p">),</span><span class="w">
+          </span><span class="n">axis.title.x.top</span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"cadetblue4"</span><span class="p">))</span><span class="w">
+   
+</span><span class="n">p2</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg" alt="" /></p>
+
+<p>The
+plot above is a biplot with only top 10 contributors in PC1 and PC2 (20
+in total). The axis label on right and top which are same colored as the
+arrows shows the loadings of each feature in the direction of PC1 and
+PC2. For example: Pixel X497 contributes most for PC1 and almost
+orthogonal to pixel X517 which contribute mostly to the PC2. This plot
+is also useful to identify the original features which might be of
+significant role distinguishing these three types of digits. If we see
+the position of these top 20 pixels in 28X28 pixel frame(figure below),
+we can see all of these pixels are on the bottom half of the image.
+Compare this to the average of each digit and we can see on average the
+upper half of these 3 digits looks very similar and the lower half has
+the difference which is beautifully captured by PCA.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top</span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">784</span><span class="w">
+</span><span class="n">top</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">top</span><span class="o">%in%</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">substr</span><span class="p">(</span><span class="n">p</span><span class="o">$</span><span class="n">features</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">nchar</span><span class="p">(</span><span class="n">p</span><span class="o">$</span><span class="n">features</span><span class="p">))),</span><span class="w"> </span><span class="n">top</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w">
+</span><span class="n">Vectors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">28</span><span class="p">,</span><span class="w"> </span><span class="m">28</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="m">28</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="n">each</span><span class="o">=</span><span class="m">28</span><span class="p">),</span><span class="w"> </span><span class="n">z</span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">)</span><span class="w">
+</span><span class="n">p3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">Vectors</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span><span class="o">+</span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">top</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">p3</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-10-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-10-1.svg" alt="" /></p>
+
+<ul>
+  <li>x: These are the new coordinates obtained by the rotation of the
+original matrix. Each observations is a row vector represented by \(p\)
+dimensions (\(p\) PCs). Since all PCs are orthogonal to each other,
+covariance matrix of <code class="language-plaintext highlighter-rouge">x</code> gives the diagonal matrix \(\Lambda\), where
+covaraince between the PCs is zero and covaraince with itself is the
+variance of each PC. Matrix below shows the sub-matrix with only 10 PCs.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="n">cov</span><span class="p">(</span><span class="n">PCA_prcomp</span><span class="o">$</span><span class="n">x</span><span class="p">),</span><span class="m">3</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span><span class="w"> </span><span class="c1">##This gives diagonal matrix with eigen values in diagonal.</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##         PC1    PC2    PC3    PC4    PC5    PC6    PC7    PC8    PC9   PC10
+## PC1  64.347  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+## PC2   0.000 39.789  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+## PC3   0.000  0.000 29.925  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+## PC4   0.000  0.000  0.000 23.753  0.000  0.000  0.000  0.000  0.000  0.000
+## PC5   0.000  0.000  0.000  0.000 19.753  0.000  0.000  0.000  0.000  0.000
+## PC6   0.000  0.000  0.000  0.000  0.000 19.101  0.000  0.000  0.000  0.000
+## PC7   0.000  0.000  0.000  0.000  0.000  0.000 16.671  0.000  0.000  0.000
+## PC8   0.000  0.000  0.000  0.000  0.000  0.000  0.000 14.001  0.000  0.000
+## PC9   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000 12.752  0.000
+## PC10  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000 11.763
+</code></pre></div></div>
+
+<h3 id="eigen-decomposition">Eigen Decomposition:</h3>
+
+<p>PCA can also be calculated manually using eigen decomposition. First
+step is to center the data by mean of each feature and scaling by
+standard deviation. It is followed by calculation of covariance matrix
+for all the features (513X513). This covariance matrix qualifies for
+eigen decomposition and gives the variance of each new principal
+components as eigen values and inverse of eigen vector matrix can be
+used to rotate original data to the eigen basis.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ImageScaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scale</span><span class="p">(</span><span class="n">Image_filt</span><span class="p">,</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="c1">#get covariance matrix manually </span><span class="w">
+</span><span class="c1"># covar &lt;- matrix(nrow=513, ncol=513)</span><span class="w">
+</span><span class="c1"># for (i in 1:513) {</span><span class="w">
+</span><span class="c1">#     for (j in 1:513) {</span><span class="w">
+</span><span class="c1">#         covar[i,j] &lt;- cov(ImageScaled[,i], ImageScaled[,j])</span><span class="w">
+</span><span class="c1">#     }</span><span class="w">
+</span><span class="c1"># }</span><span class="w">
+
+</span><span class="c1">#covar by R function</span><span class="w">
+</span><span class="n">covar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cov</span><span class="p">(</span><span class="n">ImageScaled</span><span class="p">)</span><span class="w">
+</span><span class="c1">##eigen decomposition of covariance matrix</span><span class="w">
+</span><span class="n">rotate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">eigen</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#invRot &lt;- solve(rotate$vectors) #alternative method to get inverse of a matrix</span><span class="w">
+</span><span class="n">invRot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">vectors</span><span class="p">)</span><span class="w">
+</span><span class="n">newCord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">invRot</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">ImageScaled</span><span class="p">)</span><span class="w">
+</span><span class="n">newCord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">newCord</span><span class="p">)</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">newCord</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">newCord</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">newCord</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC1 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">values</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%)"</span><span class="w"> </span><span class="p">),</span><span class="w">
+       </span><span class="n">y</span><span class="o">=</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"PC2 ("</span><span class="p">,</span><span class="nf">round</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">values</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="s2">"%)"</span><span class="p">),</span><span class="w">
+       </span><span class="n">title</span><span class="o">=</span><span class="w"> </span><span class="s2">"PCA by manual eigen decomposition"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="w"> </span><span class="s2">"Digits"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-12-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-12-1.svg" alt="" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##Scree plot is barplot of eigne values</span><span class="w">
+</span><span class="n">barplot</span><span class="p">(</span><span class="n">rotate</span><span class="o">$</span><span class="n">values</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Screeplot for manual eigen decomposition"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-12-2.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-12-2.svg" alt="" /> These
+plots above show that we get same result by both using <code class="language-plaintext highlighter-rouge">prcomp()</code>
+function or manually by eigen decomposition. The function <code class="language-plaintext highlighter-rouge">prcomp()</code>
+under the hood uses another method of matrix decomposition: Singular
+vector decomposition (SVD) which is computationally more efficient than
+eigen decomposition and has more wide application as it can be applied
+to non-square matrix as well. R has a function <code class="language-plaintext highlighter-rouge">princomp()</code> which does
+actual eigen decomposition but can be applied only when the number of
+observations are larger than the number of features.</p>
+
+<h3 id="manual-svd">Manual SVD:</h3>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SingularVal</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">svd</span><span class="p">(</span><span class="n">ImageScaled</span><span class="p">)</span><span class="w">
+</span><span class="c1">##eigen values are given by  d: d^2/n-1</span><span class="w">
+</span><span class="n">eigen_SVD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">SingularVal</span><span class="o">$</span><span class="n">d</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">149</span><span class="w">
+
+</span><span class="c1">##The principle components are given by U*d</span><span class="w">
+</span><span class="n">newCord2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SingularVal</span><span class="o">$</span><span class="n">u</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">diag</span><span class="p">(</span><span class="n">SingularVal</span><span class="o">$</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">150</span><span class="p">)</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">newCord2</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">newCord2</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">newCord2</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-13-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-13-1.svg" alt="" /></p>
+
+<h1 id="principal-coordinate-analysis">Principal coordinate analysis</h1>
+
+<p>It is essentially PCA but instead of calculating the direction where
+there is maximum variance in the features (pixels in this example), PCoA
+tries to find the direction of maximum distance between the samples.
+When the distance measured is euclidean, direction of maximum variance
+of features and maximum distance between samples is same.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Distance matrix giving dist between samples</span><span class="w">
+</span><span class="n">EucDist</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">as.matrix</span><span class="p">(</span><span class="n">dist</span><span class="p">(</span><span class="n">ImageScaled</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s2">"euclidean"</span><span class="p">))</span><span class="w">
+</span><span class="n">PCoA</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cmdscale</span><span class="p">(</span><span class="n">EucDist</span><span class="p">,</span><span class="w"> </span><span class="n">eig</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">PCoA</span><span class="o">$</span><span class="n">points</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PCoA</span><span class="o">$</span><span class="n">points</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">PCoA</span><span class="o">$</span><span class="n">points</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-14-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-14-1.svg" alt="" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##Manually perform PCoA by eigen decomposition </span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">EucDist</span><span class="o">^</span><span class="m">2</span><span class="w">
+</span><span class="c1">#Double center this matrix </span><span class="w">
+</span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="m">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rowMeans</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="n">C</span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="m">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">colMeans</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+</span><span class="n">x_DC</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">x</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="n">C</span><span class="o">+</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[])</span><span class="w">
+</span><span class="n">e</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">eigen</span><span class="p">(</span><span class="o">-</span><span class="n">x_DC</span><span class="o">/</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">symmetric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">newCord3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">e</span><span class="o">$</span><span class="n">vectors</span><span class="o">*</span><span class="nf">rep</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">e</span><span class="o">$</span><span class="n">values</span><span class="p">),</span><span class="w"> </span><span class="n">each</span><span class="o">=</span><span class="m">150</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Warning in sqrt(e$values): NaNs produced
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">newCord3</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">newCord3</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="o">=-</span><span class="n">newCord3</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">label</span><span class="p">)))</span><span class="o">+</span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stat_ellipse</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img class="lozad imgViewer mfp-zoom" data-mfp-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-15-1.svg" data-src="/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-15-1.svg" alt="" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##For details see the reference </span><span class="w">
+</span><span class="c1">#chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.cs.utah.edu/~jeffp/teaching/cs5140-S15/cs5140/L15-SVD.pdf</span><span class="w">
+</span><span class="c1">#https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional/132731#132731</span><span class="w">
+</span><span class="c1">#https://stackoverflow.com/questions/43639063/double-centering-in-r</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="conclusion">Conclusion:</h3>
+
+<p>This shows that matrix decomposition is central to the dimension
+reduction and based on what matrix (covariance matrix or distance
+matrix) used some matrix calculation is necessary to find the PCs
+corresponding to the direction where data is spread most.</p>
+
+<h3 id="references">References:</h3>
+
+<ul>
+  <li>
+    <p>Explanation of SVD by eigen decomposition
+<a href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca">https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca</a></p>
+  </li>
+  <li>
+    <p>comparer PCA Vs PCoA
+<a href="https://towardsdatascience.com/principal-coordinates-analysis-cc9a572ce6c">https://towardsdatascience.com/principal-coordinates-analysis-cc9a572ce6c</a></p>
+  </li>
+  <li>
+    <p>PCoA
+<a href="https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional/132731#132731">https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional/132731#132731</a></p>
+  </li>
+  <li>
+    <p>PCA
+<a href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf">http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf</a></p>
+  </li>
+</ul>
+<hr>
+<div class="share-holder">
+  <span class="share-label">Share on: </span>
+  <ul class="share-buttons">
+    
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-15-PCA&amp;text=Principal%20component%20analysis%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Twitter" class="hover-effect-big">
+          <i class="fa fa-twitter-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-15-PCA" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Facebook" class="hover-effect-big">
+          <i class="fa fa-facebook-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-15-PCA&amp;text=Principal%20component%20analysis%20-%20Data%20churn%20by%20AK" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Telegram" class="hover-effect-big">
+          <i class="fa fa-telegram fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-15-PCA" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="LinkedIn" class="hover-effect-big">
+          <i class="fa fa-linkedin-square fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="mailto:?subject=Principal%20component%20analysis%20-%20Data%20churn%20by%20AK&amp;body=Principal%20component%20analysis%20-%20Data%20churn%20by%20AK%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2022-02-15-PCA" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Email" class="hover-effect-big">
+          <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li>
+        <a href="javascript:void(0);" onclick="copyToClipboard('http://localhost:4000/posts/2022-02-15-PCA', 'Link copied!')" id="copytoclipboard" data-toggle="tooltip" data-placement="top" title="Copy link" class="hover-effect-big">
+          <i class="fa fa-link fa-fw" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+</div>
+</div>
+
+    <div class="pagination_wrapper">
+  <nav aria-label="Page navigation">
+    <ul class="pagination" style="opacity:0">
+    <li><a href="javascript:void(0);">1</a></li></ul>
+  </nav>
+</div>
+
+  <div id="disqus_thread"></div>
+
+<noscript>
+  Please enable JavaScript to view the Comments.
+</noscript>
+
+
+</div><div class="footer-wrapper">
+  <div class="footer-container">
+    <footer translate="no">
+      <div class="footer-text footer-text-centered long-copyright">
+          <p>&copy; 2022 Data churn by AK. </p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" data-tooltip-no-hide title="Except where otherwise noted, content on this web site is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.">
+              <img src="/assets/img/default/cc/cc.svg" alt="cc" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/by.svg" alt="by" width="12" height="12">&nbsp;<img src="/assets/img/default/cc/sa.svg" alt="sa" width="12" height="12">&nbsp;<p>Some rights reserved.</p>
+            </a></div>
+      <p class="footer-powered"><span>Pwrd by </span><a href="https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme" target="_blank" rel="noopener noreferrer">Mr. Green</a></p>
+    </footer>
+  </div>
+</div>
+<div class="scroll-to-top-container">
+        <a id="scroll-to-top" href="#main-wrapper" class="hover-effect"><i class="fa fa-angle-up"></i></a>
+      </div></div>
+
+    <div class="searchbox-container">
+  <form id="searchbox-form" >
+    <input type="search" id="search-box" placeholder="Search"
+    onkeyup="if(this.value!==''){document.getElementById('search-results').style.display = 'block';}"
+    onfocusout="this.value='';"
+    onblur="setTimeout(function(){ document.getElementById('search-results').style.display = 'none'; }, 100);">
+    <ul id="search-results" ></ul>
+  </form>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+<script src="/assets/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+      $('.imgViewer[data-no-image-viewer]').css("cursor", "unset");
+      $(function () {
+        $('.imgViewer:not([data-no-image-viewer])').magnificPopup({
+          type: 'image'
+          ,image: {
+            titleSrc: 'alt'
+            /* Error message */
+            ,tError: 'The image could not be loaded.<br><br>%url%'
+            /* Set to null to disable zoom out cursor. */
+            /*,cursor: null */
+          }
+          ,closeOnContentClick: true
+          ,showCloseBtn: false
+          ,zoom: {
+            /* By default it's false, so don't forget to enable it */
+            enabled: true
+            /* duration of the effect, in milliseconds */
+            ,duration: 300
+            /* CSS transition easing function */
+            ,easing: 'ease-in-out'
+          }
+        });
+      });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js"></script>
+    <script>
+      /* lazy loads elements with default selector as '.lozad' */
+      const observer = lozad();
+      observer.observe();
+    </script>
+
+<script>
+      PagerPageNumbers.setProperties({
+        paginatorListContainerName: ".pagination_wrapper .pagination"
+        ,pageList: ["/posts/2022-03-03-Simple-linear-regression", "/posts/2022-02-15-PCA", "/posts/2022-02-05-Python-Data-Structures", "/posts/2022-02-03-Objects-in-R", "/posts/2022-02-10-Matrix", "/posts/2022-01-13-Principle-of-inference", "/posts/2021-06-14-OneWay-ANOVA", "/posts/2020-02-07-ChiSquare-Distribution", "/posts/2019-11-01-Expected-value", "/posts/2019-07-01-Degree-of-freedom", "/posts/2018-12-02-Mean-N-Variance", "/posts/2018-06-22-Permutation-n-Combination"]
+        ,firstButtonName: 'First'
+        ,lastButtonName: 'Last'
+        ,prevButtonName: "«"
+        ,nextButtonName: "»"
+      });
+    </script>
+
+
+
+<script src="/assets/js/simple-jekyll-search-1.9.2.min.js"></script><script>
+  function loadSearch(jsonData, searchParam) {
+    if (!jsonData) jsonData = '/query/search.json';
+    var searchInput = document.getElementById('search-box');
+
+    const simpleJekyllSearch = SimpleJekyllSearch({
+      searchInput: searchInput
+      ,resultsContainer: document.getElementById('search-results')
+      ,json: jsonData
+      ,searchResultTemplate: '<li><a href="{url}">{title}<span>{date}</span></a></li>'
+      ,noResultsText: '<li>No results found.</li>'
+      ,limit: 10
+      ,fuzzy: false
+    });
+
+    if (searchParam) {
+      searchInput.value = searchParam;
+      searchInput.focus();
+      searchInput.disabled=false;
+      setTimeout(function(){
+        simpleJekyllSearch.search(searchParam);
+      }, 400);
+    }
+  }
+
+  </script>
+
+<script>
+    function isEmpty(value) {
+      if (value === "" || value === null || typeof value === "undefined") return true;
+      return false;
+    }
+
+    function getQueryParam (param, mach = true) {
+      var queryString = window.location.search.substring(1);
+      if (isEmpty(queryString)) return null;
+      var queries = queryString.split("&");
+      for (var i in queries) {
+        var pair = decodeURIComponent(queries[i]).split("=");
+        if (mach == true){
+          if (pair[0] == param) {
+            if (isEmpty(pair[1]) === false) return pair[1];
+          }
+        }else{
+          return pair;
+        }
+        break;
+      }
+      return null;
+    }
+
+    const searchParam = getQueryParam('search');
+
+    (async () => {
+      let resp = await fetch('/query/search.json');
+      if (!resp.ok) return;
+      let jsonData = await resp.json();
+      loadSearch(jsonData, searchParam);
+    })();
+  </script>
+<script>
+  const disqus_consent_msg = true;
+  var disqus_config = function () {
+    this.language = "en";
+    this.page.url = 'http://localhost:4000/posts/2022-02-15-PCA';
+    this.page.identifier = '/posts/2022-02-15-PCA';
+  };
+
+  function disqusLoader() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-datachurnbyak-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+
+  /* reload when data-color-scheme changes. (dark, light) */
+  function disqusReloader() {
+    if (typeof DISQUS === "undefined") return;
+    DISQUS.reset({
+      reload: true
+      ,config: disqus_config
+    });
+  }
+  const color_scheme_observer = new MutationObserver(disqusReloader);
+  color_scheme_observer.observe(document.body, {attributeFilter: ["data-color-scheme"]});
+  /* comments load mode */
+  let discusLoadDoNotAskStorageKey = "disqusLoadDoNotAskAgain";
+
+  function add_click_to_load_button() {
+    if (localStorage.getItem(discusLoadDoNotAskStorageKey)) disqusLoader();
+
+    /* create element */
+    let newElement = document.createElement("div");
+
+    if (disqus_consent_msg == true) {
+      newElement.innerHTML = "<div class=\"multipurpose-container\" style=\"margin:20px\"> <h4 style=\"margin-top: 0;\">Comments (Disqus.com)</h4> <p> Comment feature is hosted by a third party. By showing the external content you accept the <a href=\"https://help.disqus.com/en/articles/1717102-terms-of-service\" target=\"_blank\" rel=\"noopener noreferrer\">Terms of Service</a> and <a href=\"https://help.disqus.com/en/articles/1717103-disqus-privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a> of disqus.com. <br>If you prefer to opt out of targeted advertising, open <a href=\"https://disqus.com/data-sharing-settings\" target=\"_blank\" rel=\"noopener noreferrer\">this link</a> and click \"opt-out\" button and close. Return here and load comments. </p> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority load_comments\" data-comment-always-load role=\"button\">Always show</a> &nbsp;<a href=\"javascript:void(0);\" class=\"btn-base load_comments\" role=\"button\">Show only this time</a> </div>";
+    } else {
+      newElement.innerHTML = '<a href="javascript:void(0);" class="btn-base load_comments" role="button">Load Comments</a>';
+      newElement.style.textAlign = 'center';
+      newElement.style.minHeight = '20px';
+    }
+
+    /* add button */
+    let holder = document.querySelector('#disqus_thread');
+    if (!holder) return;
+    holder.appendChild(newElement);
+    /* add button click event */
+    let buttons = document.querySelectorAll('#disqus_thread .load_comments');
+    if (!buttons) return;
+    buttons.forEach(function (button) {
+      button.addEventListener('click', buttonCallback);
+    });
+
+    function buttonCallback(e) {
+      disqusLoader();
+      /* scroll to page bottom to see comments. */
+      document.getElementById('disqus_thread').style.height = '394px';
+      window.scrollTo(0, document.body.scrollHeight);
+      if (e.target.hasAttribute('data-comment-always-load')) {
+        localStorage.setItem(discusLoadDoNotAskStorageKey, true);
+      }
+    };
+  }
+  /* load when slide to the end of page */
+  window.addEventListener("load", add_click_to_load_button);
+  </script>
+
+
+    <script id="dsq-count-scr" src="https://https-datachurnbyak-github-io.disqus.com/count.js" async></script>
+    <script>
+        if (window.location.hash == "#disqus_thread") {
+          let element = document.getElementById('disqus_thread');
+          $("html, body").animate({ scrollTop: $(element).offset().top }, 600);
+        }
+      </script>
+     
+
+
+<script>
+  CookieConsent.consentSettingHtml = "<h5>Cookie settings</h5> <br> <p class=\"info-text\">This website uses cookies to optimize site functionality. It will be activated with your approval. Please click each item below for cookie policy. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <table> <tr> <td onclick=\"$('.info[data-consent-info=necessary]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Strictly necessary cookies</p> </td> <td> <span class=\"active_text\">Always active</span></td> </tr> </table> <div class=\"info\" data-consent-info=\"necessary\"> <p>These cookies are essential for the website function and cannot be disable. They are usually set when site function like color scheme etc. is changed. These cookies do not store any personally identifiable information. Enables storage related to security such as authentication functionality, fraud prevention, and other user protection. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=analytics]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Performance cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" checked=\"checked\" data-consent=\"analytics\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"analytics\"> <p>Enables storage (such as cookies) related to analytics e.g. visit duration. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=preferences]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Functionality cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"preferences\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"preferences\"> <p>Enables storage that supports the functionality of the website or app e.g. language settings. Enables storage related to personalization e.g. video recommendations. </p> </div> <table> <tr> <td onclick=\"$('.info[data-consent-info=advertising]').slideToggle();$(this).children('i').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o')\"> <i class=\"fa-fw fa fa-plus-square-o\" aria-hidden=\"true\"></i> <p>Targeting and advertising cookies</p> </td> <td> <label class=\"slide-switch\"> <input type=\"checkbox\" class=\"checkbox_switch\" data-consent=\"advertising\"> <span class=\"slider\"></span> </label></td> </tr> </table> <div class=\"info\" data-consent-info=\"advertising\"> <p>Enables storage (such as cookies) related to advertising. </p> </div> <br> <div class=\"button-holder\"> <a href=\"javascript:void(0);\" class=\"btn-base btn-left\" onclick=\"CookieConsent.consentSettingDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentSettingDone('accept');\" role=\"button\">Allow all</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentSettingDone('save');\" role=\"button\">Allow selection</a> </div>";
+  CookieConsent.consentBarHtml = "<div class=\"consent-bar\"> <a class=\"close-button\" href=\"javascript:void(0);\" onclick=\"CookieConsent.hideConsentBar();\"><i class=\"fa-fw fa fa-times\"></i></a> <p>This website uses cookies to optimize site functionality. It will be activated with your approval. Check <a href=\"/privacy-policy.html\">Privacy policy</a> </p> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('deny');\" role=\"button\">Deny</a> <a href=\"javascript:void(0);\" class=\"btn-base \" onclick=\"CookieConsent.consentBarDone('settings');\" role=\"button\">Customize</a> <a href=\"javascript:void(0);\" class=\"btn-base btn-priority\" onclick=\"CookieConsent.consentBarDone('accept');\" role=\"button\">Allow all</a> </div>";
+  CookieConsent.consent_items = JSON.parse('{"necessary":{"group":["security_storage"],"value":"granted","wait_for_update":500,"cookie_domain":"","no_check_box":true},"analytics":{"group":["analytics_storage"],"value":"denied"},"preferences":{"group":["functionality_storage","personalization_storage"],"value":"denied"},"advertising":{"group":["ad_storage"],"value":"denied"}}');
+  CookieConsent.hideConsentBarWithSaveButton = true;
+
+  const consent_settings = CookieConsent.getConsentSettings();
+  const default_configs = JSON.parse('{"anonymize_ip":true,"ads_data_redaction":true,"cookie_flags":"SameSite=None;Secure"}');
+</script>
+</body>
+</html>
+

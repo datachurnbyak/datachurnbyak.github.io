@@ -14,6 +14,14 @@ xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
     </image:image>
   </url>
   <url>
+    <loc>http://localhost:4000/posts/2022-02-15-PCA</loc>
+    <lastmod>2022-02-14T17:11:06-06:00</lastmod>
+    <image:image>
+      <image:loc>http://localhost:4000/assets/img/posts/PCA-with-Digits_files/figure-markdown/unnamed-chunk-9-1.svg</image:loc>
+      <image:title>Principal component analysis</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>http://localhost:4000/posts/2022-02-05-Python-Data-Structures</loc>
     <lastmod>2022-10-31T18:11:06-05:00</lastmod>
     <image:image>
